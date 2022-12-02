@@ -4,11 +4,15 @@ import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class UserMapper
-{
+class UserMapper {
+
+    public static ConnectionPool connectionPool = new ConnectionPool();
+
     static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
@@ -69,5 +73,32 @@ class UserMapper
         return user;
     }
 
+    public static List<User> getUsers(ConnectionPool connectionPool) {
 
+        Logger.getLogger("web").log(Level.INFO, "");
+        List<User> userList = new ArrayList<>();
+
+        String sql = "select * from User";
+
+        try (Connection connection = UserMapper.connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String username = rs.getString("Username");
+                    String password = rs.getString("Password");
+                    String role = rs.getString("Role");
+                    int balance = rs.getInt("Balance");
+
+                    User newUser = new User(username, password, role);
+                    userList.add(newUser);
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return userList;
+    }
 }
