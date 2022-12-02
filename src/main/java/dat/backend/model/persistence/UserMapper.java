@@ -88,7 +88,6 @@ class UserMapper {
                     String username = rs.getString("Username");
                     String password = rs.getString("Password");
                     String role = rs.getString("Role");
-                    int balance = rs.getInt("Balance");
 
                     User newUser = new User(username, password, role);
                     userList.add(newUser);
