@@ -15,7 +15,7 @@
         <p>Det kan du gøre her: <a href="login.jsp">Login</a></p>
         <br>
         <p>Hvis du ikke har en bruger</p>
-        <p>Så opret dig venligst her: <a href="createUser.jsp"></a></p>
+        <p>Så opret dig venligst her: <a href="createUser.jsp">Create User</a></p>
 
     </jsp:body>
 

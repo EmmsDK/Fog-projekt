@@ -50,5 +50,4 @@ public class Login extends HttpServlet
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
-
 }
