@@ -6,6 +6,7 @@ public abstract class BuildingMaterial {
     private int length;
     private String name;
     private String unit;
+    
     public BuildingMaterial(int price, int width, int length, String name, String unit) {
         this.price = price;
         this.width = width;
