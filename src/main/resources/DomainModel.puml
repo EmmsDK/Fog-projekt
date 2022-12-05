@@ -8,16 +8,16 @@ Class RoofTile extends BuildingMaterials
 Class Fitting extends BuildingMaterials
 Class Screw extends BuildingMaterials
 
-Class PartsList
+Class BillOfMaterials
 
 Class Carport
 Class Order
 
-Wood "Many "--o "1 "PartsList
-Fitting "Many "--o "1 " PartsList
-RoofTile "Many "--o "1 " PartsList
-Screw "Many "--o "1 " PartsList
-PartsList "1"--> "1"Carport
+Wood "Many "--o "1 "BillOfMaterials
+Fitting "Many "--o "1 " BillOfMaterials
+RoofTile "Many "--o "1 " BillOfMaterials
+Screw "Many "--o "1 " BillOfMaterials
+BillOfMaterials "1"--> "1"Carport
 Carport "1"-->"1" Order
 Order "Many"--o "1"User
 
