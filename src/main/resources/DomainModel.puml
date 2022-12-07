@@ -7,19 +7,21 @@ Class Wood extends BuildingMaterials
 Class RoofTile extends BuildingMaterials
 Class Fitting extends BuildingMaterials
 Class Screw extends BuildingMaterials
+Class Plans
+
 
 Class BillOfMaterials
 
 Class Carport
 Class Order
-
-Wood "Many "--o "1 "BillOfMaterials
-Fitting "Many "--o "1 " BillOfMaterials
-RoofTile "Many "--o "1 " BillOfMaterials
-Screw "Many "--o "1 " BillOfMaterials
-BillOfMaterials "1"--> "1"Carport
-Carport "1"-->"1" Order
-Order "Many"--o "1"User
+Plans --o "1,,1"Carport
+Wood --o "0,,many "BillOfMaterials
+Fitting --o "0 ,,many " BillOfMaterials
+RoofTile --o "0,,many  " BillOfMaterials
+Screw --o "0,,many " BillOfMaterials
+BillOfMaterials --o "1,,1"Carport
+Carport "1"--o "1,,1" Order
+Order --o "many,,1 "User
 
 
 @enduml
