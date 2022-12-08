@@ -6,13 +6,11 @@ public class User
 {
     private String username;
     private String password;
-    private String role;
 
-    public User(String username, String password, String role)
+    public User(String username, String password)
     {
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
     public String getUsername()
@@ -35,30 +33,18 @@ public class User
         this.password = password;
     }
 
-    public String getRole()
-    {
-        return role;
-    }
-
-    public void setRole(String role)
-    {
-        this.role = role;
-    }
-
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) &&
-                getRole().equals(user.getRole());
-    }
+        return getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword());}
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getUsername(), getPassword(), getRole());
+        return Objects.hash(getUsername(), getPassword());
     }
 
     @Override
@@ -67,7 +53,6 @@ public class User
         return "User{" +
                 "brugerNavn='" + username + '\'' +
                 ", kodeord='" + password + '\'' +
-                ", rolle='" + role + '\'' +
                 '}';
     }
 }
