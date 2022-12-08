@@ -9,6 +9,7 @@ public static SVG addBeams(SVG svg){
 
     for(int i=0;i< 800;i+=50) {
         svg.addRect(i,0,600.5,4.5);
+
     }
         return svg;
 
