@@ -13,6 +13,15 @@
 
     <h1>Mine Ordre</h1>
 
+    <c:forEach var="item" items="${sessionScope.BillOfMaterials}">
+        ${item.idWood}: <br>
+        ${item.idScrew}
+        ${item.idRoofTile}
+        ${item.idFitting}
+        ${item.idCarportPrice}<br>
+        <br>
+    </c:forEach>
+
     </body>
 </t:pagetemplate>
 </html>
