@@ -10,8 +10,8 @@
     </head>
     <body>
 
-    <form action="addtocart" method="post">
-        længde
+    <form action="buildacarport" method="post">
+        Længde
         <select name="længde" id="længde">
 
             <option value="1">Almond (7kr)</option>
@@ -20,7 +20,7 @@
             <option value="4">Pistacio (6kr)</option>
             <option value="5">Vanilla (5kr)</option>
         </select>
-        bredde
+        Bredde
         <select name="bredde">
             <option value="1">Blue Cheese (9kr)</option>
             <option value="2">Blueberry (5kr)</option>
@@ -32,13 +32,13 @@
             <option value="8">Rum/Raisin (7kr)</option>
             <option value="9">Strawberry (6kr)</option>
         </select>
-        type
+        Type
         <select name="type carport">
             <option value="1">Enkeltcarport</option>
             <option value="2">Dobbeltcarport</option>
 
         </select>
-        redskabsrums
+        Redskabsrums
         <select name="redskabsrum">
             <option value="1">Ja</option>
             <option value="2">Nej</option>
