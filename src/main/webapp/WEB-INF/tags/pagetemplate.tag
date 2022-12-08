@@ -55,6 +55,18 @@
                     </c:if>
                 </div>
             </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup2">
+                <div class="navbar-nav">
+                    <a href="https://www.johannesfog.dk/om-fog/forretninger" class="css-gldnal e1anyrz52">
+                        <svg viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em">
+                            <path d="M13.737 9.053a1.685 1.685 0 1 1-3.37-.002 1.685 1.685 0 0 1 3.37.002Zm3.368 0c0 4.21-5.052 10.947-5.052 10.947S7 13.263 7 9.053a5.053 5.053 0 0 1 10.105 0Z"
+                                  stroke="#101820" stroke-width="2" fill="none" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                            </path>
+                        </svg>
+                        <span class="css-108uwdu e1anyrz54">Find Fog</span></a>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
