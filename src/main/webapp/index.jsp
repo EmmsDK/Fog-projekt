@@ -8,14 +8,9 @@
          Velkommen til Fog's skræddersyede carporte side
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-         Velkommen til Fog's skræddersyede carporte side
-    </jsp:attribute>
-
     <jsp:body>
         <p>For at benytte hjemmesiden, skal du venligst login:</p>
-        <a href="login.jsp"> Login</a>
-        <br>
+        <a href="login.jsp"> Login</a><br><br>
         <p>Hvis du ikke har en bruger, kan du oprette en bruger her:</p>
         <a href="createUser.jsp">Opret bruger</a>
 
