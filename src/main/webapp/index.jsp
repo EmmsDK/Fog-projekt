@@ -5,17 +5,19 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Velkommen til Fog's skræddersyede carporte side
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+         Velkommen til Fog's skræddersyede carporte side
     </jsp:attribute>
 
     <jsp:body>
-        <p> SVG demo </p>
-
-        <a href="svg"> Se tegning </a>
+        <p>For at benytte hjemmesiden, skal du venligst login:</p>
+        <a href="login.jsp"> Login</a>
+        <br>
+        <p>Hvis du ikke har en bruger, kan du oprette en bruger her:</p>
+        <a href="createUser.jsp">Opret bruger</a>
 
     </jsp:body>
 
