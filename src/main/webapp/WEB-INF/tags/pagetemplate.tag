@@ -32,6 +32,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <c:if test="${sessionScope.user.username!=null}">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/welcome">Velkommen</a>
+                    </c:if>
+                    <c:if test="${sessionScope.user.username!=null}">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/buildACarport.jsp">Byg en
                             Carport</a>
                     </c:if>

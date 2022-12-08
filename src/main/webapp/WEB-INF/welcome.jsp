@@ -12,8 +12,17 @@
 
         <h1>Whalecum</h1>
 
+        <a class="navbar-brand" href="buildACarport.jsp">
+            <img src="${pageContext.request.contextPath}/images/Build-a-carport.png" width="350px;" class="img-fluid"/>
+        </a>
 
+        <a class="navbar-brand" href="myOrders.jsp">
+            <img src="${pageContext.request.contextPath}/images/Orders.png" width="350px;" class="img-fluid"/>
+        </a>
 
+        <a class="navbar-brand" href="myProfile.jsp">
+            <img src="${pageContext.request.contextPath}/images/Profile.png" width="350px;" class="img-fluid"/>
+        </a>
 
     </jsp:body>
 
