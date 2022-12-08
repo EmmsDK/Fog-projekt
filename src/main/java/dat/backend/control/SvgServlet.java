@@ -24,7 +24,9 @@ public class SvgServlet extends HttpServlet {
 
 
         SVG carport = CarportSVG.createNewSVG(0,0,100,100,"0 0 855 690");
-        carport =CarportSVG.addBeams(carport);
+        carport = CarportSVG.addBeams(carport);
+        //carport = CarportSVG.addDashArrayLines(carport,855,690);
+        carport.addDashArrayLines(0,855,0,690);
 
         request.setAttribute("svg",carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request,response);
