@@ -14,8 +14,6 @@
 
     <jsp:body>
 
-        <h1>SVG tegning til folket</h1>
-
         ${requestScope.svg}
 
     </jsp:body>

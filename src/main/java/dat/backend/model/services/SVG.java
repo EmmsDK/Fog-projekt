@@ -5,7 +5,7 @@ public class SVG {
     private int y=0;
     private int height=100;
     private int width=100;
-    private String viewbox="0 0 300 300";
+    private String viewbox="0 0 "+width+" "+height;
     private StringBuilder svgString=new StringBuilder();
 
     private final static String HEADERTEMPLATE ="<svg x=\"%d\" y=\"%d\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";

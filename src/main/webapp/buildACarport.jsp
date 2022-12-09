@@ -11,7 +11,7 @@
     <body>
 
     <form action="buildacarport" method="post">
-        Længde
+        Længde i cm
         <select name="length" id="length">
             <option value="300">300</option>
             <option value="310">310</option>
@@ -27,9 +27,9 @@
             <option value="410">410</option>
             <option value="420">420</option>
         </select>
-        Bredde
+        Bredde i cm
         <select name="bredde">
-            <option value="1">180 cm</option>
+            <option value="1">180</option>
             <option value="2">190</option>
             <option value="3">200</option>
             <option value="4">210</option>
@@ -41,11 +41,11 @@
         </select>
         Type
         <select name="type carport">
-            <option value="1">Enkeltcarport</option>
-            <option value="2">Dobbeltcarport</option>
+            <option value="300">Enkeltcarport</option>
+            <option value="600">Dobbeltcarport</option>
 
         </select>
-        redskabsrum
+        Redskabsrum
         <select name="redskabsrum">
             <option value="1">Ja</option>
             <option value="2">Nej</option>

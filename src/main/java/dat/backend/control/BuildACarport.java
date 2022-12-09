@@ -22,8 +22,10 @@ public class BuildACarport extends HttpServlet {
         HttpSession session = request.getSession();
         SVG svg = new SVG();
         int length = Integer.parseInt(request.getParameter("length"));
+        int width = Integer.parseInt(request.getParameter("type carport"));
         svg.setWidth(length);
+        svg.setHeight(width);
         session.setAttribute("svg", svg);
-        request.getRequestDispatcher("/WEB-INF/svgdrawing.jsp").forward(request, response);
+        request.getRequestDispatcher("buildACarport.jsp").forward(request, response);
     }
 }

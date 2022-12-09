@@ -23,19 +23,18 @@ public class SvgServlet extends HttpServlet {
 
         SVG svg = (SVG) session.getAttribute("svg");
         int length = svg.getWidth();
+        int width = svg.getHeight();
 
         int orderID = 34;
         //Order order = orderFacade.getOrderById(orderID);
 
 
-        SVG carport = CarportSVG.createNewSVG(0, 0, 100, 100, "0 0 "+length+" 300");
+        SVG carport = CarportSVG.createNewSVG(0, 0, 100, 100, "0 0 "+300+" "+300);
         //carport = CarportSVG.addBeams(carport);
-        //carport = CarportSVG.addDashArrayLines(carport,length,300);
-        carport.addDashArrayLines(0, length, 0, 300);
+        carport.addDashArrayLines(0, length, 0, width);
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
-
     }
 
     @Override
