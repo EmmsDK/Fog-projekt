@@ -15,19 +15,16 @@ class UserMapper {
 
     static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
+        User user = null;
 
-        User user;
-
-        String sql = "SELECT * FROM User WHERE username = ? AND password = ?";
-
+        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, username);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    String role = rs.getString("role");
-                    user = new User(username, password, role);
+                    user = new User(username, password);
                 } else {
                     throw new DatabaseException("Wrong username or password");
                 }
@@ -40,34 +37,31 @@ class UserMapper {
 
     static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        User createUser;
-        String sql = "insert into User (username, password, role, balance) values (?,?,?,?)";
+        User user;
+        String sql = "insert into user (username, password) values (?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, username);
                 ps.setString(2, password);
-                ps.setString(3, "User");
-                ps.setInt(4, 0);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    createUser = new User(username, password, role);
+                    user = new User(username, password);
                 } else {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
                 }
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
-        return createUser;
+        return user;
     }
 
     public static List<User> getUsers(ConnectionPool connectionPool) {
-
         Logger.getLogger("web").log(Level.INFO, "");
         List<User> userList = new ArrayList<>();
 
         String sql = "select * from User";
-
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
@@ -75,9 +69,8 @@ class UserMapper {
                 while (rs.next()) {
                     String username = rs.getString("Username");
                     String password = rs.getString("Password");
-                    String role = rs.getString("Role");
 
-                    User newUser = new User(username, password, role);
+                    User newUser = new User(username, password);
                     userList.add(newUser);
                 }
             } catch (SQLException throwables) {
