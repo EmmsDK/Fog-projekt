@@ -1,11 +1,11 @@
 package dat.backend.model.services;
 
 public class SVG {
-    private int x;
-    private int y;
-    private int height;
-    private int width;
-    private String viewbox;
+    private int x=0;
+    private int y=0;
+    private int height=100;
+    private int width=100;
+    private String viewbox="0 0 300 300";
     private StringBuilder svgString=new StringBuilder();
 
     private final static String HEADERTEMPLATE ="<svg x=\"%d\" y=\"%d\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
@@ -19,7 +19,7 @@ public class SVG {
             "        </marker>\n" +
             "    </defs>";
     private final static String DASHARRAYTEMPLATE =
-            "<line fill=\"none\" stroke=\"black\" stroke-width=\"4\" stroke-dasharray=\"5,5\" x1=\"%d\" x2=\"%d\" y1==\"%d\" y2=\"%d\" />\n";
+            "<line fill=\"none\" stroke=\"black\" stroke-dasharray=\"0.5%%,0.5%%\" x1=\"%d%%\" x2=\"%d%%\" y1==\"%d%%\" y2=\"%d%%\" />\n";
 
     public SVG(int x, int y, int height, int width, String viewbox) {
         svgString.append(String.format(HEADERTEMPLATE, x,y, height, width, viewbox));
@@ -31,13 +31,22 @@ public class SVG {
         this.width = width;
         this.viewbox = viewbox;
     }
-        //<rect x="55" y="0" height="600" width="5"
+
+    public SVG() {
+    }
+
+    //<rect x="55" y="0" height="600" width="5"
     public void addRect(int x, int y, double height, double width){
     svgString.append(String.format(RECTTEMPLATE,x,y,height,width));
     }
 
     public void addDashArrayLines(int x1, int x2, int y1, int y2)
     {
+        //Making it into %
+        x1=x1/10;
+        x2=x2/10;
+        y1=y1/10;
+        y2=y2/10;
         svgString.append(String.format(DASHARRAYTEMPLATE,x1,x2,y1,y2));
         svgString.append(String.format(DASHARRAYTEMPLATE,x2,x1,y1,y2));
     }
@@ -69,4 +78,21 @@ public class SVG {
     public int getWidth() {
         return width;
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
 }

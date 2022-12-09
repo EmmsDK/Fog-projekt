@@ -12,23 +12,20 @@
 
     <form action="buildacarport" method="post">
         Længde
-        <select name="længde" id="længde">
-
-            <option value="1">300</option>
-            <option value="2">310</option>
-            <option value="3">320</option>
-            <option value="4">330</option>
-            <option value="5">340</option>
-            <option value="6">350</option>
-            <option value="7">360</option>
-            <option value="8">370</option>
-            <option value="9">380</option>
-            <option value="10">390</option>
-            <option value="11">400</option>
-            <option value="12">410</option>
-            <option value="13">420</option>
-
-
+        <select name="length" id="length">
+            <option value="300">300</option>
+            <option value="310">310</option>
+            <option value="320">320</option>
+            <option value="330">330</option>
+            <option value="340">340</option>
+            <option value="350">350</option>
+            <option value="360">360</option>
+            <option value="370">370</option>
+            <option value="380">380</option>
+            <option value="390">390</option>
+            <option value="400">400</option>
+            <option value="410">410</option>
+            <option value="420">420</option>
         </select>
         Bredde
         <select name="bredde">
@@ -54,7 +51,7 @@
             <option value="2">Nej</option>
 
         </select>
-        <button name="addToCart">Add To Cart</button>
+        <button name="buildACarport">Se carport</button>
     </form>
 
     </body>
