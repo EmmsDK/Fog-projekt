@@ -62,7 +62,7 @@ class UserMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         List<User> userList = new ArrayList<>();
 
-        String sql = "select * from User";
+        String sql = "select * from user";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
