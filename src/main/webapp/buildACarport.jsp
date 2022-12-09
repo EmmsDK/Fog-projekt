@@ -38,7 +38,7 @@
             <option value="4">210</option>
             <option value="5">220</option>
             <option value="6">230</option>
-            <option value="7">240 (5kr)</option>
+            <option value="7">240</option>
             <option value="8">250</option>
             <option value="9">260</option>
         </select>
