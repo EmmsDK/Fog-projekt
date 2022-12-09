@@ -14,23 +14,33 @@
         Længde
         <select name="længde" id="længde">
 
-            <option value="1">Almond (7kr)</option>
-            <option value="2">Chocolate (5kr)</option>
-            <option value="3">Nutmeg (6kr)</option>
-            <option value="4">Pistacio (6kr)</option>
-            <option value="5">Vanilla (5kr)</option>
+            <option value="1">300</option>
+            <option value="2">310</option>
+            <option value="3">320</option>
+            <option value="4">330</option>
+            <option value="5">340</option>
+            <option value="6">350</option>
+            <option value="7">360</option>
+            <option value="8">370</option>
+            <option value="9">380</option>
+            <option value="10">390</option>
+            <option value="11">400</option>
+            <option value="12">410</option>
+            <option value="13">420</option>
+
+
         </select>
         Bredde
         <select name="bredde">
-            <option value="1">Blue Cheese (9kr)</option>
-            <option value="2">Blueberry (5kr)</option>
-            <option value="3">Chocolate (5kr)</option>
-            <option value="4">Crispy (6kr)</option>
-            <option value="5">Lemon (8kr)</option>
-            <option value="6">Orange (8kr)</option>
-            <option value="7">Rasberry (5kr)</option>
-            <option value="8">Rum/Raisin (7kr)</option>
-            <option value="9">Strawberry (6kr)</option>
+            <option value="1">180 cm</option>
+            <option value="2">190</option>
+            <option value="3">200</option>
+            <option value="4">210</option>
+            <option value="5">220</option>
+            <option value="6">230</option>
+            <option value="7">240 (5kr)</option>
+            <option value="8">250</option>
+            <option value="9">260</option>
         </select>
         Type
         <select name="type carport">
@@ -38,7 +48,7 @@
             <option value="2">Dobbeltcarport</option>
 
         </select>
-        Redskabsrums
+        redskabsrum
         <select name="redskabsrum">
             <option value="1">Ja</option>
             <option value="2">Nej</option>
