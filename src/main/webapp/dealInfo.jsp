@@ -11,7 +11,11 @@
     </head>
     <body>
 
-    <h1>DealInfo</h1>
+    <h1>Tak for din bestilling!</h1>
+
+    <br>
+    <h2>Du kan se din ordre her:</h2>    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/myOrders.jsp">Mine
+        Ordre</a>
 
 
     </body>
