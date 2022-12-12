@@ -9,6 +9,6 @@ public class BillOfMaterials {
     List<Integer> quantity = new ArrayList<>();
     //
 
-    publicStatic
+    //publicStatic
 
 }

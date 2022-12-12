@@ -8,8 +8,8 @@ public class SVG {
     private String viewbox="0 0 "+width+" "+height;
     private StringBuilder svgString=new StringBuilder();
 
-    private final static String HEADERTEMPLATE ="<svg x=\"%d\" y=\"%d\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
-    private final static String RECTTEMPLATE = "<rect x=\"%d%%\" y=\"%d%%\" height=\"%f%%\" width=\"%f%%\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
+    private final static String HEADERTEMPLATE ="<svg x=\"%d%%\" y=\"%d%%\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
+    private final static String RECTTEMPLATE = "<rect x=\"%d\" y=\"%d\" height=\"%f%%\" width=\"%f%%\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
@@ -19,11 +19,10 @@ public class SVG {
             "        </marker>\n" +
             "    </defs>";
     private final static String DASHARRAYTEMPLATE =
-            "<line fill=\"none\" stroke=\"black\" stroke-dasharray=\"0.5%%,0.5%%\" x1=\"%d%%\" x2=\"%d%%\" y1==\"%d%%\" y2=\"%d%%\" />\n";
+            "<line fill=\"none\" stroke=\"black\" stroke-dasharray=\"0.5%%,0.5%%\" x1=\"%d\" x2=\"%d\" y1=\"%d\" y2=\"%d\" />\n";
 
     public SVG(int x, int y, int height, int width, String viewbox) {
         svgString.append(String.format(HEADERTEMPLATE, x,y, height, width, viewbox));
-        svgString.append(DASHARRAYTEMPLATE);
         svgString.append(ARROWHEADSTEMPLATE);
         this.x=x;
         this.y=y;
@@ -42,11 +41,6 @@ public class SVG {
 
     public void addDashArrayLines(int x1, int x2, int y1, int y2)
     {
-        //Making it into %
-        x1=x1/10;
-        x2=x2/10;
-        y1=y1/10;
-        y2=y2/10;
         svgString.append(String.format(DASHARRAYTEMPLATE,x1,x2,y1,y2));
         svgString.append(String.format(DASHARRAYTEMPLATE,x2,x1,y1,y2));
     }
