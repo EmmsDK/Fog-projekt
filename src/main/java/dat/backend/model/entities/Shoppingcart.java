@@ -1,6 +1,8 @@
 package dat.backend.model.entities;
 
 import java.security.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Shoppingcart {
     Carport carport;
@@ -8,7 +10,6 @@ public class Shoppingcart {
 
     public Shoppingcart(Carport carport) {
         this.carport = carport;
-
     }
 
     public Carport getCarport() {
@@ -19,11 +20,4 @@ public class Shoppingcart {
         this.carport = carport;
     }
 
-    public int getIdshoppingcart() {
-        return idshoppingcart;
-    }
-
-    public void setIdshoppingcart(int idshoppingcart) {
-        this.idshoppingcart = idshoppingcart;
-    }
 }
