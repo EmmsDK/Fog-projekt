@@ -34,11 +34,16 @@ public class SvgServlet extends HttpServlet {
         SVG carport = CarportSVG.createNewSVG(0, 0, 35, 35, "0 0 "+width+" "+height);
         //carport = CarportSVG.addBeams(carport);
         int fixedOffSet = 30;
+
         carport.addDashArrayLines(onePercentWidth*15, width, fixedOffSet, height-onePercentHeight-fixedOffSet);
+
+        //Vertikale linjer
         carport.addRect(0,0,100,1);
         carport.addRect(width-onePercentWidth,0,100,1);
-        carport.addRect(width/100,0+fixedOffSet,1, 100-onePercentWidth);
-        carport.addRect(width/100,height-onePercentHeight-fixedOffSet,1, 100-onePercentWidth); //-(height/100) for at gøre op for rem bredden
+
+        //Horizontale linjer
+        carport.addRect(width/100,0+fixedOffSet,1, 98);
+        carport.addRect(width/100,height-onePercentHeight-fixedOffSet,1, 98);
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
