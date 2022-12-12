@@ -51,7 +51,10 @@
             <option value="2">Nej</option>
 
         </select>
-        <button name="buildACarport">Se carport</button>
+        <button name="buildACarport">Byg carport</button>
+        <c:if test="${sessionScope.svg!=null}">
+            <button name="SvgServlet" formaction="svg" formmethod="get">Se din nuværende carport</button>
+        </c:if>
     </form>
 
     </body>

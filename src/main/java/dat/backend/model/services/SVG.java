@@ -9,7 +9,7 @@ public class SVG {
     private StringBuilder svgString=new StringBuilder();
 
     private final static String HEADERTEMPLATE ="<svg x=\"%d\" y=\"%d\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
-    private final static String RECTTEMPLATE = "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
+    private final static String RECTTEMPLATE = "<rect x=\"%d%%\" y=\"%d%%\" height=\"%f%%\" width=\"%f%%\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
