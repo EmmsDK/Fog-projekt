@@ -4,7 +4,7 @@ import java.security.Timestamp;
 
 public class Shoppingcart {
     Carport carport;
-
+    int idshoppingcart;
 
     public Shoppingcart(Carport carport) {
         this.carport = carport;
@@ -19,4 +19,11 @@ public class Shoppingcart {
         this.carport = carport;
     }
 
+    public int getIdshoppingcart() {
+        return idshoppingcart;
+    }
+
+    public void setIdshoppingcart(int idshoppingcart) {
+        this.idshoppingcart = idshoppingcart;
+    }
 }

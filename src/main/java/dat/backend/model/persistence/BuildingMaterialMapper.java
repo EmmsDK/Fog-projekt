@@ -15,7 +15,7 @@ public class BuildingMaterialMapper {
 
         List<BuildingMaterial> staticMaterials = new ArrayList<>();
 
-        String sql = "select * from beslag";
+        String sql = "select * from fitting";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -38,7 +38,7 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        sql = "select * from skruer";
+        sql = "select * from screws";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -97,7 +97,7 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        sql = "select * from tagplader";
+        sql = "select * from rooftiles";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {

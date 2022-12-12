@@ -12,12 +12,17 @@ import static dat.backend.model.persistence.UserMapper.connectionPool;
 
 public class ShoppingcartMapper {
     static Shoppingcart createShoppingcart(User user, Shoppingcart cart) throws DatabaseException {
-        String sql = "insert into shoppingcart (iduser, idbuildingmaterials, shoppingcarttotalprice,) values (?,?,?)";
+        String sql = "insert into shoppingcart (iduser, idorderline, shoppingcarttotalprice,) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, user.getIduser());
-                ps.setInt(2, 1);
+
                 ps.setInt(3,cart.getCarport().getNyPris());
+
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                cart.setIdshoppingcart(rs.getInt(1));
 
                 int rowsAffected = ps.executeUpdate();
 

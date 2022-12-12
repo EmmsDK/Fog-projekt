@@ -7,8 +7,6 @@ public class BillOfMaterials {
     List<BuildingMaterial> materialList = new ArrayList<>();
 
     List<Integer> quantity = new ArrayList<>();
-    //
-
-    publicStatic
+    //publicStatic
 
 }
