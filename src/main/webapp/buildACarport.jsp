@@ -11,45 +11,45 @@
     <body>
 
     <form action="buildacarport" method="post">
-        Længde i cm
-        <select name="length" id="length">
-            <option value="300">300</option>
-            <option value="310">310</option>
-            <option value="320">320</option>
-            <option value="330">330</option>
-            <option value="340">340</option>
-            <option value="350">350</option>
-            <option value="360">360</option>
-            <option value="370">370</option>
-            <option value="380">380</option>
-            <option value="390">390</option>
-            <option value="400">400</option>
-            <option value="410">410</option>
-            <option value="420">420</option>
+        Længde:<br>
+        <select name="længde" id="længde">
+            <option value="1">Vælg venligst en længde</option>
+            <option value="2">300 cm</option>
+            <option value="3">310 cm</option>
+            <option value="4">320 cm</option>
+            <option value="5">330 cm</option>
+            <option value="6">340 cm</option>
+            <option value="7">350 cm</option>
+            <option value="8">360 cm</option>
+            <option value="9">370 cm</option>
+            <option value="10">380 cm</option>
+            <option value="11">390 cm</option>
+            <option value="12">400 cm</option>
+            <option value="13">410 cm</option>
+            <option value="14">420 cm</option>
         </select>
-        Bredde i cm
+        <br><br>
+
+        Bredde:<br>
         <select name="bredde">
-            <option value="1">180</option>
-            <option value="2">190</option>
-            <option value="3">200</option>
-            <option value="4">210</option>
-            <option value="5">220</option>
-            <option value="6">230</option>
-            <option value="7">240</option>
-            <option value="8">250</option>
-            <option value="9">260</option>
+            <option value="1">Vælg venligst en bredde</option>
+            <option value="2">180 cm</option>
+            <option value="3">190 cm</option>
+            <option value="4">200 cm</option>
+            <option value="5">210 cm</option>
+            <option value="6">220 cm</option>
+            <option value="7">230 cm</option>
+            <option value="8">240 cm</option>
+            <option value="9">250 cm</option>
+            <option value="10">260 cm</option>
         </select>
-        Type
-        <select name="type carport">
-            <option value="300">Enkeltcarport</option>
-            <option value="600">Dobbeltcarport</option>
+        <br><br>
 
-        </select>
-        Redskabsrum
+        Redskabsrum:<br>
         <select name="redskabsrum">
-            <option value="1">Ja</option>
-            <option value="2">Nej</option>
-
+            <option value="1">Vælg venligst et redskabsrum</option>
+            <option value="2">Ja</option>
+            <option value="3">Nej</option>
         </select>
         <button name="buildACarport">Byg carport</button>
         <c:if test="${sessionScope.svg!=null}">
