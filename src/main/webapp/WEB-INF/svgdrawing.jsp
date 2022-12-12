@@ -6,6 +6,7 @@
 <t:pagetemplate>
     <jsp:attribute name="header">
         SVG drawing
+
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,9 +14,7 @@
     </jsp:attribute>
 
     <jsp:body>
-
         ${requestScope.svg}
-
     </jsp:body>
 
 </t:pagetemplate>

@@ -28,22 +28,11 @@
             <option value="13">410 cm</option>
             <option value="14">420 cm</option>
         </select>
-        <br><br>
-
-        Bredde:<br>
-        <select name="bredde">
-            <option value="1">Vælg venligst en bredde</option>
-            <option value="2">180 cm</option>
-            <option value="3">190 cm</option>
-            <option value="4">200 cm</option>
-            <option value="5">210 cm</option>
-            <option value="6">220 cm</option>
-            <option value="7">230 cm</option>
-            <option value="8">240 cm</option>
-            <option value="9">250 cm</option>
-            <option value="10">260 cm</option>
+        Bredde i cm
+        <select name="width" id="width">
+            <option value="300">300</option>
+            <option value="600">600</option>
         </select>
-        <br><br>
 
         Redskabsrum:<br>
         <select name="redskabsrum">
