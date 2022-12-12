@@ -3,8 +3,8 @@ package dat.backend.model.entities;
 public class RoofTile extends BuildingMaterial{
     private int length;
 
-    public RoofTile(String type, String description, int typeId, int length) {
-        super(type, description, typeId);
+    public RoofTile(String type, String description, int typeId,int quantity, int length) {
+        super(type, description, typeId, quantity);
         this.length = length;
     }
 
