@@ -45,7 +45,7 @@
         </select>
         <br><br>
 
-        redskabsrum:<br>
+        Redskabsrum:<br>
         <select name="redskabsrum">
             <option value="1">Vælg venligst et redskabsrum</option>
             <option value="2">Ja</option>

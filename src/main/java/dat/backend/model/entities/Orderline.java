@@ -34,4 +34,9 @@ public class Orderline {
     public void setOrderline_id(int orderline_id) {
         this.orderline_id = orderline_id;
     }
+
+    public List<Orderline> getOrderlineList() {
+        return orderlineList;
+    }
+
 }
