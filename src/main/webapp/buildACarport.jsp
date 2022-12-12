@@ -11,35 +11,41 @@
     <body>
 
     <form action="buildacarport" method="post">
-        Længde i cm
+        Længde<br>
         <select name="length" id="length">
-            <option value="300">300</option>
-            <option value="310">310</option>
-            <option value="320">320</option>
-            <option value="330">330</option>
-            <option value="340">340</option>
-            <option value="350">350</option>
-            <option value="360">360</option>
-            <option value="370">370</option>
-            <option value="380">380</option>
-            <option value="390">390</option>
-            <option value="400">400</option>
-            <option value="410">410</option>
-            <option value="420">420</option>
+            <option>Vælg venligst en længde</option>
+            <option value="300">300 cm</option>
+            <option value="310">310 cm</option>
+            <option value="320">320 cm</option>
+            <option value="330">330 cm</option>
+            <option value="340">340 cm</option>
+            <option value="350">350 cm</option>
+            <option value="360">360 cm</option>
+            <option value="370">370 cm</option>
+            <option value="380">380 cm</option>
+            <option value="390">390 cm</option>
+            <option value="400">400 cm</option>
+            <option value="410">410 cm</option>
+            <option value="420">420 cm</option>
         </select>
-        Bredde i cm
+        <br><br>
+
+        Bredde<br>
         <select name="width" id="width">
-            <option value="300">300</option>
-            <option value="600">600</option>
+            <option>Vælg venligst en bredde</option>
+            <option value="300">300 cm</option>
+            <option value="600">600 cm</option>
         </select>
 
-        </select>
-        Redskabsrum
+        <br><br>
+        Redskabsrum<br>
         <select name="redskabsrum">
+            <option>Vælg venligst redskabsrum</option>
             <option value="1">Ja</option>
             <option value="2">Nej</option>
-
         </select>
+        <br><br>
+
         <button name="buildACarport">Byg carport</button>
         <c:if test="${sessionScope.svg!=null}">
             <button name="SvgServlet" formaction="svg" formmethod="get">Se din nuværende carport</button>
