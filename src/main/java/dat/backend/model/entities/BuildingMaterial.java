@@ -6,13 +6,17 @@ public abstract class BuildingMaterial {
     private String description;
     private int typeId;
 
-    public BuildingMaterial(String type, String description, int typeId) {
+    private int quantity;
+
+    public BuildingMaterial(String type, String description, int typeId, int quantity) {
         this.type = type;
         this.description = description;
         this.typeId = typeId;
+        this.quantity=quantity;
     }
 
     public String getType() {
+
         return type;
     }
 
@@ -34,5 +38,13 @@ public abstract class BuildingMaterial {
 
     public void setTypeId(int typeId) {
         this.typeId = typeId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

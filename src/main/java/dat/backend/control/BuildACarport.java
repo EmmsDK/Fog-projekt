@@ -1,4 +1,7 @@
 package dat.backend.control;
+import dat.backend.model.entities.Orderline;
+import dat.backend.model.entities.Shoppingcart;
+import dat.backend.model.entities.User;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.services.SVG;
 
@@ -11,6 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "buildACarport", value = "/buildacarport")
 public class BuildACarport extends HttpServlet {
 
+    int totalPrice;
     private static ConnectionPool connectionPool = new ConnectionPool();
 
     @Override

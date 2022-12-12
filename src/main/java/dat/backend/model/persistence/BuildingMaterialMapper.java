@@ -15,7 +15,7 @@ public class BuildingMaterialMapper {
 
         List<BuildingMaterial> staticMaterials = new ArrayList<>();
 
-        String sql = "select * from beslag";
+        String sql = "select * from material where type_id > 2";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -24,10 +24,16 @@ public class BuildingMaterialMapper {
                 while (rs.next()) {
                     String type = rs.getString("type");
                     String description = rs.getString("description");
-                    int typeId = rs.getInt("typeId");
+                    int typeId = rs.getInt("type_id");
+                    int quantity = 3;
+
+                    if(typeId==4){
+                        BuildingMaterial newScrew = new Screw(type,description,typeId,quantity);
+                        staticMaterials.add(newScrew);
+                    }
 
 
-                    BuildingMaterial newFitting = new Fitting(type,description,typeId);
+                    BuildingMaterial newFitting = new Fitting(type,description,typeId,quantity);
                     staticMaterials.add(newFitting);
                 }
             }
@@ -38,7 +44,7 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        sql = "select * from skruer";
+       /* sql = "select * from skruer";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -48,9 +54,10 @@ public class BuildingMaterialMapper {
                     String type = rs.getString("type");
                     String description = rs.getString("description");
                     int typeId = rs.getInt("typeId");
+                    int quantity = rs.getInt("quantity");
 
 
-                    BuildingMaterial newScrew = new Screw(type,description,typeId);
+                    BuildingMaterial newScrew = new Screw(type,description,typeId,quantity);
                     staticMaterials.add(newScrew);
                 }
             }
@@ -63,7 +70,7 @@ public class BuildingMaterialMapper {
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
 
         return staticMaterials;
     }
@@ -73,7 +80,7 @@ public class BuildingMaterialMapper {
 
         List<BuildingMaterial> dynamicMaterials = new ArrayList<>();
 
-        String sql = "select * from tree";
+        String sql = "select * from material where type_id > 3";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -83,10 +90,11 @@ public class BuildingMaterialMapper {
                     String type = rs.getString("type");
                     String description = rs.getString("description");
                     int typeId = rs.getInt("typeId");
+                    int quantity = rs.getInt("quantity");
                     int length=rs.getInt("length");
 
 
-                    BuildingMaterial newWood = new Wood(type,description,typeId,length);
+                    BuildingMaterial newWood = new Wood(type,description,typeId,quantity,length);
                     dynamicMaterials.add(newWood);
                 }
             }
@@ -97,7 +105,7 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        sql = "select * from tagplader";
+        sql = "select * from rooftiles";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -107,10 +115,11 @@ public class BuildingMaterialMapper {
                     String type = rs.getString("type");
                     String description = rs.getString("description");
                     int typeId = rs.getInt("typeId");
+                    int quantity = rs.getInt("quantity");
                     int length=rs.getInt("length");
 
 
-                    BuildingMaterial newRoofTile = new RoofTile(type,description,typeId,length);
+                    BuildingMaterial newRoofTile = new RoofTile(type,description,typeId,quantity,length);
                     dynamicMaterials.add(newRoofTile);
                 }
             }
