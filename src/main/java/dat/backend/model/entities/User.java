@@ -4,13 +4,37 @@ import java.util.Objects;
 
 public class User
 {
+    private int iduser;
     private String username;
     private String password;
+    private String role;
 
-    public User(String username, String password)
-    {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(int iduser, String username, String password, String role) {
+        this.iduser = iduser;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getUsername()

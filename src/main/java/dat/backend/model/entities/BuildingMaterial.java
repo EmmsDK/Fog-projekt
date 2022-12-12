@@ -1,17 +1,38 @@
 package dat.backend.model.entities;
 
 public abstract class BuildingMaterial {
-    private int price;
-    private int width;
-    private int length;
-    private String name;
-    private String unit;
-    
-    public BuildingMaterial(int price, int width, int length, String name, String unit) {
-        this.price = price;
-        this.width = width;
-        this.length = length;
-        this.name = name;
-        this.unit=unit;
+
+    private String type;
+    private String description;
+    private int typeId;
+
+    public BuildingMaterial(String type, String description, int typeId) {
+        this.type = type;
+        this.description = description;
+        this.typeId = typeId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 }
