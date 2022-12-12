@@ -28,21 +28,10 @@
             <option value="420">420</option>
         </select>
         Bredde i cm
-        <select name="bredde">
-            <option value="1">180</option>
-            <option value="2">190</option>
-            <option value="3">200</option>
-            <option value="4">210</option>
-            <option value="5">220</option>
-            <option value="6">230</option>
-            <option value="7">240</option>
-            <option value="8">250</option>
-            <option value="9">260</option>
+        <select name="width" id="width">
+            <option value="300">300</option>
+            <option value="600">600</option>
         </select>
-        Type
-        <select name="type carport">
-            <option value="300">Enkeltcarport</option>
-            <option value="600">Dobbeltcarport</option>
 
         </select>
         Redskabsrum

@@ -35,15 +35,26 @@ public class SvgServlet extends HttpServlet {
         //carport = CarportSVG.addBeams(carport);
         int fixedOffSet = 30;
 
-        carport.addDashArrayLines(onePercentWidth*15, width, fixedOffSet, height-onePercentHeight-fixedOffSet);
+        carport.addDashArrayLines(onePercentWidth*10, width, fixedOffSet, height-onePercentHeight-fixedOffSet);
 
-        //Vertikale linjer
+        //Vertical lines
         carport.addRect(0,0,100,1);
         carport.addRect(width-onePercentWidth,0,100,1);
 
-        //Horizontale linjer
-        carport.addRect(width/100,0+fixedOffSet,1, 98);
+        //Horizontal lines
+        carport.addRect(width/100,fixedOffSet,1, 98);
         carport.addRect(width/100,height-onePercentHeight-fixedOffSet,1, 98);
+
+        //Squares top row
+        carport.addSquare(onePercentWidth * 20, fixedOffSet * 88.3 / 100);
+        carport.addSquare(onePercentWidth * 55, fixedOffSet * 88.3 / 100);
+        carport.addSquare(onePercentWidth * 80, fixedOffSet * 88.3 / 100);
+
+        //Squares bottom row
+        carport.addSquare(onePercentWidth * 20, height-10-(fixedOffSet * 88.3 / 100));
+        carport.addSquare(onePercentWidth * 55, height-10-(fixedOffSet * 88.3 / 100));
+        carport.addSquare(onePercentWidth * 80, height-10-(fixedOffSet * 88.3 / 100));
+
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);

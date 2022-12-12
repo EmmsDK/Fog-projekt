@@ -10,6 +10,7 @@ public class SVG {
 
     private final static String HEADERTEMPLATE ="<svg x=\"%d%%\" y=\"%d%%\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
     private final static String RECTTEMPLATE = "<rect x=\"%d\" y=\"%d\" height=\"%f%%\" width=\"%f%%\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
+    private final static String SQUARETEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%d\" width=\"%d\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
@@ -37,6 +38,9 @@ public class SVG {
     //<rect x="55" y="0" height="600" width="5"
     public void addRect(int x, int y, double height, double width){
     svgString.append(String.format(RECTTEMPLATE,x,y,height,width));
+    }
+    public void addSquare(double x, double y){
+        svgString.append(String.format(SQUARETEMPLATE,x,y,10,10));
     }
 
     public void addDashArrayLines(int x1, int x2, int y1, int y2)
