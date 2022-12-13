@@ -1,7 +1,4 @@
 package dat.backend.control;
-import dat.backend.model.entities.Orderline;
-import dat.backend.model.entities.Shoppingcart;
-import dat.backend.model.entities.User;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.services.SVG;
 
@@ -27,8 +24,14 @@ public class BuildACarport extends HttpServlet {
         SVG svg = new SVG();
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
+        int shed = Integer.parseInt(request.getParameter("shed"));
+        int shedLength = Integer.parseInt(request.getParameter("shedLength"));
+        int shedWidth = Integer.parseInt(request.getParameter("shedWidth"));
         svg.setWidth(length);
         svg.setHeight(width);
+        svg.setShed(shed);
+        svg.setShedLength(shedLength);
+        svg.setShedWidth(shedWidth);
         session.setAttribute("svg", svg);
         request.getRequestDispatcher("buildACarport.jsp").forward(request, response);
     }
