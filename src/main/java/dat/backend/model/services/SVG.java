@@ -5,10 +5,14 @@ public class SVG {
     private int y=0;
     private int height=100;
     private int width=100;
+    private int shed=1;
+
+
+
     private String viewbox="0 0 "+width+" "+height;
     private StringBuilder svgString=new StringBuilder();
 
-    private final static String HEADERTEMPLATE ="<svg x=\"%d%%\" y=\"%d%%\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
+    private final static String HEADERTEMPLATE = "<svg x=\"%d%%\" y=\"%d%%\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
     private final static String RECTTEMPLATE = "<rect x=\"%d\" y=\"%d\" height=\"%f%%\" width=\"%f%%\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String SQUARETEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%d\" width=\"%d\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
@@ -75,6 +79,14 @@ public class SVG {
 
     public int getWidth() {
         return width;
+    }
+
+    public int getShed() {
+        return shed;
+    }
+
+    public void setShed(int shed) {
+        this.shed = shed;
     }
 
     public void setX(int x) {

@@ -55,6 +55,12 @@ public class SvgServlet extends HttpServlet {
         carport.addSquare(onePercentWidth * 55, height-10-(fixedOffSet * 88.3 / 100));
         carport.addSquare(onePercentWidth * 80, height-10-(fixedOffSet * 88.3 / 100));
 
+        //Shed builder
+        if (svg.getShed()==1)
+        {
+
+        }
+
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
