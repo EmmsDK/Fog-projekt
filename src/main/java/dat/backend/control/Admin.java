@@ -32,21 +32,5 @@ public class Admin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String type = request.getParameter("type");
-        String description = request.getParameter("description");
-        int length = Integer.parseInt(request.getParameter("length"));
-        int type_id = Integer.parseInt(request.getParameter("type_id"));
-        HttpSession session = request.getSession();
-
-
-        try {
-            Material newMaterialId = BuildingMaterialFacade.createMaterial(type,description,length,type_id );
-        } catch (DatabaseException e) {
-            e.printStackTrace();
-        }
-
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
-        request.setAttribute("materialList", materialList);
-        request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
     }
 }

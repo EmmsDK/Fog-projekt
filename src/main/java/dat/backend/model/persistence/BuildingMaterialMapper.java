@@ -79,7 +79,6 @@ public class BuildingMaterialMapper {
     public static List<BuildingMaterial> getDynamicMaterials(ConnectionPool connectionPool) {
 
         List<BuildingMaterial> dynamicMaterials = new ArrayList<>();
-
         String sql = "select * from material where type_id > 3";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
@@ -102,6 +101,7 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        /*
         sql = "select * from rooftiles";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
@@ -127,6 +127,8 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        */
+
         return dynamicMaterials;
     }
 
@@ -151,5 +153,18 @@ public class BuildingMaterialMapper {
             throw new DatabaseException(ex, "Could not insert material into database");
         }
         return createMaterial;
+    }
+
+    public static void updateMaterialName(int item_id, String name, ConnectionPool connectionPool) {
+        String sql = "UPDATE material SET name = ? WHERE item_id = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, name);
+                ps.setInt(2, item_id);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
