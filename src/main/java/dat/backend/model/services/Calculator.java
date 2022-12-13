@@ -6,7 +6,7 @@ public class Calculator {
     public static int calcDrawingBeams(int length) {
         int beamDist = 0;
         int totalAmountOfBeams = 0;
-        for (int i = 1; i < 1000; i++) {
+        for (int i = 1; i <= 40; i++) {
             beamDist = length / i;
             if (beamDist >= 50 && beamDist <= 55) {
                 totalAmountOfBeams = i;
@@ -50,4 +50,3 @@ public class Calculator {
         return neededBeams;
     }
     }
-}
