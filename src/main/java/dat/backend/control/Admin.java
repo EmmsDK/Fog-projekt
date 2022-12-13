@@ -24,8 +24,12 @@ public class Admin extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
-        List<User> list = UserFacade.getUsers(connectionPool);
-        session.setAttribute("list", list);
+        List<User> userList = UserFacade.getUsers(connectionPool);
+        session.setAttribute("userList", userList);
+
+        List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
+        session.setAttribute("materialList", materialList);
+
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
 

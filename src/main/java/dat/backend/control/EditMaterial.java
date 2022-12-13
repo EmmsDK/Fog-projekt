@@ -22,6 +22,6 @@ public class EditMaterial extends HttpServlet {
         int material_id = Integer.parseInt(request.getParameter("material_id"));
         Material material = BuildingMaterialFacade.getMaterialById(material_id, connectionPool);
         request.setAttribute("material", material);
-        request.getRequestDispatcher("WEB-INF/edititem.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/editOrders.jsp").forward(request, response);
     }
 }
