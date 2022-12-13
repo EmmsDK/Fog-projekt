@@ -9,7 +9,9 @@
         <title>Title</title>
     </head>
     <body>
-
+    <h1>
+        Mål til redskabsrum i cm:
+    </h1>
     <form action="buildacarport" method="post">
         Længde<br>
         <select name="length" id="length">
@@ -100,10 +102,17 @@
             </select>
         <br><br>
         <button name="buildACarport">Byg carport</button>
-        <br>
         <c:if test="${sessionScope.svg!=null}">
+            <c:if test="${sessionScope.svg.getShedWidth()<sessionScope.svg.getHeight()||sessionScope.svg.getShedLength()<sessionScope.svg.getWidth()}">
+                <br><br>
             <button name="SvgServlet" formaction="svg" formmethod="get">Se din nuværende carport</button>
+            </c:if>
+            <c:if test="${sessionScope.svg.getShedWidth()>sessionScope.svg.getHeight()||sessionScope.svg.getShedLength()>sessionScope.svg.getWidth()}">
+                Målene til dit redskabsskur er større end carporten - prøv igen!
+            </c:if>
         </c:if>
+
+
     </form>
 
     </body>
