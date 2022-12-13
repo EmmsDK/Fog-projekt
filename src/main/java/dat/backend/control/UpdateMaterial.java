@@ -11,7 +11,7 @@ import java.util.List;
 
 import static dat.backend.model.persistence.OrdersMapper.connectionPool;
 
-@WebServlet(name = "UpdateMaterial", value = "/UpdateMaterial")
+@WebServlet(name = "UpdateMaterial", value = "/updatematerial")
 public class UpdateMaterial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,9 +23,12 @@ public class UpdateMaterial extends HttpServlet {
 
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int item_id = Integer.parseInt(request.getParameter("item_id"));
-        String name = request.getParameter("name");
-        BuildingMaterialFacade.updateMaterialName(item_id, name, connectionPool);
+        int material_id = Integer.parseInt(request.getParameter("material_id"));
+        String type = request.getParameter("type");
+        String description = request.getParameter("description");
+        int length = Integer.parseInt(request.getParameter("length"));
+        int type_id = Integer.parseInt(request.getParameter("type_id"));
+        BuildingMaterialFacade.updateMaterial(material_id, type, description, length, type_id, connectionPool);
         List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
         request.setAttribute("materialList", materialList);
         request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);

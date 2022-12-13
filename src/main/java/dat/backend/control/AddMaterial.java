@@ -13,7 +13,7 @@ import java.util.List;
 
 import static dat.backend.model.persistence.OrdersMapper.connectionPool;
 
-@WebServlet(name = "AddMaterial", value = "/AddMaterial")
+@WebServlet(name = "AddMaterial", value = "/addmaterial")
 public class AddMaterial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

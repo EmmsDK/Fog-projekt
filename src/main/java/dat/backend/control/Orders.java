@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Orders", value = "/Orders")
+@WebServlet(name = "Orders", value = "/orders")
 public class Orders extends HttpServlet {
 
     private ConnectionPool connectionPool;

@@ -3,10 +3,7 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -155,16 +152,46 @@ public class BuildingMaterialMapper {
         return createMaterial;
     }
 
-    public static void updateMaterialName(int item_id, String name, ConnectionPool connectionPool) {
-        String sql = "UPDATE material SET name = ? WHERE item_id = ?";
+    public static void updateMaterial(int material_id, String type, String description, int length, int type_id, ConnectionPool connectionPool) {
+        String sql = "UPDATE material SET type = ? SET description = ? SET length = ? SET type_id = ? WHERE material_id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setString(1, name);
-                ps.setInt(2, item_id);
+                ps.setInt(1, material_id);
+                ps.setString(2, type);
+                ps.setString(3, description);
+                ps.setInt(4, length);
+                ps.setInt(5, type_id);
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    public static Material getMaterialById(int material_id, ConnectionPool connectionPool) {
+        String sql = "select * from item where item_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, material_id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int id = rs.getInt("material_id");
+                    String type = rs.getString("type");
+                    String description = rs.getString("description");
+                    int length = rs.getInt("length");
+                    int type_id = rs.getInt("type_id");
+
+                    Material newMaterial = new Material(id, type, description, length, type_id);
+                    return newMaterial;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+
