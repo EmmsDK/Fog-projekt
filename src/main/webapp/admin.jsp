@@ -16,7 +16,6 @@ Admin Side
         <a href="editOrders.jsp">Edit order</a>
         <a href="portfolio.jsp">Portfolio</a>
 
-
     </jsp:body>
 
 </t:pagetemplate>

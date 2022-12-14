@@ -22,14 +22,15 @@ public class AddMaterial extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String type = request.getParameter("type");
         String description = request.getParameter("description");
         int length = Integer.parseInt(request.getParameter("length"));
         int type_id = Integer.parseInt(request.getParameter("type_id"));
-        HttpSession session = request.getSession();
+        int price = Integer.parseInt(request.getParameter("price"));
 
         try {
-            Material newMaterialId = BuildingMaterialFacade.createMaterial(type,description,length,type_id );
+            Material newMaterialId = BuildingMaterialFacade.createMaterial(type, description, length, type_id, price);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }

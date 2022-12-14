@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
-
 <html>
 <t:pagetemplate>
     <head>
@@ -16,10 +15,10 @@
     <p>Admin portfolio</p>
 
     <c:forEach var="item" items="${sessionScope.materialList}">
-        Test: ${item.type}: <br>
-        Test: ${item.description}
-        Test: ${item.length}
-        Test: ${item.type_id}
+        Type: ${item.type}: <br>
+        Description: ${item.description}<br>
+        Length: ${item.length}<br>
+        Type ID: ${item.type_id}<br>
         <br><br>
     </c:forEach>
 

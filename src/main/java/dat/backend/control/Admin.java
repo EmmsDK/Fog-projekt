@@ -3,6 +3,7 @@ package dat.backend.control;
 import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.entities.User;
 import dat.backend.model.persistence.BuildingMaterialFacade;
+import dat.backend.model.persistence.BuildingMaterialMapper;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.UserFacade;
 
@@ -19,11 +20,6 @@ public class Admin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
@@ -34,5 +30,10 @@ public class Admin extends HttpServlet {
         session.setAttribute("materialList", materialList);
 
         request.getRequestDispatcher("admin.jsp").forward(request, response);
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }
