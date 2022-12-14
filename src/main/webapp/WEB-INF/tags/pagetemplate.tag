@@ -44,7 +44,7 @@
                     </c:if>
                     <c:if test="${sessionScope.user.username.equalsIgnoreCase('admin')}">
                         <a class="nav-item nav-link"
-                           href="${pageContext.request.contextPath}/Admin.jsp">${sessionScope.user.username}</a>
+                           href="${pageContext.request.contextPath}/admin.jsp">${sessionScope.user.username}</a>
                     </c:if>
                     <c:if test="${sessionScope.user.username!=null&&!sessionScope.user.username.equalsIgnoreCase('admin')}">
                         <a class="nav-item nav-link"

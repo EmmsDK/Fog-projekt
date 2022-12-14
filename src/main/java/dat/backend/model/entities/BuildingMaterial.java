@@ -4,21 +4,20 @@ public abstract class BuildingMaterial {
 
     private String type;
     private String description;
-
+    private int quantity;
     int length;
     int material_id;
-
-    private int quantity;
-
     int type_id;
+    int price;
 
-    public BuildingMaterial(String type, String description, int length, int material_id, int quantity, int type_id) {
+    public BuildingMaterial(String type, String description, int length, int material_id, int quantity, int type_id, int price) {
         this.type = type;
         this.description = description;
         this.length = length;
         this.material_id = material_id;
         this.quantity = quantity;
         this.type_id = type_id;
+        this.price = price;
     }
 
     public String getType() {
@@ -67,6 +66,19 @@ public abstract class BuildingMaterial {
 
     public void setType_id(int type_id) {
         this.type_id = type_id;
+    }
+
+    @Override
+    public String toString() {
+        return "BuildingMaterial{" +
+                "type='" + type + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                ", length=" + length +
+                ", material_id=" + material_id +
+                ", type_id=" + type_id +
+                ", price=" + price +
+                '}';
     }
 }
 
