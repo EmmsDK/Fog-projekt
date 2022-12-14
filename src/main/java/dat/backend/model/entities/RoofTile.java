@@ -1,18 +1,8 @@
 package dat.backend.model.entities;
 
-public class RoofTile extends BuildingMaterial{
-    private int length;
+public class RoofTile extends BuildingMaterial {
 
-    public RoofTile(String type, String description, int typeId,int quantity, int length) {
-        super(type, description, typeId, quantity);
-        this.length = length;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
+    public RoofTile(String type, String description, int length, int material_id, int quantity, int type_id) {
+        super(type, description, length, material_id, quantity, type_id);
     }
 }
