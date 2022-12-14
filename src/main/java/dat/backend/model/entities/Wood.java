@@ -3,9 +3,8 @@ package dat.backend.model.entities;
 public class Wood extends BuildingMaterial {
     private int length;
 
-    public Wood(String type, String description, int typeId, int quantity, int length) {
-        super(type, description, typeId, quantity);
-        this.length = length;
+    public Wood(String type, String description, int type_id, int length) {
+        super(type, description, type_id, length);
     }
 
     public int getLength() {

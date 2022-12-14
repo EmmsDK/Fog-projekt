@@ -1,9 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.entities.Material;
 import dat.backend.model.entities.User;
-import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.BuildingMaterialFacade;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.UserFacade;

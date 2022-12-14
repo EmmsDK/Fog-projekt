@@ -5,7 +5,6 @@ public abstract class BuildingMaterial {
     private String type;
     private String description;
     private int typeId;
-
     private int quantity;
 
     public BuildingMaterial(String type, String description, int typeId, int quantity) {
