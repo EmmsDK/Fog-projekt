@@ -46,7 +46,7 @@ public class SVG {
     svgString.append(String.format(RECTTEMPLATE,x,y,height,width));
     }
     public void addSquare(double x, double y){
-        svgString.append(String.format(SQUARETEMPLATE,x,y,10.0,10.0));
+        svgString.append(String.format(SQUARETEMPLATE,x,y,12.0,12.0));
     }
 
     public void addDashArrayLines(double x1, double x2, double y1, double y2)
