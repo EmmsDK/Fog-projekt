@@ -74,12 +74,10 @@ public class SvgServlet extends HttpServlet {
         }
 
         //Squares top row, left to right
-
-        //Prøv med +/- i if-statement
-        if (((onePercentWidth * 20)/shedLength)+12>=1) {
+        if (Math.abs((onePercentWidth * 20)-(width - beamThiccness - shedLength - 15))>=12) {
             carport.addSquare(onePercentWidth * 20, fixedOffSet - 1);
         }
-        if (((onePercentWidth * 55)/shedLength)+12>=1) {
+        if (Math.abs((onePercentWidth * 55)-(width - beamThiccness - shedLength - 15))>=12) {
             carport.addSquare(onePercentWidth * 55, fixedOffSet - 1);
         }
         carport.addSquare(width - beamThiccness * 2 - 15 - 1, fixedOffSet - 1);
