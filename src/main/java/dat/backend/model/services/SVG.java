@@ -1,22 +1,22 @@
 package dat.backend.model.services;
 
 public class SVG {
-    private int x=0;
-    private int y=0;
-    private int height=100;
-    private int width=100;
-    private int shed=1;
-    private int shedLength=100;
-    private int shedWidth=100;
+    private double x=0;
+    private double y=0;
+    private double height=100;
+    private double width=100;
+    private double shed=1;
+    private double shedLength=100;
+    private double shedWidth=100;
 
 
 
     private String viewbox="0 0 "+width+" "+height;
     private StringBuilder svgString=new StringBuilder();
 
-    private final static String HEADERTEMPLATE = "<svg x=\"%d%%\" y=\"%d%%\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
-    private final static String RECTTEMPLATE = "<rect x=\"%d\" y=\"%d\" height=\"%f%%\" width=\"%f%%\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
-    private final static String SQUARETEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%d\" width=\"%d\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
+    private final static String HEADERTEMPLATE = "<svg x=\"%f%%\" y=\"%f%%\" height=\"%f%%\" width=\"%f%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
+    private final static String RECTTEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
+    private final static String SQUARETEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
@@ -26,9 +26,9 @@ public class SVG {
             "        </marker>\n" +
             "    </defs>";
     private final static String DASHARRAYTEMPLATE =
-            "<line fill=\"none\" stroke=\"black\" stroke-dasharray=\"0.5%%,0.5%%\" x1=\"%d\" x2=\"%d\" y1=\"%d\" y2=\"%d\" />\n";
+            "<line fill=\"none\" stroke=\"black\" stroke-dasharray=\"0.5%%,0.5%%\" x1=\"%f\" x2=\"%f\" y1=\"%f\" y2=\"%f\" />\n";
 
-    public SVG(int x, int y, int height, int width, String viewbox) {
+    public SVG(double x, double y, double height, double width, String viewbox) {
         svgString.append(String.format(HEADERTEMPLATE, x,y, height, width, viewbox));
         svgString.append(ARROWHEADSTEMPLATE);
         this.x=x;
@@ -42,14 +42,14 @@ public class SVG {
     }
 
     //<rect x="55" y="0" height="600" width="5"
-    public void addRect(int x, int y, double height, double width){
+    public void addRect(double x, double y, double height, double width){
     svgString.append(String.format(RECTTEMPLATE,x,y,height,width));
     }
     public void addSquare(double x, double y){
-        svgString.append(String.format(SQUARETEMPLATE,x,y,10,10));
+        svgString.append(String.format(SQUARETEMPLATE,x,y,10.0,10.0));
     }
 
-    public void addDashArrayLines(int x1, int x2, int y1, int y2)
+    public void addDashArrayLines(double x1, double x2, double y1, double y2)
     {
         svgString.append(String.format(DASHARRAYTEMPLATE,x1,x2,y1,y2));
         svgString.append(String.format(DASHARRAYTEMPLATE,x2,x1,y1,y2));
@@ -67,23 +67,23 @@ public class SVG {
         return svgString + "</svg>";
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public int getShed() {
+    public double getShed() {
         return shed;
     }
 
@@ -91,7 +91,7 @@ public class SVG {
         this.shed = shed;
     }
 
-    public int getShedLength() {
+    public double getShedLength() {
         return shedLength;
     }
 
@@ -99,7 +99,7 @@ public class SVG {
         this.shedLength = shedLength;
     }
 
-    public int getShedWidth() {
+    public double getShedWidth() {
         return shedWidth;
     }
 
@@ -107,11 +107,11 @@ public class SVG {
         this.shedWidth = shedWidth;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
