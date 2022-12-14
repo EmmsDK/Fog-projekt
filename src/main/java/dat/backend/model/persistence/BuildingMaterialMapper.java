@@ -169,7 +169,7 @@ public class BuildingMaterialMapper {
     }
 
     public static Material getMaterialById(int material_id, ConnectionPool connectionPool) {
-        String sql = "select * from item where item_id = ?";
+        String sql = "select * from material where item_id = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
