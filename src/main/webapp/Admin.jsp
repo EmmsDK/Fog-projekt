@@ -14,7 +14,7 @@ Admin Side
         <h1>Welcome to the Admin Page</h1>
 
         <a href="editOrders.jsp">Edit order</a>
-        <a href="portfolio.jsp">Portfilio</a>
+        <a href="portfolio.jsp">Portfolio</a>
 
 
     </jsp:body>

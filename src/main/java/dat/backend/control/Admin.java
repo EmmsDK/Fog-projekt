@@ -19,6 +19,11 @@ public class Admin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
@@ -29,10 +34,5 @@ public class Admin extends HttpServlet {
         session.setAttribute("materialList", materialList);
 
         request.getRequestDispatcher("admin.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
