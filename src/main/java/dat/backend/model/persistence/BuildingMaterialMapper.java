@@ -25,7 +25,7 @@ public class BuildingMaterialMapper {
                 while (rs.next()) {
                     String type = rs.getString("type");
                     String description = rs.getString("description");
-                    int type_id = rs.getInt("typeId");
+                    int type_id = rs.getInt("type_id");
                     int quantity = 1;
                     int length = rs.getInt("length");
                     int material_id = rs.getInt("material_id");
@@ -57,8 +57,6 @@ public class BuildingMaterialMapper {
         List<BuildingMaterial> dynamicMaterials = new ArrayList<>();
         String sql = "select * from material where type_id < 3";
 
-        String sql = "select * from material where type_id < 3";
-
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
@@ -66,7 +64,7 @@ public class BuildingMaterialMapper {
                 while (rs.next()) {
                     String type = rs.getString("type");
                     String description = rs.getString("description");
-                    int type_id = rs.getInt("typeId");
+                    int type_id = rs.getInt("type_id");
                     int quantity = 1;
                     int length = rs.getInt("length");
                     int material_id=rs.getInt("material_id");
