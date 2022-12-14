@@ -1,12 +1,14 @@
 package dat.backend.control;
 
+import dat.backend.model.entities.Orderline;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "Orderline", value = "/orderline")
-public class Orderline extends HttpServlet {
+public class OrderlineServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -16,7 +18,7 @@ public class Orderline extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        dat.backend.model.entities.Orderline cart = (dat.backend.model.entities.Orderline) session.getAttribute("cart");
+        Orderline cart = (Orderline) session.getAttribute("cart");
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
         int order_id = Integer.parseInt(request.getParameter("order_id"));
@@ -24,7 +26,7 @@ public class Orderline extends HttpServlet {
         String description = request.getParameter("description");
         int totalPrice = 0;
 
-        dat.backend.model.entities.Orderline orderline = new dat.backend.model.entities.Orderline(material_id,order_id,quantity,description);
+        Orderline orderline = new Orderline(material_id,order_id,quantity,description);
         cart.add(orderline);
 
         session.setAttribute("cart",cart);
