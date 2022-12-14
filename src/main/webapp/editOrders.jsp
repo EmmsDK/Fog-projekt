@@ -13,7 +13,13 @@
 
     <h1>Edit Orders</h1>
 
-    <p>Edit Orders</p>
+    <form method="post">
+        <h3>Edit material</h3>
+        <input style="width:300px" type="text" name="name" value="${requestScope.material.type}"/>
+        <button formaction="updatematerial" name="material_id" value="${requestScope.material.type_id}">
+            Update material
+        </button>
+    </form>
 
     </body>
 </t:pagetemplate>

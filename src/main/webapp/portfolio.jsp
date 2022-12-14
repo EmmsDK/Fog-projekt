@@ -15,6 +15,16 @@
 
     <p>Admin portfolio</p>
 
+    <c:forEach var="material" items="${sessionScope.materialList}">
+        ${material.type}: <br>
+        ${material.description}
+        ${material.length}
+        ${material.type_id}
+        <br><br>
+    </c:forEach>
+
+
+
     </body>
 </t:pagetemplate>
 </html>
