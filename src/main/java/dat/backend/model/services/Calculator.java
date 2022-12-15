@@ -1,12 +1,13 @@
 package dat.backend.model.services;
 
 import dat.backend.model.entities.BuildingMaterial;
+import sun.awt.image.BufferedImageDevice;
 
 import java.util.List;
 
 public class Calculator {
 
-
+//visual amount of beams
     public static int calcDrawingBeams(int length) {
         int beamDist = 0;
         int totalAmountOfBeams = 0;
@@ -19,7 +20,7 @@ public class Calculator {
         }
         return totalAmountOfBeams;
 
-        //calcPoles(){}
+
     }
 
     /*
@@ -66,5 +67,30 @@ public class Calculator {
             neededBeams = calcDrawingBeams(length) * 2;
         }
         return neededBeams;
+    }
+    //bill of materials price * 15% for 15% income
+    public static int priceCalc (List<BuildingMaterial> billOfMaterials) {
+        int totalPrice=0;
+        for (BuildingMaterial buildingMaterial : billOfMaterials) {
+            totalPrice+=buildingMaterial.getPrice()*buildingMaterial.getQuantity();
+
+        }
+        return (totalPrice*115)/100;
+    }
+    //ikke færdig
+    public static void addMaterialsToList(List<BuildingMaterial> materials) {
+        for (BuildingMaterial buildingMaterial : materials) {
+            if (buildingMaterial.getMaterial_id() == 5) {
+
+            }
+        }
+    }
+
+    public static int amountOfCladdingCalc(int shedWidth, int shedLength){
+     int claddingAmount=0;
+     int shedCircumference=(shedLength*2)+(shedWidth*2);
+     claddingAmount=((shedCircumference/100)*136)/10;
+
+     return claddingAmount;
     }
 }
