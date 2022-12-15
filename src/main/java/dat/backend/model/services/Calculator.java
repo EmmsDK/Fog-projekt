@@ -22,25 +22,39 @@ public class Calculator {
         //calcPoles(){}
     }
 
+    /*
     public static int calcBeamDist(int amountOfBeams, int length) {
 
         int beamDist = length / amountOfBeams;
         return beamDist;
         //calcPoles(){}
     }
+    */
+    public static int calcBeamDist(int svgWidth) {
+        int beamDistance = 53;
+        for (int i = 55; i > 50; i--) {
+            if (svgWidth % i == 0) {
+                beamDistance = i;
+                break;
+            }
+        }
+        return beamDistance;
+    }
 
-    public static int findMyBeams(int width) {
+
+    public static int findMyBeams(int svgWidth) {
         int material_id = 0;
 
-        if (width <= 480) {
+        if (svgWidth <= 480) {
             material_id = 9;
-        } else if (width > 480 && width <= 600) {
+        } else if (svgWidth > 480 && svgWidth <= 600) {
             material_id = 10;
         } else {
             material_id = 9;
         }
         return material_id;
     }
+
 
     public static int amountOfBeams(int width, int length) {
         int neededBeams = 0;
@@ -52,13 +66,5 @@ public class Calculator {
             neededBeams = calcDrawingBeams(length) * 2;
         }
         return neededBeams;
-    }
-
-    public static int amountOfBeams(List<BuildingMaterial> billOfMaterials) {
-        int totalPrice;
-        for (BuildingMaterial buildingMaterial : billOfMaterials) {
-            billOfMaterials
-
-        }
     }
 }
