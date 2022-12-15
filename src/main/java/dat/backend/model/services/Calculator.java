@@ -33,7 +33,7 @@ public class Calculator {
     public static int calcBeamDist(int svgWidth) {
         int beamDistance = 53;
         for (int i = 55; i > 50; i--) {
-            if (svgWidth % i == 0) {
+            if (svgWidth % i <= 5) {
                 beamDistance = i;
                 break;
             }

@@ -60,6 +60,7 @@
             <br>
             Redskabsrum længde<br>
             <select name="shedLength" id="shedLength">
+                <option value="105">105</option>
                 <option value="120">120</option>
                 <option value="135">135</option>
                 <option value="150">150</option>
@@ -76,7 +77,6 @@
                 <option value="315">315</option>
                 <option value="330">330</option>
                 <option value="345">345</option>
-                <option value="360">360</option>
 
             </select>
             <br>
@@ -104,13 +104,16 @@
         <br><br>
         <button name="buildACarport">Byg carport</button>
         <c:if test="${sessionScope.svg!=null}">
-            <c:if test="${sessionScope.svg.getShedWidth()<sessionScope.svg.getHeight()||sessionScope.svg.getShedLength()<sessionScope.svg.getWidth()}">
+            <c:if test="${sessionScope.svg.getShedLength()>=sessionScope.svg.getWidth()/2-15}">
+                ${sessionScope.svg.setShedLength(sessionScope.svg.getWidth()/2-15)}
+            </c:if>
+            <c:if test="${sessionScope.svg.getShedWidth()>sessionScope.svg.getHeight()}">
+            ${sessionScope.svg.setShedWidth(sessionScope.svg.getHeight())}
+            </c:if>
                 <br><br>
             <button name="SvgServlet" formaction="svg" formmethod="get">Se din nuværende carport</button>
-            </c:if>
-            <c:if test="${sessionScope.svg.getShedWidth()>sessionScope.svg.getHeight()||sessionScope.svg.getShedLength()>sessionScope.svg.getWidth()}">
-                Målene til dit redskabsskur er større end carporten - prøv igen!
-            </c:if>
+
+
         </c:if>
 
 

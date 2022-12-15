@@ -30,16 +30,20 @@ public class SvgServlet extends HttpServlet {
         double shedLength = svg.getShedLength();
         double shedWidth = svg.getShedWidth();
         double onePercentWidth = (svgWidth / 100);
-        double onePercentHeight = (svgHeight / 100);
-
+        double dashArrayX2 = svgWidth;
+        double middleBeamX = ((onePercentWidth * 20 + (svgWidth - beamThiccness * 2 - 15)) / 2);
+        boolean notOverlapping = (Math.abs(middleBeamX - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) && svgWidth >= 400;
         int orderID = 34;
-        //Order order = orderFacade.getOrderById(orderID);
 
+        //Order order = orderFacade.getOrderById(orderID);
 
         SVG carport = CarportSVG.createNewSVG(0, 0, 35, 35, "0 0 " + svgWidth + " " + svgHeight);
         int fixedOffSet = 30;
 
-        carport.addDashArrayLines(onePercentWidth * 10, svgWidth, fixedOffSet, svgHeight - onePercentHeight - fixedOffSet);
+        //Updates dasharray lines positional x2 value, if shed is chosen
+        if (shed == 1) {
+            dashArrayX2 = svgWidth - beamThiccness / 2 - shedLength - 15;
+        }
 
         //Vertical rects
         carport.addRect(0, 0, svgHeight, beamThiccness);
@@ -74,26 +78,28 @@ public class SvgServlet extends HttpServlet {
         }
 
         //Squares top row, left to right
-        if (Math.abs((onePercentWidth * 20) - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) {
-            carport.addSquare(onePercentWidth * 20, fixedOffSet - 1);
-        }
-        if ((Math.abs((onePercentWidth * 55) - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) && svgWidth >= 400) {
-            carport.addSquare(onePercentWidth * 55, fixedOffSet - 1);
+        carport.addSquare(onePercentWidth * 20, fixedOffSet - 1);
+        if (notOverlapping) {
+            carport.addSquare(middleBeamX, fixedOffSet - 1);
         }
         carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, fixedOffSet - 1);
 
 
         //Squares bottom row, left to right
         carport.addSquare(onePercentWidth * 20, svgHeight - beamThiccness - fixedOffSet - 1);
-        if (svgWidth >= 400) {
-            carport.addSquare(onePercentWidth * 55, svgHeight - beamThiccness - fixedOffSet - 1);
+        if (shedWidth == svgHeight && notOverlapping) {
+            carport.addSquare(middleBeamX, svgHeight - beamThiccness - fixedOffSet - 1);
         }
-
         if (shedWidth != svgHeight) {
             carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, svgHeight - beamThiccness - fixedOffSet - 1);
         }
+
+        carport.addDashArrayLines(onePercentWidth * 10 + beamThiccness/2, dashArrayX2, fixedOffSet, svgHeight - fixedOffSet);
+
+
         int beamDistance = Calculator.calcBeamDist((int) svgWidth);
-        //CarportSVG.addBeams(carport, beamDistance);
+        carport.addBeams(beamDistance, svgHeight, svgWidth);
+
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
