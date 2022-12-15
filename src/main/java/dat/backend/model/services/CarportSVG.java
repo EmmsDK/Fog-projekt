@@ -4,7 +4,7 @@ public class CarportSVG {
     public static SVG createNewSVG(double x, double y, double height, double width, String viewbox) {
         return new SVG(x, y, height, width, viewbox);
     }
-
+/*
     public static void addBeams(SVG svg, int beamDistance) {
         double svgWidth = svg.getWidth();
         double svgHeight= svg.getHeight();
@@ -14,7 +14,7 @@ public class CarportSVG {
         }
 
     }
-
+/*
     //find på bedre navn
     /*
     public static SVG addDashArrayLines(SVG svg, int viewboxWidth,int viewboxHeight) {
