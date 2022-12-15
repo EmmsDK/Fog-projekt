@@ -1,5 +1,9 @@
 package dat.backend.model.services;
 
+import dat.backend.model.entities.BuildingMaterial;
+
+import java.util.List;
+
 public class Calculator {
 
 
@@ -25,28 +29,36 @@ public class Calculator {
         //calcPoles(){}
     }
 
-    public static int findMyBeams(int width){
-       int material_id=0;
+    public static int findMyBeams(int width) {
+        int material_id = 0;
 
-        if (width<=480){
-        material_id=9;
-        }else if(width>480 && width <=600){
-            material_id=10;
-        }else{
-            material_id=9;
+        if (width <= 480) {
+            material_id = 9;
+        } else if (width > 480 && width <= 600) {
+            material_id = 10;
+        } else {
+            material_id = 9;
         }
         return material_id;
     }
 
-    public static int amountOfBeams(int width, int length){
-        int neededBeams=0;
-        if (width<=480){
-            neededBeams=calcDrawingBeams(length);
-        }else if(width>480 && width <=600){
-            neededBeams=calcDrawingBeams(length);
-        }else{
-            neededBeams=calcDrawingBeams(length)*2;
+    public static int amountOfBeams(int width, int length) {
+        int neededBeams = 0;
+        if (width <= 480) {
+            neededBeams = calcDrawingBeams(length);
+        } else if (width > 480 && width <= 600) {
+            neededBeams = calcDrawingBeams(length);
+        } else {
+            neededBeams = calcDrawingBeams(length) * 2;
         }
         return neededBeams;
     }
+
+    public static int amountOfBeams(List<BuildingMaterial> billOfMaterials) {
+        int totalPrice;
+        for (BuildingMaterial buildingMaterial : billOfMaterials) {
+            billOfMaterials
+
+        }
     }
+}
