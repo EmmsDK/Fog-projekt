@@ -21,6 +21,7 @@
             <option value="330">330</option>
             <option value="360">360</option>
             <option value="390">390</option>
+            <option value="420">420</option>
             <option value="450">450</option>
             <option value="480">480</option>
             <option value="510">510</option>
@@ -59,24 +60,23 @@
             <br>
             Redskabsrum længde<br>
             <select name="shedLength" id="shedLength">
+                <option value="120">120</option>
+                <option value="135">135</option>
                 <option value="150">150</option>
+                <option value="165">165</option>
                 <option value="180">180</option>
+                <option value="195">195</option>
                 <option value="210">210</option>
+                <option value="225">225</option>
                 <option value="240">240</option>
+                <option value="255">255</option>
                 <option value="270">270</option>
+                <option value="285">285</option>
                 <option value="300">300</option>
+                <option value="315">315</option>
                 <option value="330">330</option>
+                <option value="345">345</option>
                 <option value="360">360</option>
-                <option value="390">390</option>
-                <option value="450">450</option>
-                <option value="480">480</option>
-                <option value="510">510</option>
-                <option value="540">540</option>
-                <option value="570">570</option>
-                <option value="600">600</option>
-                <option value="630">630</option>
-                <option value="660">660</option>
-                <option value="690">690</option>
 
             </select>
             <br>
@@ -89,6 +89,7 @@
                 <option value="330">330</option>
                 <option value="360">360</option>
                 <option value="390">390</option>
+                <option value="420">420</option>
                 <option value="450">450</option>
                 <option value="480">480</option>
                 <option value="510">510</option>

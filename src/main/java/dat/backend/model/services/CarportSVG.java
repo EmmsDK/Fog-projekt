@@ -5,12 +5,13 @@ public class CarportSVG {
         return new SVG(x, y, height, width, viewbox);
     }
 
-    public static SVG addBeams(SVG svg, int beamDistance) {
+    public static void addBeams(SVG svg, int beamDistance) {
+        double svgWidth = svg.getWidth();
+        double svgHeight= svg.getHeight();
 
-        for (int i = 0; i < svg.getWidth(); i += beamDistance) {
-            svg.addRect(i, 0, svg.getHeight(), 5);
+        for (int i = 0; i < (int)svgWidth; i += beamDistance) {
+            svg.addRect(i, 0, svgHeight, 5);
         }
-        return svg;
 
     }
 

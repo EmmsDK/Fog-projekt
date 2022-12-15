@@ -74,10 +74,10 @@ public class SvgServlet extends HttpServlet {
         }
 
         //Squares top row, left to right
-        if (Math.abs((onePercentWidth * 20)-(svgWidth - beamThiccness - shedLength - 15))>=12||shed==0) {
+        if (Math.abs((onePercentWidth * 20) - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) {
             carport.addSquare(onePercentWidth * 20, fixedOffSet - 1);
         }
-        if (Math.abs((onePercentWidth * 55)-(svgWidth - beamThiccness - shedLength - 15))>=12||shed==0) {
+        if ((Math.abs((onePercentWidth * 55) - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) && svgWidth >= 400) {
             carport.addSquare(onePercentWidth * 55, fixedOffSet - 1);
         }
         carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, fixedOffSet - 1);
@@ -85,13 +85,15 @@ public class SvgServlet extends HttpServlet {
 
         //Squares bottom row, left to right
         carport.addSquare(onePercentWidth * 20, svgHeight - beamThiccness - fixedOffSet - 1);
-        carport.addSquare(onePercentWidth * 55, svgHeight - beamThiccness - fixedOffSet - 1);
+        if (svgWidth >= 400) {
+            carport.addSquare(onePercentWidth * 55, svgHeight - beamThiccness - fixedOffSet - 1);
+        }
 
         if (shedWidth != svgHeight) {
             carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, svgHeight - beamThiccness - fixedOffSet - 1);
         }
-        int beamDistance=Calculator.calcBeamDist((int) svgWidth);
-        carport=CarportSVG.addBeams(carport, beamDistance);
+        int beamDistance = Calculator.calcBeamDist((int) svgWidth);
+        //CarportSVG.addBeams(carport, beamDistance);
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
