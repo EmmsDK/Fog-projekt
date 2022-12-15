@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.services.CarportSVG;
 import dat.backend.model.services.SVG;
+import dat.backend.model.services.Calculator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,32 +23,31 @@ public class SvgServlet extends HttpServlet {
         Locale.setDefault(new Locale("US"));
 
         SVG svg = (SVG) session.getAttribute("svg");
-        double width = svg.getWidth();
-        double height = svg.getHeight();
+        double svgWidth = svg.getWidth();
+        double svgHeight = svg.getHeight();
         double beamThiccness = 10;
         double shed = svg.getShed();
         double shedLength = svg.getShedLength();
         double shedWidth = svg.getShedWidth();
-        double onePercentWidth = (width / 100);
-        double onePercentHeight = (height / 100);
+        double onePercentWidth = (svgWidth / 100);
+        double onePercentHeight = (svgHeight / 100);
 
         int orderID = 34;
         //Order order = orderFacade.getOrderById(orderID);
 
 
-        SVG carport = CarportSVG.createNewSVG(0, 0, 35, 35, "0 0 " + width + " " + height);
-        //carport = CarportSVG.addBeams(carport);
+        SVG carport = CarportSVG.createNewSVG(0, 0, 35, 35, "0 0 " + svgWidth + " " + svgHeight);
         int fixedOffSet = 30;
 
-        carport.addDashArrayLines(onePercentWidth * 10, width, fixedOffSet, height - onePercentHeight - fixedOffSet);
+        carport.addDashArrayLines(onePercentWidth * 10, svgWidth, fixedOffSet, svgHeight - onePercentHeight - fixedOffSet);
 
         //Vertical rects
-        carport.addRect(0, 0, height, beamThiccness);
-        carport.addRect(width - beamThiccness, 0, height, beamThiccness);
+        carport.addRect(0, 0, svgHeight, beamThiccness);
+        carport.addRect(svgWidth - beamThiccness, 0, svgHeight, beamThiccness);
 
         //Horizontal rects
-        carport.addRect(beamThiccness, fixedOffSet, beamThiccness, width - beamThiccness * 2);
-        carport.addRect(beamThiccness, height - beamThiccness - fixedOffSet, beamThiccness, width - beamThiccness * 2);
+        carport.addRect(beamThiccness, fixedOffSet, beamThiccness, svgWidth - beamThiccness * 2);
+        carport.addRect(beamThiccness, svgHeight - beamThiccness - fixedOffSet, beamThiccness, svgWidth - beamThiccness * 2);
 
         //Shed builder (0=no shed, 1=shed)
         if (shed == 1) {
@@ -55,41 +55,43 @@ public class SvgServlet extends HttpServlet {
             double middleY = ((shedWidth - fixedOffSet - beamThiccness - 1) + (fixedOffSet - 1)) / 2;
 
             //Vertical rects, left to right
-            carport.addRect(width - beamThiccness - shedLength - 15, fixedOffSet + beamThiccness, innerHeight, beamThiccness);
-            carport.addRect(width - beamThiccness * 2 - 15, fixedOffSet + beamThiccness, innerHeight, beamThiccness);
+            carport.addRect(svgWidth - beamThiccness - shedLength - 15, fixedOffSet + beamThiccness, innerHeight, beamThiccness);
+            carport.addRect(svgWidth - beamThiccness * 2 - 15, fixedOffSet + beamThiccness, innerHeight, beamThiccness);
 
             //Horizontal rects, top to bottom
-            carport.addRect(width - beamThiccness - shedLength - 15, fixedOffSet, beamThiccness, shedLength);
-            carport.addRect(width - beamThiccness - shedLength - 15, shedWidth - fixedOffSet - beamThiccness, beamThiccness, shedLength);
+            carport.addRect(svgWidth - beamThiccness - shedLength - 15, fixedOffSet, beamThiccness, shedLength);
+            carport.addRect(svgWidth - beamThiccness - shedLength - 15, shedWidth - fixedOffSet - beamThiccness, beamThiccness, shedLength);
 
             //Squares left side, top to bottom
-            carport.addSquare(width - beamThiccness - shedLength - 15 - 1, fixedOffSet - 1);
-            carport.addSquare(width - beamThiccness - shedLength - 15 - 1, middleY);
-            carport.addSquare(width - beamThiccness - shedLength - 15 - 1, shedWidth - fixedOffSet - beamThiccness - 1);
+            carport.addSquare(svgWidth - beamThiccness - shedLength - 15 - 1, fixedOffSet - 1);
+            carport.addSquare(svgWidth - beamThiccness - shedLength - 15 - 1, middleY);
+            carport.addSquare(svgWidth - beamThiccness - shedLength - 15 - 1, shedWidth - fixedOffSet - beamThiccness - 1);
 
             //Squares right side
-            carport.addSquare(width - beamThiccness * 2 - 15 - 1, middleY);
-            carport.addSquare(width - beamThiccness * 2 - 15 - 1, shedWidth - fixedOffSet - beamThiccness - 1);
+            carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, middleY);
+            carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, shedWidth - fixedOffSet - beamThiccness - 1);
 
         }
 
         //Squares top row, left to right
-        if (Math.abs((onePercentWidth * 20)-(width - beamThiccness - shedLength - 15))>=12||shed==0) {
+        if (Math.abs((onePercentWidth * 20)-(svgWidth - beamThiccness - shedLength - 15))>=12||shed==0) {
             carport.addSquare(onePercentWidth * 20, fixedOffSet - 1);
         }
-        if (Math.abs((onePercentWidth * 55)-(width - beamThiccness - shedLength - 15))>=12||shed==0) {
+        if (Math.abs((onePercentWidth * 55)-(svgWidth - beamThiccness - shedLength - 15))>=12||shed==0) {
             carport.addSquare(onePercentWidth * 55, fixedOffSet - 1);
         }
-        carport.addSquare(width - beamThiccness * 2 - 15 - 1, fixedOffSet - 1);
+        carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, fixedOffSet - 1);
 
 
         //Squares bottom row, left to right
-        carport.addSquare(onePercentWidth * 20, height - beamThiccness - fixedOffSet - 1);
-        carport.addSquare(onePercentWidth * 55, height - beamThiccness - fixedOffSet - 1);
+        carport.addSquare(onePercentWidth * 20, svgHeight - beamThiccness - fixedOffSet - 1);
+        carport.addSquare(onePercentWidth * 55, svgHeight - beamThiccness - fixedOffSet - 1);
 
-        if (shedWidth != height) {
-            carport.addSquare(width - beamThiccness * 2 - 15 - 1, height - beamThiccness - fixedOffSet - 1);
+        if (shedWidth != svgHeight) {
+            carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, svgHeight - beamThiccness - fixedOffSet - 1);
         }
+        int beamDistance=Calculator.calcBeamDist((int) svgWidth);
+        carport=CarportSVG.addBeams(carport, beamDistance);
 
         request.setAttribute("svg", carport.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
