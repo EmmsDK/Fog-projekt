@@ -45,6 +45,8 @@ public class SvgServlet extends HttpServlet {
             dashArrayX2 = svgWidth - beamThiccness / 2 - shedLength - 15;
         }
 
+
+
         //Vertical rects
         carport.addRect(0, 0, svgHeight, beamThiccness);
         carport.addRect(svgWidth - beamThiccness, 0, svgHeight, beamThiccness);
@@ -87,18 +89,19 @@ public class SvgServlet extends HttpServlet {
 
         //Squares bottom row, left to right
         carport.addSquare(onePercentWidth * 20, svgHeight - beamThiccness - fixedOffSet - 1);
-        if (shedWidth == svgHeight && notOverlapping) {
+        if (shedWidth == svgHeight && notOverlapping || shedWidth != svgHeight) {
             carport.addSquare(middleBeamX, svgHeight - beamThiccness - fixedOffSet - 1);
         }
         if (shedWidth != svgHeight) {
             carport.addSquare(svgWidth - beamThiccness * 2 - 15 - 1, svgHeight - beamThiccness - fixedOffSet - 1);
         }
 
-        carport.addDashArrayLines(onePercentWidth * 10 + beamThiccness/2, dashArrayX2, fixedOffSet, svgHeight - fixedOffSet);
+        carport.addDashArrayLines(onePercentWidth * 10 + beamThiccness / 2, dashArrayX2, fixedOffSet, svgHeight - fixedOffSet);
 
 
         int beamDistance = Calculator.calcBeamDist((int) svgWidth);
         carport.addBeams(beamDistance, svgHeight, svgWidth);
+        carport.addFrame();
 
 
         request.setAttribute("svg", carport.toString());
