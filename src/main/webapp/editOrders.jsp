@@ -12,11 +12,31 @@
     <body>
 
     <h1>Edit Orders</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Lise af Materialer:</th>
+        </tr>
+        </thead>
+            <c:forEach var="item" items="${sessionScope.materialList}">
+                <tr>
+                    <td>
+                        Material ID: ${item.material_id}<br>
+                        Type:        ${item.type}
+
+                    </td>
+                </tr>
+            </c:forEach>
+    </table>
+   <br><br>
 
     <form method="post">
         <h3>Edit material</h3>
-        <input style="width:300px" type="text" name="name" value="${requestScope.material.type}"/>
-        <button formaction="updatematerial" name="material_id" value="${requestScope.material.type_id}">
+
+        <label>
+            <input style="width:300px" type="number" name="name" value="${requestScope.materialList.type}"/>
+        </label>
+        <button formaction="updatematerial" name="material_id" value="${requestScope.materialList.material_id}">
             Update material
         </button>
     </form>

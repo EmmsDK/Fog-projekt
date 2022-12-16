@@ -23,7 +23,6 @@
     </c:forEach>
 
 
-
     </body>
 </t:pagetemplate>
 </html>

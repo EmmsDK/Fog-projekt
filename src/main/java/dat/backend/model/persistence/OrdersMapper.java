@@ -24,10 +24,11 @@ public class OrdersMapper {
                 ps.setInt(2, orders.getWidth());
                 ps.setInt(3, orders.getLength());
                 ps.setInt(4, orders.getTotal_price());
+                ps.setTimestamp(5,orders.getCreated());
                 ps.executeUpdate();
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    createOrders = new Orders(user.getIduser(),orders.getWidth(),orders.getLength(),orders.getTotal_price());
+                    createOrders = new Orders(user.getIduser(),orders.getWidth(),orders.getLength(),orders.getTotal_price(),orders.getCreated());
                 } else {
                     throw new DatabaseException("The order = " + orders + " could not be inserted into the database");
                 }
@@ -54,8 +55,9 @@ public class OrdersMapper {
                     int width = rs.getInt("width");
                     int length = rs.getInt("length");
                     int total_price = rs.getInt("total_price");
+                    Timestamp created = rs.getTimestamp("created");
 
-                    Orders newOrders = new Orders(user_id,width,length,total_price);
+                    Orders newOrders = new Orders(user_id,width,length,total_price,created);
                     ordersList.add(newOrders);
                 }
             }catch (SQLException throwables){

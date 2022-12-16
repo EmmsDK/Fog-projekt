@@ -11,10 +11,36 @@ Admin Side
 
     <jsp:body>
 
-        <h1>Welcome to the Admin Page</h1>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Lise af ordre:</th>
+            </tr>
+            </thead>
+            <c:if test="${sessionScope.ordersList != null}">
+                <c:forEach var="item" items="${sessionScope.ordersList}">
+                    <tr>
+                        <td>
+                            User ID: ${item.user_id}<br>
+                            Længde: ${item.length}
+                            Bredde: ${item.width}
+                            Total Pris: ${item.total_price}<br>
+                            Oprettet: ${item.created}<br>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </c:if>
+        </table>
 
-        <a href="editOrders.jsp">Edit order</a>
-        <a href="portfolio.jsp">Portfolio</a>
+        <br>
+        <form action="editOrders.jsp">
+            <button name="editmaterial">Edit Order</button>
+        </form>
+        <form action="portfolio.jsp">
+            <button name="portfolio">Portfolio</button>
+        </form>
+        <br>
 
     </jsp:body>
 
