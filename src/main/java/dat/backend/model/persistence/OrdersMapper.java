@@ -69,22 +69,26 @@ public class OrdersMapper {
         return ordersList;
     }
 
-    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) throws DatabaseException {
+    public static boolean removeOrder(int user_id, ConnectionPool connectionPool) {
         Logger.getLogger("web").log(Level.INFO, "");
         boolean result = false;
-        String sql = "delete from orders where order_id = ?";
+        String sql = "delete from orders where user_id = ?";
         try (Connection connection = OrdersMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, order_id);
+                ps.setInt(1, user_id);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     result = true;
                 } else {
-                    throw new DatabaseException("Order med order ID = " + order_id + " kunne ikke fjernes");
+                    throw new DatabaseException("Order med order ID = " + user_id + " kunne ikke fjernes");
                 }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (DatabaseException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException ex) {
-            throw new DatabaseException(ex, "Order med order ID = " + order_id + " kunne ikke fjernes");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return result;
     }

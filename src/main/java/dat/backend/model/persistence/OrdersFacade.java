@@ -13,7 +13,7 @@ public class OrdersFacade {
     public static Object getOrders(ConnectionPool connectionPool) {
         return OrdersMapper.getOrders(connectionPool);
     }
-    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) throws DatabaseException {
+    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) {
         return OrdersMapper.removeOrder(order_id, connectionPool);
     }
 }
