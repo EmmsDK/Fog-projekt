@@ -21,8 +21,6 @@ public class Calculator {
             }
         }
         return totalAmountOfBeams;
-
-
     }
 
     /*
@@ -44,7 +42,6 @@ public class Calculator {
         return beamDistance;
     }
 
-
     public static int findMyBeams(int svgWidth) {
         int material_id = 0;
 
@@ -57,7 +54,6 @@ public class Calculator {
         }
         return material_id;
     }
-
 
     public static int amountOfBeams(int width, int length) {
         int neededBeams = 0;
@@ -123,7 +119,6 @@ public class Calculator {
             frame_id = 9;
         } else {
             frame_id = 8;
-
         }
         return frame_id;
     }
@@ -135,7 +130,6 @@ public class Calculator {
         } else {
             amountOfFrames = 2;
         }
-
         return amountOfFrames;
     }
 
@@ -149,7 +143,7 @@ public class Calculator {
         return frame_id;
     }
 
-    public static int amountOfCarportFrames(int length){
+    public static int amountOfCarportFrames(int length) {
 
         int amountOfFrames = 0;
         if (length <= 600) {
@@ -157,10 +151,10 @@ public class Calculator {
         } else {
             amountOfFrames = 4;
         }
-
         return amountOfFrames;
     }
-    public static ArrayList<ArrayList<Integer>> amountAndWhichFrames(int length, int shed, int shedLength){
+
+    public static ArrayList<ArrayList<Integer>> amountAndWhichFrames(int length, int shed, int shedLength) {
         ArrayList<ArrayList<Integer>> frames = new ArrayList<>();
         ArrayList<Integer> whichFrames = new ArrayList<>();
         ArrayList<Integer> quantity = new ArrayList<>();
@@ -168,14 +162,13 @@ public class Calculator {
 
         whichFrames.add(whichCarportFrames(length));
         quantity.add(amountOfCarportFrames(length));
-        if (shed==1){
+        if (shed == 1) {
             whichFrames.add(whichShedFrames(shedLength));
             quantity.add(amountOfShedFrames(shedLength));
         }
         frames.add(whichFrames);
         frames.add(quantity);
-
-
-
-        return frames;}
+        
+        return frames;
     }
+}
