@@ -31,11 +31,21 @@
                         Total Pris: ${item.total_price}<br>
                         Oprettet: ${item.created}<br>
                     </td>
+                    <td>
+                        <form action="removeorder">
+                            <button name="removeOrder">Fjern Order</button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </c:if>
     </table>
 
+
+    <br>
+    <form action="admin.jsp">
+        <button name="tilbageTilAdmin">Tilbage til Admin Siden</button>
+    </form>
 
     </body>
 </t:pagetemplate>

@@ -40,7 +40,10 @@
             Update material
         </button>
     </form>
-
+    <br>
+    <form action="admin.jsp">
+        <button name="tilbageTilAdmin">Tilbage til Admin Siden</button>
+    </form>
     </body>
 </t:pagetemplate>
 </html>

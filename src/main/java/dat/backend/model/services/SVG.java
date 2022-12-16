@@ -15,9 +15,11 @@ public class SVG {
     private StringBuilder svgString=new StringBuilder();
 
     private final static String HEADERTEMPLATE = "<svg x=\"%f%%\" y=\"%f%%\" height=\"%f%%\" width=\"%f%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
-    private final static String RECTTEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\"fill=\"#ffffff\" stroke=\"#8b8878\"/>";
+    private final static String RECTTEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
 
-    private final static String BEAMTEMPLATE = "<rect x=\"%f\" y=\"0\" height=\"%f\" width=\"5\"fill=\"#ffffff\" stroke=\"#8b8878\" stroke-width=\"2\"/>";
+    private final static String FRAMETEMPLATE = "<rect x=\"0%%\" y=\"0%%\" height=\"100%%\" width=\"100%%\" fill=\"none\" stroke-width=\"3\" stroke=\"#8b8878\"/>";
+
+    private final static String BEAMTEMPLATE = "<rect x=\"%f\" y=\"0\" height=\"%f\" width=\"5\"fill=\"#ffffff\" stroke-width=\"2\" stroke=\"#8b8878\"/>";
     private final static String SQUARETEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
@@ -47,6 +49,9 @@ public class SVG {
     public void addRect(double x, double y, double height, double width){
     svgString.append(String.format(RECTTEMPLATE,x,y,height,width));
     }
+    public void addFrame(){
+        svgString.append(FRAMETEMPLATE);
+    }
     public void addSquare(double x, double y){
         svgString.append(String.format(SQUARETEMPLATE,x,y,12.0,12.0));
     }
@@ -58,8 +63,9 @@ public class SVG {
     }
 
     public void addBeams(int beamDistance, double height, double width) {
-        for (int i = 1; i < width-5; i += beamDistance) {
-            svgString.append(String.format(BEAMTEMPLATE,(double)i,height));
+        int remainderOffset = Calculator.calcRemainder(beamDistance, (int) width);
+        for (int i = remainderOffset-4; i <= width; i += beamDistance) {
+            svgString.append(String.format(BEAMTEMPLATE,(double)i+1,height));
         }
     }
     public void addLine(int x1, int y1, int x2, int y2){

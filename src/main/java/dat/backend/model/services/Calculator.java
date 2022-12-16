@@ -32,14 +32,23 @@ public class Calculator {
     }
     */
     public static int calcBeamDist(int svgWidth) {
-        int beamDistance = 53;
-        for (int i = 55; i > 50; i--) {
-            if (svgWidth % i <= 5) {
+        int beamDistance = 50;
+        for (int i = 50; i < 55; i++) {
+            if ((svgWidth) % i == 0) {
                 beamDistance = i;
                 break;
             }
         }
         return beamDistance;
+    }
+
+    public static int calcRemainder(int beamDistance, int svgWidth) {
+        int remainder=(svgWidth%beamDistance)/2;
+        if(svgWidth%beamDistance==0)
+        {
+            remainder=beamDistance/2;
+        }
+        return remainder;
     }
 
     public static int findMyBeams(int svgWidth) {
