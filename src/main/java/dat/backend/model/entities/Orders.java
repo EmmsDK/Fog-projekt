@@ -9,6 +9,7 @@ public class Orders {
     int length;
     int total_price;
     private Timestamp created;
+    private int order_id;
 
     public Orders(int user_id, int width, int length, int total_price, Timestamp created) {
         this.user_id = user_id;
@@ -56,6 +57,14 @@ public class Orders {
 
     public void setCreated(Timestamp created) {
         this.created = created;
+    }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
     @Override

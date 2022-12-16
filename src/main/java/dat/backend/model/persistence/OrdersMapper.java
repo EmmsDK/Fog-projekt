@@ -24,11 +24,11 @@ public class OrdersMapper {
                 ps.setInt(2, orders.getWidth());
                 ps.setInt(3, orders.getLength());
                 ps.setInt(4, orders.getTotal_price());
-                ps.setTimestamp(5,orders.getCreated());
+                ps.setTimestamp(5, orders.getCreated());
                 ps.executeUpdate();
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    createOrders = new Orders(user.getIduser(),orders.getWidth(),orders.getLength(),orders.getTotal_price(),orders.getCreated());
+                    createOrders = new Orders(user.getIduser(), orders.getWidth(), orders.getLength(), orders.getTotal_price(), orders.getCreated());
                 } else {
                     throw new DatabaseException("The order = " + orders + " could not be inserted into the database");
                 }
@@ -57,15 +57,58 @@ public class OrdersMapper {
                     int total_price = rs.getInt("total_price");
                     Timestamp created = rs.getTimestamp("created");
 
-                    Orders newOrders = new Orders(user_id,width,length,total_price,created);
+                    Orders newOrders = new Orders(user_id, width, length, total_price, created);
                     ordersList.add(newOrders);
                 }
-            }catch (SQLException throwables){
+            } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return ordersList;
+    }
+
+    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        String sql = "delete from orders where order_id = ?";
+        try (Connection connection = OrdersMapper.connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, order_id);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                } else {
+                    throw new DatabaseException("Order med order ID = " + order_id + " kunne ikke fjernes");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Order med order ID = " + order_id + " kunne ikke fjernes");
+        }
+        return result;
+    }
+
+    public boolean updateOrder(Orders order) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        String sql = "UPDATE orders SET width = ?, length = ?, total_price = ? " +
+                "WHERE user_id = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, order.getWidth());
+                ps.setInt(2, order.getLength());
+                ps.setInt(3, order.getTotal_price());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1) {
+                    result = true;
+                } else {
+                    throw new DatabaseException("Kunne ikke opdatere ordre med order_id = " + order.getOrder_id());
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException("Kunne ikke opdatere ordre med order_id = " + order.getOrder_id());
+        }
+        return result;
     }
 }
