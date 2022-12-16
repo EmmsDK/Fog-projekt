@@ -15,7 +15,6 @@ import static dat.backend.model.persistence.OrdersMapper.connectionPool;
 public class EditMaterial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     @Override
@@ -23,16 +22,26 @@ public class EditMaterial extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
 
+        HttpSession session = request.getSession();
+
+        List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
+        /*
+        int order_id = Integer.parseInt(request.getParameter("order_id"));
+        OrdersFacade.removeOrder(order_id,connectionPool);
+        List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
+        ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
+         */
+
         int material_id = Integer.parseInt(request.getParameter("material_id"));
+        int length = materialList.get(material_id-1).getLength();
+        int type_id = materialList.get(material_id-1).getType_id();
+        int price = materialList.get(material_id-1).getPrice();
         String type = request.getParameter("type");
         String description = request.getParameter("description");
-        int length = Integer.parseInt(request.getParameter("length"));
-        int type_id = Integer.parseInt(request.getParameter("type_id"));
-        int price = Integer.parseInt(request.getParameter("price"));
 
         BuildingMaterialFacade.updateMaterial(material_id,type, description, length, type_id, price,connectionPool);
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
+
         request.setAttribute("materialList", materialList);
-        request.getRequestDispatcher("editOrders.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/editMaterial.jsp").forward(request, response);
     }
 }
