@@ -35,7 +35,6 @@
                         <form action="removeorder" method="get">
                             ${sessionScope.removeOrders}
                             <button name="removeOrders">Fjern Order</button>
-
                         </form>
                     </td>
                 </tr>

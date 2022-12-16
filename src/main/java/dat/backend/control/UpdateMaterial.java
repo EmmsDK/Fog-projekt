@@ -24,8 +24,8 @@ public class UpdateMaterial extends HttpServlet {
 
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int material_id = Integer.parseInt(request.getParameter("material_id"));
 
+        int material_id = Integer.parseInt(request.getParameter("material_id"));
         String type = request.getParameter("type");
         String description = request.getParameter("description");
         int length = Integer.parseInt(request.getParameter("length"));

@@ -21,17 +21,9 @@ public class RemoveOrder extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
-        //OrdersFacade ordersFacade = new OrdersFacade();
         int user_id = Integer.parseInt(request.getParameter("user_id"));
 
-
-
-        //        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders(connectionPool);
-
         boolean removeOrders = OrdersFacade.removeOrder(user_id, connectionPool);
-
-
-        //Orders removeOrder = new Orders(user_id, width, length, total_price, created);
 
         session.setAttribute("removeOrders", removeOrders);
 
