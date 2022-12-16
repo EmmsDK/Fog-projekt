@@ -50,7 +50,7 @@ public class SVG {
     svgString.append(String.format(RECTTEMPLATE,x,y,height,width));
     }
     public void addFrame(){
-        svgString.append(String.format(FRAMETEMPLATE));
+        svgString.append(FRAMETEMPLATE);
     }
     public void addSquare(double x, double y){
         svgString.append(String.format(SQUARETEMPLATE,x,y,12.0,12.0));
