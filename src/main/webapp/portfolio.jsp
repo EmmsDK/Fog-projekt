@@ -14,13 +14,27 @@
 
     <p>Admin portfolio</p>
 
-    <c:forEach var="item" items="${sessionScope.materialList}">
-        Type: ${item.type}: <br>
-        Description: ${item.description}<br>
-        Length: ${item.length}<br>
-        Type ID: ${item.type_id}<br>
-        <br><br>
-    </c:forEach>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Lise af ordre:</th>
+        </tr>
+        </thead>
+        <c:if test="${sessionScope.ordersList != null}">
+            <c:forEach var="item" items="${sessionScope.ordersList}">
+                <tr>
+                    <td>
+                        User ID: ${item.user_id}<br>
+                        Længde: ${item.length}
+                        Bredde: ${item.width}
+                        Total Pris: ${item.total_price}<br>
+                        Oprettet: ${item.created}<br>
+                    </td>
+                </tr>
+            </c:forEach>
+        </c:if>
+    </table>
 
 
     </body>

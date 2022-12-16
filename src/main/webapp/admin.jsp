@@ -11,6 +11,7 @@ Admin Side
 
     <jsp:body>
 
+        <!--
         <br>
         <table class="table table-striped">
             <thead>
@@ -32,10 +33,17 @@ Admin Side
                 </c:forEach>
             </c:if>
         </table>
+        --!>
+        
+        <p>
+            Fra denne side kan du blive omdirigeret til Rediger Materiale og Portfolio ved at trykke på nedstående knapper.<br>
+            På Rediger Materiale siden, kan du ændre navnet og prisen på materialerne fra databasen. På Portfolio siden, <br>
+            kan du se, redigere og slette kundeordrer der ligger inde på databasen.
+        </p>
 
         <br>
         <form action="editOrders.jsp">
-            <button name="editmaterial">Edit Order</button>
+            <button name="editmaterial">Rediger Materiale</button>
         </form>
         <form action="portfolio.jsp">
             <button name="portfolio">Portfolio</button>
