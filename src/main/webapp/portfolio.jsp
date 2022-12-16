@@ -30,12 +30,11 @@
                         Bredde: ${item.width}
                         Total Pris: ${item.total_price}<br>
                         Oprettet: ${item.created}<br>
+                        Ordre ID: ${item.getOrder_id()}<br>
                     </td>
                     <td>
                         <form action="removeorder" method="get">
-                            ${sessionScope.removeOrders}
-                            <button name="removeOrders">Fjern Order</button>
-
+                            <button name="order_id" value="${item.getOrder_id()}">Fjern ordre</button>
                         </form>
                     </td>
                 </tr>

@@ -56,8 +56,10 @@ public class OrdersMapper {
                     int length = rs.getInt("length");
                     int total_price = rs.getInt("total_price");
                     Timestamp created = rs.getTimestamp("created");
+                    int order_id = rs.getInt("order_id");
 
-                    Orders newOrders = new Orders(user_id, width, length, total_price, created);
+
+                    Orders newOrders = new Orders(user_id, width, length, total_price, created, order_id);
                     ordersList.add(newOrders);
                 }
             } catch (SQLException throwables) {
@@ -69,18 +71,18 @@ public class OrdersMapper {
         return ordersList;
     }
 
-    public static boolean removeOrder(int user_id, ConnectionPool connectionPool) {
+    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) {
         Logger.getLogger("web").log(Level.INFO, "");
         boolean result = false;
-        String sql = "delete from orders where user_id = ?";
+        String sql = "delete from orders where order_id = ?";
         try (Connection connection = OrdersMapper.connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, user_id);
+                ps.setInt(1, order_id);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     result = true;
                 } else {
-                    throw new DatabaseException("Order med order ID = " + user_id + " kunne ikke fjernes");
+                    throw new DatabaseException("Order med order ID = " + order_id + " kunne ikke fjernes");
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
