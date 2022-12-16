@@ -29,15 +29,13 @@
     </table>
     <br><br>
 
-    <form method="post">
+    <form action="editmaterial" method="post">
         <h3>Edit material</h3>
 
         <label>
-            <input style="width:300px" type="number" name="name" value="${requestScope.materialList.type}"/>
+            <input style="width:300px" type="number" name="material_id" id="material_id"/>
         </label>
-        <button formaction="editmaterial" name="material_id" value="${requestScope.materialList.material_id}">
-            Update material
-        </button>
+        <button name="editmaterial">Update material</button>
     </form>
     <br>
     <form action="admin.jsp">
