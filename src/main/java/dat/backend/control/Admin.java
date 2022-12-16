@@ -1,11 +1,9 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.BuildingMaterial;
+import dat.backend.model.entities.Orders;
 import dat.backend.model.entities.User;
-import dat.backend.model.persistence.BuildingMaterialFacade;
-import dat.backend.model.persistence.BuildingMaterialMapper;
-import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.UserFacade;
+import dat.backend.model.persistence.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -29,7 +27,14 @@ public class Admin extends HttpServlet {
         List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
         session.setAttribute("materialList", materialList);
 
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+
+        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders(connectionPool);
+
+        System.out.println(ordersList);
+
+        session.setAttribute("ordersList", ordersList);
+
+        request.getRequestDispatcher("/admin.jsp").forward(request, response);
 
     }
 

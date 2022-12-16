@@ -1,5 +1,6 @@
 package dat.backend.control;
 
+import dat.backend.model.entities.Orders;
 import dat.backend.model.entities.User;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrdersFacade;
@@ -11,25 +12,26 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Orders", value = "/orders")
-public class Orders extends HttpServlet {
+@WebServlet(name = "OrdersServlet", value = "/orders")
+public class OrdersServlet extends HttpServlet {
 
-    private ConnectionPool connectionPool;
+    private static final ConnectionPool connectionPool = new ConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        HttpSession session = request.getSession();
+
+        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders(connectionPool);
+
+        System.out.println(ordersList);
+
+        session.setAttribute("ordersList", ordersList);
+        request.getRequestDispatcher("admin.jsp").forward(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        HttpSession session = request.getSession();
-        List<Orders> list = (List<Orders>) OrdersFacade.getOrders(connectionPool);
-
-        session.setAttribute("list", list);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
-
-
     }
 }
