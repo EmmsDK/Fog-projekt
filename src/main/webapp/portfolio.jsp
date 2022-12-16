@@ -32,8 +32,10 @@
                         Oprettet: ${item.created}<br>
                     </td>
                     <td>
-                        <form action="removeorder">
-                            <button name="removeOrder">Fjern Order</button>
+                        <form action="removeorder" method="get">
+                            ${sessionScope.removeOrders}
+                            <button name="removeOrders">Fjern Order</button>
+
                         </form>
                     </td>
                 </tr>
