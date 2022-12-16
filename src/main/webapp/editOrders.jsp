@@ -18,17 +18,16 @@
             <th>Lise af Materialer:</th>
         </tr>
         </thead>
-            <c:forEach var="item" items="${sessionScope.materialList}">
-                <tr>
-                    <td>
-                        Material ID: ${item.material_id}<br>
-                        Type:        ${item.type}
-
-                    </td>
-                </tr>
-            </c:forEach>
+        <c:forEach var="item" items="${sessionScope.materialList}">
+            <tr>
+                <td>
+                    Material ID: ${item.material_id}<br>
+                    Type: ${item.type}
+                </td>
+            </tr>
+        </c:forEach>
     </table>
-   <br><br>
+    <br><br>
 
     <form method="post">
         <h3>Edit material</h3>
@@ -36,7 +35,7 @@
         <label>
             <input style="width:300px" type="number" name="name" value="${requestScope.materialList.type}"/>
         </label>
-        <button formaction="updatematerial" name="material_id" value="${requestScope.materialList.material_id}">
+        <button formaction="editmaterial" name="material_id" value="${requestScope.materialList.material_id}">
             Update material
         </button>
     </form>

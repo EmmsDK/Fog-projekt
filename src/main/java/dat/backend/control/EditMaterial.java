@@ -15,13 +15,22 @@ import static dat.backend.model.persistence.OrdersMapper.connectionPool;
 public class EditMaterial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
+
+        HttpSession session = request.getSession();
+
+
+        /*
+        int order_id = Integer.parseInt(request.getParameter("order_id"));
+        OrdersFacade.removeOrder(order_id,connectionPool);
+        List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
+        ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
+         */
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
         String type = request.getParameter("type");
@@ -31,7 +40,12 @@ public class EditMaterial extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
 
         BuildingMaterialFacade.updateMaterial(material_id,type, description, length, type_id, price,connectionPool);
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
+        List<BuildingMaterial> materialList =(List<BuildingMaterial>) session.getAttribute("materialList");
+
+        for (BuildingMaterial buildingMaterial:materialList) {
+
+        }
+
         request.setAttribute("materialList", materialList);
         request.getRequestDispatcher("editOrders.jsp").forward(request, response);
     }
