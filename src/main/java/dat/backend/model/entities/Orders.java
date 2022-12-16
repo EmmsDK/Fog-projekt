@@ -9,7 +9,7 @@ public class Orders {
     int length;
     int total_price;
     private Timestamp created;
-    private int order_id;
+    private int order_id=0;
 
     public Orders(int user_id, int width, int length, int total_price, Timestamp created) {
         this.user_id = user_id;
@@ -17,6 +17,14 @@ public class Orders {
         this.length = length;
         this.total_price = total_price;
         this.created = created;
+    }
+    public Orders(int user_id, int width, int length, int total_price, Timestamp created, int order_id) {
+        this.user_id = user_id;
+        this.width = width;
+        this.length = length;
+        this.total_price = total_price;
+        this.created = created;
+        this.order_id = order_id;
     }
 
     public int getWidth() {

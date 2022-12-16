@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 
 @WebServlet(name = "RemoveOrder", value = "/removeorder")
 public class RemoveOrder extends HttpServlet {
@@ -22,18 +23,19 @@ public class RemoveOrder extends HttpServlet {
         HttpSession session = request.getSession();
 
         //OrdersFacade ordersFacade = new OrdersFacade();
-        int user_id = Integer.parseInt(request.getParameter("user_id"));
+        int order_id = Integer.parseInt(request.getParameter("order_id"));
 
 
 
         //        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders(connectionPool);
 
-        boolean removeOrders = OrdersFacade.removeOrder(user_id, connectionPool);
+        OrdersFacade.removeOrder(order_id,connectionPool);
 
+        List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
 
-        //Orders removeOrder = new Orders(user_id, width, length, total_price, created);
+        ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
 
-        session.setAttribute("removeOrders", removeOrders);
+        session.setAttribute("ordersList",ordersList);
 
         request.getRequestDispatcher("/portfolio.jsp").forward(request, response);
 

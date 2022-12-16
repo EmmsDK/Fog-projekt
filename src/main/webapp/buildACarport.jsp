@@ -10,7 +10,7 @@
     </head>
     <body>
     <h1>
-        Mål til redskabsrum i cm:
+        Mål til carport i cm:
     </h1>
     <form action="buildacarport" method="post">
         Længde<br>
