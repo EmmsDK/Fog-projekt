@@ -33,9 +33,10 @@ public class EditMaterial extends HttpServlet {
         String type = request.getParameter("type");
         String description = request.getParameter("description");
 
-        BuildingMaterialFacade.updateMaterial(material_id,type, description, length, type_id, price,connectionPool);
+        //BuildingMaterialFacade.updateMaterial(material_id,type, description, length, type_id, price,connectionPool);
 
-        request.setAttribute("materialList", materialList);
+        session.setAttribute("materialList", materialList);
+        session.setAttribute("material", materialList.get(material_id-1));
         request.getRequestDispatcher("/WEB-INF/editMaterial.jsp").forward(request, response);
     }
 }

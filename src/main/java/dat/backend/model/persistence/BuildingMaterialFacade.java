@@ -13,6 +13,9 @@ public class BuildingMaterialFacade {
     public static List<BuildingMaterial> getDynamicMaterials(ConnectionPool connectionPool){
         return BuildingMaterialMapper.getDynamicMaterials(connectionPool);
     }
+    public static List<BuildingMaterial> getAllMaterials(ConnectionPool connectionPool) {
+        return BuildingMaterialMapper.getAllMaterials(connectionPool);
+    }
     public static Material createMaterial(String type, String description, int length, int type_id, int price) throws DatabaseException {
         return BuildingMaterialMapper.createMaterial(type, description, length, type_id, price);
     }

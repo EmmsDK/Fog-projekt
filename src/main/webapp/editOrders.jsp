@@ -15,7 +15,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Lise af Materialer:</th>
+            <th>Liste af Materialer:</th>
         </tr>
         </thead>
         <c:forEach var="item" items="${sessionScope.materialList}">

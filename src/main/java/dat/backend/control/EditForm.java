@@ -19,9 +19,11 @@ public class EditForm extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
         int item_id = Integer.parseInt(request.getParameter("item_id"));
         Material material = BuildingMaterialFacade.getMaterialById(item_id, connectionPool);
-        request.setAttribute("material", material);
+        session.setAttribute("material", material);
         request.getRequestDispatcher("WEB-INF/editMaterial.jsp").forward(request, response);
     }
 }
