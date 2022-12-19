@@ -68,14 +68,14 @@ public class BuildingMaterialMapper {
                     int type_id = rs.getInt("type_id");
                     int quantity = 1;
                     int length = rs.getInt("length");
-                    int material_id=rs.getInt("material_id");
+                    int material_id = rs.getInt("material_id");
                     int price = rs.getInt("price");
 
 
                     if (type_id == 1) {
-                        BuildingMaterial newWood = new Wood(type,description, length, material_id, quantity, type_id, price);
+                        BuildingMaterial newWood = new Wood(type, description, length, material_id, quantity, type_id, price);
                         dynamicMaterials.add(newWood);
-                    }else {
+                    } else {
 
                         BuildingMaterial newRoofTile = new RoofTile(type, description, length, material_id, quantity, type_id, price);
                         dynamicMaterials.add(newRoofTile);
@@ -101,7 +101,7 @@ public class BuildingMaterialMapper {
                 ps.setString(2, description);
                 ps.setInt(3, length);
                 ps.setInt(4, type_id);
-                ps.setInt(5,price);
+                ps.setInt(5, price);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     createMaterial = new Material(type, description, length, type_id, price);
@@ -115,16 +115,14 @@ public class BuildingMaterialMapper {
         return createMaterial;
     }
 
-    public static void updateMaterial(int material_id, String type, String description, int length, int type_id, int price, ConnectionPool connectionPool) {
-        String sql = "UPDATE material SET type = ? SET description = ? SET length = ? SET type_id = ? SET price = ? WHERE material_id = ?";
+    public static void updateMaterial(int material_id, String type, String description, int length, int price, ConnectionPool connectionPool) {
+        String sql = "UPDATE material SET type = ?, description = ?, length = ?, price = ? WHERE material_id = "+material_id+"";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, material_id);
-                ps.setString(2, type);
-                ps.setString(3, description);
-                ps.setInt(4, length);
-                ps.setInt(5, type_id);
-                ps.setInt(6, price);
+                ps.setString(1, type);
+                ps.setString(2, description);
+                ps.setInt(3, length);
+                ps.setInt(4, price);
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
@@ -145,7 +143,7 @@ public class BuildingMaterialMapper {
                     String description = rs.getString("description");
                     int length = rs.getInt("length");
                     int type_id = rs.getInt("type_id");
-                    int price  =rs.getInt("price");
+                    int price = rs.getInt("price");
 
                     Material newMaterial = new Material(id, type, description, length, type_id, price);
                     return newMaterial;
@@ -158,5 +156,57 @@ public class BuildingMaterialMapper {
         }
         return null;
     }
+
+    public static List<BuildingMaterial> getAllMaterials(ConnectionPool connectionPool) {
+
+        List<BuildingMaterial> allMaterials = new ArrayList<>();
+
+        String sql = "select * from material";
+
+        try (Connection connection = UserMapper.connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String type = rs.getString("type");
+                    String description = rs.getString("description");
+                    int type_id = rs.getInt("type_id");
+                    int quantity = 1;
+                    int length = rs.getInt("length");
+                    int material_id = rs.getInt("material_id");
+                    int price = rs.getInt("price");
+
+
+                    switch (type_id) {
+                        case 4:
+                            BuildingMaterial newScrew = new Screw(type, description, length, material_id, quantity, type_id, price);
+                            allMaterials.add(newScrew);
+                            break;
+                        case 3:
+                            BuildingMaterial newFitting = new Fitting(type, description, length, material_id, quantity, type_id, price);
+                            allMaterials.add(newFitting);
+                            break;
+                        case 2:
+                            BuildingMaterial newRoofTile = new RoofTile(type, description, length, material_id, quantity, type_id, price);
+                            allMaterials.add(newRoofTile);
+                            break;
+                        case 1:
+                            BuildingMaterial newWood = new Wood(type, description, length, material_id, quantity, type_id, price);
+                            allMaterials.add(newWood);
+                            break;
+                    }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    } catch(
+    SQLException throwables)
+
+    {
+        throwables.printStackTrace();
+    }
+
+        return allMaterials;
+}
 }
 

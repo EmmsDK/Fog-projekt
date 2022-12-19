@@ -29,10 +29,9 @@ public class UpdateMaterial extends HttpServlet {
         String type = request.getParameter("type");
         String description = request.getParameter("description");
         int length = Integer.parseInt(request.getParameter("length"));
-        int type_id = Integer.parseInt(request.getParameter("type_id"));
         int price = Integer.parseInt(request.getParameter("price"));
 
-        BuildingMaterialFacade.updateMaterial(material_id, type, description, length, type_id, price, connectionPool);
+        BuildingMaterialFacade.updateMaterial(material_id, type, description, length, price, connectionPool);
         List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
         request.setAttribute("materialList", materialList);
         request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);

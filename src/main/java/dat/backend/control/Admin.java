@@ -24,7 +24,7 @@ public class Admin extends HttpServlet {
         List<User> userList = UserFacade.getUsers(connectionPool);
         session.setAttribute("userList", userList);
 
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
+        List<BuildingMaterial> materialList = BuildingMaterialFacade.getAllMaterials(connectionPool);
         session.setAttribute("materialList", materialList);
 
 
