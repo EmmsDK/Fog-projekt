@@ -13,10 +13,15 @@
 
     <form action="editmaterial" method="post">
         <h3>Edit Material name</h3>
-        <input style="width:200px" type="text" name="type" value="${requestScope.material.type}"/>
-        <input style="width:200px" type="number" name="length" value="${requestScope.material.length}"/>
-        <input style="width:200px" type="number" name="type_id" value="${requestScope.material.type_id}"/>
-        <input style="width:200px" type="text" name="description" value="${requestScope.material.description}"/>
+        Material Type:
+        <input style="width:200px" type="text" name="type" value="${requestScope.material.type}"/> <br>
+        Material Length:
+        <input style="width:200px" type="number" name="length" value="${requestScope.material.length}"/><br>
+        Material Type ID:
+        <input style="width:200px" type="number" name="type_id" value="${requestScope.material.type_id}"/><br>
+        Material Description:
+        <input style="width:200px" type="text" name="description" value="${requestScope.material.description}"/><br>
+        <br>
         <button formaction="editmaterial" name="item_id" value="${requestScope.material.material_id}">
             Update material
         </button>

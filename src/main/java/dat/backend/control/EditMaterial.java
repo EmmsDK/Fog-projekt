@@ -25,12 +25,6 @@ public class EditMaterial extends HttpServlet {
         HttpSession session = request.getSession();
 
         List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
-        /*
-        int order_id = Integer.parseInt(request.getParameter("order_id"));
-        OrdersFacade.removeOrder(order_id,connectionPool);
-        List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
-        ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
-         */
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
         int length = materialList.get(material_id-1).getLength();
