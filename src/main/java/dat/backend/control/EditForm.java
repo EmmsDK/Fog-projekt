@@ -1,7 +1,6 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.entities.Material;
 import dat.backend.model.persistence.BuildingMaterialFacade;
 
 import javax.servlet.*;
@@ -31,10 +30,10 @@ public class EditForm extends HttpServlet {
         String type = request.getParameter("type");
         String description = request.getParameter("description");
 
-        if (type == null) {
+        if (type == "") {
             type = materialList.get(material_id - 1).getType();
         }
-        if (description == null) {
+        if (description == "") {
             description = materialList.get(material_id - 1).getDescription();
         }
 

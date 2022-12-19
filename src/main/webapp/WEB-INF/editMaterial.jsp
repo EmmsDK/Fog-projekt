@@ -14,7 +14,7 @@
     <form action="editform" method="post">
         <h3>Edit material ${sessionScope.material.material_id}</h3>
         Type:
-        <input style="width:200px" type="text" name="updatedType" id="updatedType"/> <br>
+        <input style="width:200px" type="text" name="type" id="updatedType"/> <br>
         Length:
         <input style="width:200px" type="number" name="length" id="updatedLength"/><br>
         Description:
