@@ -49,6 +49,7 @@ Admin Side
             <button name="portfolio">Portfolio</button>
         </form>
         <br>
+        <a href="addMaterial.jsp">Tilføj Materiale</a>
 
     </jsp:body>
 

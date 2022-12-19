@@ -51,8 +51,7 @@ class UserMapper {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
                 }
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
         return createUser;
@@ -69,7 +68,7 @@ class UserMapper {
 
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int userid=rs.getInt("iduser");
+                    int userid = rs.getInt("iduser");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
                     String role = rs.getString("role");

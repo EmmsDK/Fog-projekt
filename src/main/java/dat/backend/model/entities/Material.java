@@ -14,6 +14,7 @@ public class Material {
         this.description = description;
         this.length = length;
         this.type_id = type_id;
+        this.price = price;
     }
 
     public Material(int material_id, String type, String description, int length, int type_id, int price) {

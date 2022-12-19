@@ -91,10 +91,10 @@ public class BuildingMaterialMapper {
         return dynamicMaterials;
     }
 
-    public static Material createMaterial(String type, String description, int length, int type_id, int price) throws DatabaseException {
+    public static Material createMaterial(String type, String description, int length, int type_id, int price, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Material createMaterial;
-        String sql = "insert into material (type, description, length, type_id, price) values (?,?,?,?;?)";
+        String sql = "insert into material (type, description, length, type_id, price) values (?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, type);
@@ -109,7 +109,7 @@ public class BuildingMaterialMapper {
                     throw new DatabaseException("The material = " + type + " could not be inserted into the database");
                 }
             }
-        } catch (SQLException ex) {
+        } catch (SQLException | DatabaseException ex) {
             throw new DatabaseException(ex, "Could not insert material into database");
         }
         return createMaterial;
