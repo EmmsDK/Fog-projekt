@@ -27,16 +27,10 @@ public class EditMaterial extends HttpServlet {
         List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
-        int length = materialList.get(material_id-1).getLength();
-        int type_id = materialList.get(material_id-1).getType_id();
-        int price = materialList.get(material_id-1).getPrice();
-        String type = request.getParameter("type");
-        String description = request.getParameter("description");
-
-        //BuildingMaterialFacade.updateMaterial(material_id,type, description, length, type_id, price,connectionPool);
 
         session.setAttribute("materialList", materialList);
         session.setAttribute("material", materialList.get(material_id-1));
+
         request.getRequestDispatcher("/WEB-INF/editMaterial.jsp").forward(request, response);
     }
 }

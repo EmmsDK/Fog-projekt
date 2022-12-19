@@ -11,16 +11,20 @@
     </head>
     <body>
 
-    <form action="editmaterial" method="post">
-        <h3>Edit Material</h3>
-        Material Type:
-        <input style="width:200px" type="text" name="updatedType" id=""/> <br>
-        Material Length:
-        <input style="width:200px" type="number" name="length" value="${requestScope.material.length}"/><br>
-        Material Description:
-        <input style="width:200px" type="text" name="description" value="${requestScope.material.description}"/><br>
+    <form action="editform" method="post">
+        <h3>Edit material ${sessionScope.material.material_id}</h3>
+        Type:
+        <input style="width:200px" type="text" name="updatedType" id="updatedType"/> <br>
+        Length:
+        <input style="width:200px" type="number" name="length" id="updatedLength"/><br>
+        Description:
+        <input style="width:200px" type="text" name="description" id="updatedDescription"/><br>
         <br>
-        <button formaction="editmaterial" name="item_id" value="${requestScope.material.material_id}">
+        Price:
+        <input style="width:200px" type="text" name="price" id="updatedPrice"/><br>
+        <input type="hidden" name="material_id" value="${sessionScope.material.material_id}"/>
+        <br>
+        <button name="editform">
             Update material
         </button>
     </form>

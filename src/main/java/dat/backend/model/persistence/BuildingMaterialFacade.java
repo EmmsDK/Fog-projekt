@@ -20,8 +20,8 @@ public class BuildingMaterialFacade {
         return BuildingMaterialMapper.createMaterial(type, description, length, type_id, price);
     }
 
-    public static void updateMaterial(int material_id, String type, String description, int length, int type_id, int price, ConnectionPool connectionPool) {
-        BuildingMaterialMapper.updateMaterial(material_id, type, description, length, type_id, price,connectionPool);
+    public static void updateMaterial(int material_id, String type, String description, int length, int price, ConnectionPool connectionPool) {
+        BuildingMaterialMapper.updateMaterial(material_id, type, description, length, price, connectionPool);
     }
 
     public static Material getMaterialById(int material_id, ConnectionPool connectionPool){

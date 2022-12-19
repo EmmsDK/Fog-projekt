@@ -115,16 +115,14 @@ public class BuildingMaterialMapper {
         return createMaterial;
     }
 
-    public static void updateMaterial(int material_id, String type, String description, int length, int type_id, int price, ConnectionPool connectionPool) {
-        String sql = "UPDATE material SET type = ? SET description = ? SET length = ? SET type_id = ? SET price = ? WHERE material_id = ?";
+    public static void updateMaterial(int material_id, String type, String description, int length, int price, ConnectionPool connectionPool) {
+        String sql = "UPDATE material SET type = ?, description = ?, length = ?, price = ? WHERE material_id = "+material_id+"";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, material_id);
-                ps.setString(2, type);
-                ps.setString(3, description);
-                ps.setInt(4, length);
-                ps.setInt(5, type_id);
-                ps.setInt(6, price);
+                ps.setString(1, type);
+                ps.setString(2, description);
+                ps.setInt(3, length);
+                ps.setInt(4, price);
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
