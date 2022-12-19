@@ -11,19 +11,7 @@ public class BillOfMaterials {
     ConnectionPool connectionPool = new ConnectionPool();
     List<BuildingMaterial> materialList = new ArrayList<>();
 
-    public BillOfMaterials(List<BuildingMaterial> materialList) {
+    public BillOfMaterials(ConnectionPool connectionPool, List<BuildingMaterial> materialList) {
         this.materialList = materialList;
-    }
-
-    public List<BuildingMaterial> getMaterialList() {
-        return materialList;
-    }
-
-    public void setMaterialList(List<BuildingMaterial> materialList) {
-        this.materialList = materialList;
-    }
-
-    public void loadStaticMats() {
-        setMaterialList(BuildingMaterialMapper.getStaticMaterials(connectionPool));
     }
 }

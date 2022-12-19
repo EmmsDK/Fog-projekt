@@ -1,6 +1,9 @@
 package dat.backend.model.services;
 
 import dat.backend.model.entities.BuildingMaterial;
+import dat.backend.model.persistence.BuildingMaterialFacade;
+import dat.backend.model.persistence.ConnectionPool;
+
 
 
 import java.lang.reflect.Array;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
+    public static ConnectionPool connectionPool = new ConnectionPool();
 
     //visual amount of beams
     public static int calcDrawingBeams(int length) {
@@ -51,15 +55,15 @@ public class Calculator {
         return remainder;
     }
 
-    public static int findMyBeams(int svgWidth) {
+    public static int findMyBeams(int width) {
         int material_id = 0;
 
-        if (svgWidth <= 480) {
-            material_id = 9;
-        } else if (svgWidth > 480 && svgWidth <= 600) {
+        if (width <= 480) {
+            material_id = 30;
+        } else if (width > 480 && width <= 600) {
             material_id = 10;
         } else {
-            material_id = 9;
+            material_id = 30;
         }
         return material_id;
     }
@@ -180,4 +184,56 @@ public class Calculator {
         
         return frames;
     }
+    public static ArrayList<BuildingMaterial> billOfMaterialListCreater(int length, int width, int shed, int shedLength, int shedWidth){
+        ArrayList<BuildingMaterial> billOfMaterials = new ArrayList<>();
+        //all static materials.
+        billOfMaterials= (ArrayList<BuildingMaterial>) BuildingMaterialFacade.getStaticMaterials(connectionPool);
+        for(BuildingMaterial material: BuildingMaterialFacade.getDynamicMaterials(connectionPool)){
+            if(material.getMaterial_id()<3 ||material.getMaterial_id()==4|| material.getMaterial_id()==13){
+                material.setQuantity(4);
+                billOfMaterials.add(material);
+            }else if(material.getMaterial_id()==5 && shed ==1) {
+                material.setQuantity(1);
+                billOfMaterials.add(material);
+            }else if (material.getMaterial_id()==7 && shed ==1){
+                material.setQuantity(4);
+                billOfMaterials.add(material);
+
+            }else if(material.getMaterial_id()==6 && shed ==1){
+                material.setQuantity(12);
+                billOfMaterials.add(material);
+            }else if(material.getMaterial_id()==3 ||material.getMaterial_id()==14){
+                material.setQuantity(2);
+                billOfMaterials.add(material);
+            }else if (material.getType_id()==2){
+                material.setQuantity(6);
+                billOfMaterials.add(material);
+                //dynamic starts here
+                //beams
+            }else if (material.getType_id()==findMyBeams(width)){
+                material.setQuantity(amountOfBeams(width, length));
+                billOfMaterials.add(material);
+                //cladding
+            }else if(material.getMaterial_id()==12 && shed==1){
+                material.setQuantity(amountOfCladdingCalc(shedWidth,shedLength));
+                billOfMaterials.add(material);
+                //poles
+            }else if(material.getMaterial_id()==11){
+                material.setQuantity(amountOfPolesCalc(length,width,shed,shedWidth));
+                billOfMaterials.add(material);
+                //frames
+            }else if(material.getMaterial_id()==whichCarportFrames(length)){
+                if (shed==1 && whichShedFrames(shedLength)==whichCarportFrames(length)){
+                material.setQuantity(amountOfShedFrames(shedLength)+amountOfCarportFrames(length));
+                billOfMaterials.add(material);
+                }else{
+                    material.setQuantity(amountOfCarportFrames(length));
+                    billOfMaterials.add(material);
+                }
+            }
+        }
+
+        return billOfMaterials;
+    }
+
 }
