@@ -2,6 +2,7 @@ package dat.backend.model.persistence.Orders;
 
 import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.entities.Essentials.User;
+import dat.backend.model.entities.Materials.Material;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.User.UserMapper;
@@ -119,4 +120,34 @@ public class OrdersMapper {
         }
         return result;
     }
+    public static List<Orders> getOrderByUserId(int user_id, ConnectionPool connectionPool) {
+        String sql = "select * from orders where user_id = ?";
+        List<Orders> myOrders = new ArrayList<>();
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, user_id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int order_id = rs.getInt("order_id");
+
+                    int width = rs.getInt("width");
+                    int length = rs.getInt("length");
+
+                    int total_price = rs.getInt("total_price");
+                    Timestamp created = rs.getTimestamp("created");
+
+
+                    Orders order = new Orders(user_id,width,length,total_price,created,order_id);
+                    myOrders.add(order);
+
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return myOrders;
+    }
+
 }
