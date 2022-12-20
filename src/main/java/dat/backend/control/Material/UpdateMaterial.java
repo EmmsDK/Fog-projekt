@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.Material;
 
 import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.persistence.BuildingMaterial.BuildingMaterialFacade;
@@ -20,19 +20,39 @@ public class UpdateMaterial extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
 
-        response.setCharacterEncoding("UTF-8");
-        request.setCharacterEncoding("UTF-8");
+        List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
+        int length;
+        int price;
         String type = request.getParameter("type");
         String description = request.getParameter("description");
-        int length = Integer.parseInt(request.getParameter("length"));
-        int price = Integer.parseInt(request.getParameter("price"));
+
+        if (type.equals("")) {
+            type = materialList.get(material_id - 1).getType();
+        }
+        if (description.equals("")) {
+            description = materialList.get(material_id - 1).getDescription();
+        }
+
+        try {
+            length = Integer.parseInt(request.getParameter("length"));
+        } catch (NumberFormatException e) {
+            length = materialList.get(material_id - 1).getLength();
+        }
+
+        try {
+            price = Integer.parseInt(request.getParameter("price"));
+        } catch (NumberFormatException e) {
+            price = materialList.get(material_id - 1).getPrice();
+        }
 
         BuildingMaterialFacade.updateMaterial(material_id, type, description, length, price, connectionPool);
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getDynamicMaterials(connectionPool);
-        request.setAttribute("materialList", materialList);
-        request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+
+        session.setAttribute("materialList", materialList);
+
+        request.getRequestDispatcher("editOrders.jsp").forward(request, response);
     }
 }

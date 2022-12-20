@@ -11,7 +11,7 @@
     </head>
     <body>
 
-    <form action="editmaterial" method="post">
+    <form action="updatematerial" method="post">
         <h3>Edit material ${sessionScope.material.material_id}</h3>
         Type:
         <input style="width:200px" type="text" name="type" id="updatedType"/> <br>
@@ -24,7 +24,7 @@
         <input style="width:200px" type="text" name="price" id="updatedPrice"/><br>
         <input type="hidden" name="material_id" value="${sessionScope.material.material_id}"/>
         <br>
-        <button name="editmaterial">
+        <button>
             Update material
         </button>
     </form>

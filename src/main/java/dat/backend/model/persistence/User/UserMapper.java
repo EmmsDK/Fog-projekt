@@ -69,7 +69,7 @@ public class UserMapper {
 
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int userid = rs.getInt("iduser");
+                    int userid = rs.getInt("user_id");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
                     String role = rs.getString("role");
