@@ -29,13 +29,13 @@
     </table>
     <br><br>
 
-    <form action="editmaterial" method="post">
+    <form action="editorder" method="post">
         <h3>Edit material</h3>
 
         <label>
             <input style="width:300px" type="number" name="material_id" id="material_id"/>
         </label>
-        <button name="editmaterial">Update material</button>
+        <button name="editorder">Update material</button>
     </form>
     <br>
     <form action="admin.jsp">
