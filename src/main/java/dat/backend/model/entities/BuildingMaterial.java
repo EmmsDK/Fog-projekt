@@ -64,10 +64,6 @@ public abstract class BuildingMaterial {
         return type_id;
     }
 
-    public void setType_id(int type_id) {
-        this.type_id = type_id;
-    }
-
     public int getPrice() {
         return price;
     }

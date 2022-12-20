@@ -1,7 +1,6 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.entities.Material;
 import dat.backend.model.persistence.BuildingMaterialFacade;
 
 import javax.servlet.*;

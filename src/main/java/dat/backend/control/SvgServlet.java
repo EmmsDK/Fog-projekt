@@ -33,9 +33,6 @@ public class SvgServlet extends HttpServlet {
         double dashArrayX2 = svgWidth;
         double middleBeamX = ((onePercentWidth * 20 + (svgWidth - beamThiccness * 2 - 15)) / 2);
         boolean notOverlapping = (Math.abs(middleBeamX - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) && svgWidth >= 400;
-        int orderID = 34;
-
-        //Order order = orderFacade.getOrderById(orderID);
 
         SVG carport = CarportSVG.createNewSVG(0, 0, 35, 35, "0 0 " + svgWidth + " " + svgHeight);
         int fixedOffSet = 30;
