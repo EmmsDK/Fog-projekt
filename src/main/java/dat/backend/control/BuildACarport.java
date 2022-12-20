@@ -1,7 +1,6 @@
 package dat.backend.control;
-import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.services.SVG;
 
+import dat.backend.model.services.SVG;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -10,9 +9,6 @@ import java.io.IOException;
 
 @WebServlet(name = "buildACarport", value = "/buildacarport")
 public class BuildACarport extends HttpServlet {
-
-    int totalPrice;
-    private static ConnectionPool connectionPool = new ConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

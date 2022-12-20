@@ -1,15 +1,11 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.persistence.BuildingMaterialFacade;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
-
-import static dat.backend.model.persistence.OrdersMapper.connectionPool;
 
 @WebServlet(name = "EditMaterial", value = "/editmaterial")
 public class EditMaterial extends HttpServlet {

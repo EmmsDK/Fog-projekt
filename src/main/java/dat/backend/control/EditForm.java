@@ -30,10 +30,10 @@ public class EditForm extends HttpServlet {
         String type = request.getParameter("type");
         String description = request.getParameter("description");
 
-        if (type == "") {
+        if (type.equals("")) {
             type = materialList.get(material_id - 1).getType();
         }
-        if (description == "") {
+        if (description.equals("")) {
             description = materialList.get(material_id - 1).getDescription();
         }
 

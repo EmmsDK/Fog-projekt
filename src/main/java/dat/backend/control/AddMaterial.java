@@ -1,6 +1,5 @@
 package dat.backend.control;
 
-import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.entities.Material;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.BuildingMaterialFacade;
@@ -10,7 +9,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "AddMaterial", value = "/addmaterial")
 public class AddMaterial extends HttpServlet {
@@ -31,7 +29,7 @@ public class AddMaterial extends HttpServlet {
         int type_id = Integer.parseInt(request.getParameter("type_id"));
         int price = Integer.parseInt(request.getParameter("price"));
 
-        HttpSession session = request.getSession();
+        HttpSession session;
 
         try {
             Material createMaterial = BuildingMaterialFacade.createMaterial(type, description, length, type_id, price, connectionPool);
