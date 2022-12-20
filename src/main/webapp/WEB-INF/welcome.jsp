@@ -10,10 +10,10 @@
 
     <jsp:body>
 
-        <h1>Whalecum</h1>
+        <h1>Velkommen!</h1>
 
         <a class="navbar-brand" href="buildACarport.jsp">
-            <img src="${pageContext.request.contextPath}/images/Build-a-carport.png" width="350px;" class="img-fluid"/>
+            <img src="${pageContext.request.contextPath}/images/Build-A-Carport.png" width="350px;" class="img-fluid"/>
         </a>
 
         <a class="navbar-brand" href="myOrders.jsp">
