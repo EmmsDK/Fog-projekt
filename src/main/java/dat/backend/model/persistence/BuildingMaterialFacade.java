@@ -16,8 +16,8 @@ public class BuildingMaterialFacade {
     public static List<BuildingMaterial> getAllMaterials(ConnectionPool connectionPool) {
         return BuildingMaterialMapper.getAllMaterials(connectionPool);
     }
-    public static Material createMaterial(String type, String description, int length, int type_id, int price) throws DatabaseException {
-        return BuildingMaterialMapper.createMaterial(type, description, length, type_id, price);
+    public static Material createMaterial(String type, String description, int length, int type_id, int price, ConnectionPool connectionPool) throws DatabaseException {
+        return BuildingMaterialMapper.createMaterial(type, description, length, type_id, price, connectionPool);
     }
 
     public static void updateMaterial(int material_id, String type, String description, int length, int price, ConnectionPool connectionPool) {

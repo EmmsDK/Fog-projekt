@@ -14,7 +14,7 @@ import java.util.List;
 @WebServlet(name = "Admin", value = "/admin")
 public class Admin extends HttpServlet {
 
-    private static ConnectionPool connectionPool = new ConnectionPool();
+    private static final ConnectionPool connectionPool = new ConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

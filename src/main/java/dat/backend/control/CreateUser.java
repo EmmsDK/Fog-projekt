@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "CreateUser", value = "/createuser")
 public class CreateUser extends HttpServlet {
 
-    private ConnectionPool connectionPool;
+    private static final ConnectionPool connectionPool = new ConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
