@@ -1,8 +1,12 @@
 package dat.backend.model.entities;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Orders {
+
+    List<Orders> ordersList = new ArrayList<>();
 
     int user_id;
     int width;
@@ -75,9 +79,21 @@ public class Orders {
         this.order_id = order_id;
     }
 
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
+    }
+
     @Override
     public String toString() {
         return "Orders " + "user_id = " + user_id + ", width = " + width +
                 ", length = " + length + ", total_price = " + total_price + ", created = " + created;
+    }
+
+    public void add(Orders orders) {
+        ordersList.add(orders);
     }
 }

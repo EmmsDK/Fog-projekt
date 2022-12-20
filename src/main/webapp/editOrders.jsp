@@ -21,7 +21,8 @@
             <tr>
                 <td>
                     Material ID: ${item.material_id}<br>
-                    Type: ${item.type}
+                    Type: ${item.type}<br>
+                    Price: ${item.price}
                 </td>
             </tr>
         </c:forEach>

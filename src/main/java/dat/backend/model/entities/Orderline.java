@@ -23,6 +23,7 @@ public class Orderline {
     public void add(Orderline orderline) {
         orderlineList.add(orderline);
     }
+
     public int getOrderlineSize(){
         return orderlineList.size();
     }
@@ -39,4 +40,39 @@ public class Orderline {
         return orderlineList;
     }
 
+    public void setOrderlineList(List<Orderline> orderlineList) {
+        this.orderlineList = orderlineList;
+    }
+
+    public int getMaterial_id() {
+        return material_id;
+    }
+
+    public void setMaterial_id(int material_id) {
+        this.material_id = material_id;
+    }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

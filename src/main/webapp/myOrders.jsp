@@ -13,15 +13,15 @@
 
     <h1>Mine Ordre</h1>
 
-    <c:forEach var="material" items="${sessionScope.BillOfMaterials}">
-        ${material.idWood}: <br>
-        ${material.idScrew}
-        ${material.idRoofTile}
-        ${material.idFitting}
-        ${material.idCarportPrice}<br>
+    <c:forEach var="item" items="${sessionScope.list.ordersList}">
+        Test:
+        ${item.order_id}
+        ${item.width}
+        ${item.length}
+        ${item.total_price}
+        ${item.created}
         <br>
     </c:forEach>
-
 
     </body>
 </t:pagetemplate>
