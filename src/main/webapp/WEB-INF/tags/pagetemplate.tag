@@ -39,7 +39,7 @@
                             Carport</a>
                     </c:if>
                     <c:if test="${sessionScope.user.username!=null}">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/myOrders.jsp">Mine
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordersservlet">Mine
                             Ordre</a>
                     </c:if>
                     <c:if test="${sessionScope.user.username.equalsIgnoreCase('admin')}">

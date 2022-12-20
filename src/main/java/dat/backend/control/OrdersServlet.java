@@ -2,30 +2,38 @@ package dat.backend.control;
 
 import dat.backend.model.entities.Orders;
 import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.OrdersFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
+import java.sql.Timestamp;
 
-@WebServlet(name = "OrdersServlet", value = "/orders")
+@WebServlet(name = "OrdersServlet", value = "/ordersservlet")
 public class OrdersServlet extends HttpServlet {
 
     private static final ConnectionPool connectionPool = new ConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
-        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders(connectionPool);
+        Orders list = (Orders) session.getAttribute("list");
 
-        System.out.println(ordersList);
+        int user_id = Integer.parseInt(request.getParameter("user_id"));
+        int width = Integer.parseInt(request.getParameter("width"));
+        int length = Integer.parseInt(request.getParameter("length"));
+        int total_price = Integer.parseInt(request.getParameter("total_price"));
+        Timestamp created = Timestamp.valueOf(request.getParameter("created"));
 
-        session.setAttribute("ordersList", ordersList);
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+        Orders orders = new Orders(user_id,width,length,total_price,created);
+        list.add(orders);
+
+        session.setAttribute("list",list);
+
+        request.getRequestDispatcher("myOrders.jsp").forward(request, response);
 
     }
 
