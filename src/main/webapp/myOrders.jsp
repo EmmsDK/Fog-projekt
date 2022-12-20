@@ -19,15 +19,14 @@
             <th>Dine Ordre:</th>
         </tr>
         </thead>
-        <c:forEach var="item" items="${sessionScope.ordersList}">
+        <c:forEach var="item" items="${sessionScope.list}">
             <tr>
                 <td>
                     User ID: ${item.user_id}<br>
-                    Længde: ${item.length}
+                    Længde: ${item.width}
                     Bredde: ${item.width}
                     Total Pris: ${item.total_price}<br>
                     Oprettet: ${item.created}<br>
-                    Ordre ID: ${item.getOrder_id()}<br>
                 </td>
             </tr>
         </c:forEach>
