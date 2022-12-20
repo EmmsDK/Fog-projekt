@@ -36,7 +36,7 @@ Admin Side
         --!>
         
         <p>
-            Fra denne side kan du blive omdirigeret til Rediger Materiale og Portfolio ved at trykke på nedstående knapper.<br>
+            Fra denne side kan du blive omdirigeret til Rediger Materiale og Portfolio ved at trykke på nedstående knapper. <br>
             På Rediger Materiale siden, kan du ændre navnet og prisen på materialerne fra databasen. På Portfolio siden, <br>
             kan du se, redigere og slette kundeordrer der ligger inde på databasen.
         </p>
