@@ -21,7 +21,7 @@
         </a>
 
         <a class="navbar-brand" href="myProfile.jsp">
-            <img src="${pageContext.request.contextPath}/images/Profile.png" width="350px;" class="img-fluid"/>
+            <img src="${pageContext.request.contextPath}/images/NewProfilePic.png" width="350px;" class="img-fluid"/>
         </a>
 
     </jsp:body>
