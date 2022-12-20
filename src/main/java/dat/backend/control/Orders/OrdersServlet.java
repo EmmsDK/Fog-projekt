@@ -34,5 +34,8 @@ public class OrdersServlet extends HttpServlet {
         session.setAttribute("list",list);
 
         request.getRequestDispatcher("myOrders.jsp").forward(request, response);
+
+
+
     }
 }
