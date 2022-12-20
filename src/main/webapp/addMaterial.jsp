@@ -18,16 +18,16 @@
             <label for="type">Type: </label>
             <input type="text" id="newType" name="type"/>
             <br>
-            <label for="description">Description: </label>
+            <label for="description">Beskrivelse: </label>
             <input type="text" id="newDescription" name="description"/>
             <br>
-            <label for="length">Length: </label>
+            <label for="length">Længde: </label>
             <input type="number" id="newLength" name="length"/>
             <br>
             <label for="type_id">Type ID: </label>
             <input type="number" id="newTypeID" name="type_id"/>
             <br>
-            <label for="price">price: </label>
+            <label for="price">Pris: </label>
             <input type="number" id="newPrice" name="price"/>
             <br>
             <input type="submit" value="Add Material"/>

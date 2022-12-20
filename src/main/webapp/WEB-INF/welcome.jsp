@@ -4,13 +4,11 @@
 <%@page errorPage="../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-    <jsp:attribute name="header">
-         Shopping Page
-    </jsp:attribute>
+
 
     <jsp:body>
 
-        <h1>Velkommen!</h1>
+        <h1>Velkommen! Du er nu logget ind</h1>
 
         <a class="navbar-brand" href="buildACarport.jsp">
             <img src="${pageContext.request.contextPath}/images/Build-A-Carport.png" width="350px;" class="img-fluid"/>

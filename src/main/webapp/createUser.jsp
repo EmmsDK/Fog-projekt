@@ -11,13 +11,13 @@
 
     <jsp:body>
 
-        <h3>Create User here:</h3>
+        <h3>Opret ny bruger her:</h3>
 
         <form action="createuser" method="post">
             <%--@declare id="password"--%><%--@declare id="username"--%>
-            <label for="username">Username: </label>
+            <label for="username">Brugernavn: </label>
             <input type="text" id="newUsername" name="username"/>
-            <label for="password">Password: </label>
+            <label for="password">Kodeord: </label>
             <input type="password" id="newPassword" name="password"/>
             <input type="submit" value="Create User"/>
 
