@@ -51,7 +51,7 @@ public class UpdateMaterial extends HttpServlet {
 
         BuildingMaterialFacade.updateMaterial(material_id, type, description, length, price, connectionPool);
 
-        session.setAttribute("materialList", materialList);
+        session.setAttribute("materialList", BuildingMaterialFacade.getAllMaterials(connectionPool));
 
         request.getRequestDispatcher("editOrders.jsp").forward(request, response);
     }
