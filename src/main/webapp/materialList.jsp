@@ -6,15 +6,15 @@
 <html>
 <t:pagetemplate>
     <head>
-        <title>editOrders</title>
+        <title>Materiale Liste</title>
     </head>
     <body>
 
-    <h1>Edit Orders</h1>
+    <h1>Materiale liste</h1>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Liste af Materialer:</th>
+            <th>Liste af Materiale:</th>
         </tr>
         </thead>
         <c:forEach var="item" items="${sessionScope.materialList}">
@@ -30,12 +30,12 @@
     <br><br>
 
     <form action="editmaterial" method="post">
-        <h3>Edit material</h3>
+        <h3>Rediger Materiale</h3>
 
         <label>
             <input style="width:300px" type="number" name="material_id" id="material_id"/>
         </label>
-        <button>Update material</button>
+        <button>Opdater materiale</button>
     </form>
     <br>
     <form action="admin.jsp">

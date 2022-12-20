@@ -27,7 +27,7 @@ public class RemoveOrder extends HttpServlet {
         ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
 
         session.setAttribute("ordersList",ordersList);
-        request.getRequestDispatcher("/portfolio.jsp").forward(request, response);
+        request.getRequestDispatcher("/orders.jsp").forward(request, response);
 
     }
 

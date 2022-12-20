@@ -53,6 +53,6 @@ public class UpdateMaterial extends HttpServlet {
 
         session.setAttribute("materialList", BuildingMaterialFacade.getAllMaterials(connectionPool));
 
-        request.getRequestDispatcher("editOrders.jsp").forward(request, response);
+        request.getRequestDispatcher("materialList.jsp").forward(request, response);
     }
 }

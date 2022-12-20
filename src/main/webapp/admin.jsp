@@ -42,14 +42,15 @@ Admin Side
         </p>
 
         <br>
-        <form action="editOrders.jsp">
-            <button name="editmaterial">Rediger Materiale</button>
+        <form action="materialList.jsp">
+            <button>Rediger Materiale</button>
         </form>
-        <form action="portfolio.jsp">
-            <button name="portfolio">Portfolio</button>
+        <form action="orders.jsp">
+            <button>Ordrer</button>
         </form>
-        <br>
-        <a href="addMaterial.jsp">Tilføj Materiale</a>
+        <form action="addMaterial.jsp">
+            <button>Tilføj Materiale</button>
+        </form>
 
     </jsp:body>
 

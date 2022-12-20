@@ -37,7 +37,7 @@ public class AddMaterial extends HttpServlet {
             session = request.getSession();
             session.setAttribute("createMaterial", createMaterial);
 
-            request.getRequestDispatcher("editOrders.jsp").forward(request, response);
+            request.getRequestDispatcher("materialList.jsp").forward(request, response);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);

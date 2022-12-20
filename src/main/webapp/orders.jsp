@@ -6,19 +6,15 @@
 <html>
 <t:pagetemplate>
     <head>
-        <title>Portfolio</title>
+        <title>Alle Ordre:</title>
     </head>
     <body>
-
-    <h1>Portfolio</h1>
-
-    <p>Admin portfolio</p>
 
     <br>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Lise af ordre:</th>
+            <th>Liste af ordre:</th>
         </tr>
         </thead>
         <c:if test="${sessionScope.ordersList != null}">

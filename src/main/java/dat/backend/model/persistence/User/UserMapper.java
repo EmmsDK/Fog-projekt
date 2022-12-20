@@ -69,12 +69,12 @@ public class UserMapper {
 
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int userid = rs.getInt("user_id");
+                    int user_id = rs.getInt("user_id");
                     String username = rs.getString("username");
                     String password = rs.getString("password");
                     String role = rs.getString("role");
 
-                    User newUser = new User(userid, username, password, role);
+                    User newUser = new User(user_id, username, password, role);
                     userList.add(newUser);
                 }
             } catch (SQLException throwables) {
