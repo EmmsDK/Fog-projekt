@@ -20,9 +20,9 @@
         <c:forEach var="item" items="${sessionScope.materialList}">
             <tr>
                 <td>
-                    Material ID: ${item.material_id}<br>
+                    Materiale ID: ${item.material_id}<br>
                     Type: ${item.type}<br>
-                    Price: ${item.price}
+                    Pris: ${item.price}
                 </td>
             </tr>
         </c:forEach>

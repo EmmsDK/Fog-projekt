@@ -7,11 +7,9 @@
 <html>
 <t:pagetemplate>
     <head>
-        <title>myOrder</title>
+        <title>Dine Ordre</title>
     </head>
     <body>
-
-    <p>test</p>
 
     <table class="table table-striped">
         <thead>
@@ -22,7 +20,7 @@
         <c:forEach var="item" items="${sessionScope.list}">
             <tr>
                 <td>
-                    User ID: ${item.user_id}<br>
+                    Bruger ID: ${item.user_id}<br>
                     Længde: ${item.width}
                     Bredde: ${item.width}
                     Total Pris: ${item.total_price}<br>

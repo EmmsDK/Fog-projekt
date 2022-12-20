@@ -7,11 +7,9 @@
 <html>
 <t:pagetemplate>
     <head>
-        <title>My Profile</title>
+        <title>Min Profil</title>
     </head>
     <body>
-
-    <h1>Min Profil</h1>
 
     <p>Dit Brugernavn er: ${sessionScope.user.username} </p>
 

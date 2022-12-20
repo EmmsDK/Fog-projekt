@@ -36,6 +36,7 @@ public class AddMaterial extends HttpServlet {
 
             session = request.getSession();
             session.setAttribute("createMaterial", createMaterial);
+            session.setAttribute("materialList", BuildingMaterialFacade.getAllMaterials(connectionPool));
 
             request.getRequestDispatcher("materialList.jsp").forward(request, response);
         } catch (DatabaseException e) {

@@ -21,7 +21,7 @@
             <c:forEach var="item" items="${sessionScope.ordersList}">
                 <tr>
                     <td>
-                        User ID: ${item.user_id}<br>
+                        Bruger ID: ${item.user_id}<br>
                         Længde: ${item.length}
                         Bredde: ${item.width}
                         Total Pris: ${item.total_price}<br>
