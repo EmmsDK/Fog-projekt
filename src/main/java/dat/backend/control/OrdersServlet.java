@@ -1,7 +1,6 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.Orders;
-import dat.backend.model.persistence.ConnectionPool;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,11 +11,12 @@ import java.sql.Timestamp;
 @WebServlet(name = "OrdersServlet", value = "/ordersservlet")
 public class OrdersServlet extends HttpServlet {
 
-    private static final ConnectionPool connectionPool = new ConnectionPool();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
@@ -34,10 +34,5 @@ public class OrdersServlet extends HttpServlet {
         session.setAttribute("list",list);
 
         request.getRequestDispatcher("myOrders.jsp").forward(request, response);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }

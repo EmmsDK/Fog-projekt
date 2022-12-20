@@ -33,6 +33,6 @@ public class OrderlineServlet extends HttpServlet {
         request.setAttribute("cartsize",cart.getOrderlineSize());
         request.setAttribute("totalprice",totalPrice);
 
-        request.getRequestDispatcher("myOrders.jsp").forward(request,response);
+        request.getRequestDispatcher("dealInfo.jsp").forward(request,response);
     }
 }

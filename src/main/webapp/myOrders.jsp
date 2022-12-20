@@ -11,11 +11,32 @@
     </head>
     <body>
 
-    <h1>Mine Ordre</h1>
+    <p>test</p>
 
-    <c:forEach var="item" items="${sessionScope.list.ordersList}">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Dine Ordre:</th>
+        </tr>
+        </thead>
+        <c:forEach var="item" items="${sessionScope.ordersList}">
+            <tr>
+                <td>
+                    User ID: ${item.user_id}<br>
+                    Længde: ${item.length}
+                    Bredde: ${item.width}
+                    Total Pris: ${item.total_price}<br>
+                    Oprettet: ${item.created}<br>
+                    Ordre ID: ${item.getOrder_id()}<br>
+                </td>
+            </tr>
+        </c:forEach>
+
+    </table>
+
+    <c:forEach var="item" items="${sessionScope.list}">
         Test:
-        ${item.order_id}
+        ${item.user_id}
         ${item.width}
         ${item.length}
         ${item.total_price}
