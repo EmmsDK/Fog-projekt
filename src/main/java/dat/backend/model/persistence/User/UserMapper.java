@@ -1,7 +1,8 @@
-package dat.backend.model.persistence;
+package dat.backend.model.persistence.User;
 
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.persistence.ConnectionPool;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class UserMapper {
+public class UserMapper {
 
     public static ConnectionPool connectionPool = new ConnectionPool();
 

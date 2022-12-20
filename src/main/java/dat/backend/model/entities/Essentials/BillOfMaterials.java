@@ -1,5 +1,6 @@
-package dat.backend.model.entities;
+package dat.backend.model.entities.Essentials;
 
+import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.persistence.ConnectionPool;
 
 import java.util.ArrayList;

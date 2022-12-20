@@ -1,4 +1,6 @@
-package dat.backend.model.entities;
+package dat.backend.model.entities.Materials;
+
+import dat.backend.model.entities.Essentials.BillOfMaterials;
 
 public class Carport {
     BillOfMaterials billOfMaterials;

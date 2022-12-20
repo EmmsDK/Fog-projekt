@@ -1,12 +1,10 @@
 package dat.backend.model.services;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.persistence.BuildingMaterialFacade;
+import dat.backend.model.persistence.BuildingMaterial.BuildingMaterialFacade;
 import dat.backend.model.persistence.ConnectionPool;
 
 
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

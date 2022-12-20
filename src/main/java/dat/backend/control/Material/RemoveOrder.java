@@ -1,8 +1,8 @@
 package dat.backend.control.Material;
 
-import dat.backend.model.entities.Orders;
+import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.OrdersFacade;
+import dat.backend.model.persistence.Orders.OrdersFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

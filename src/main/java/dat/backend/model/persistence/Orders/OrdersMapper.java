@@ -1,8 +1,10 @@
-package dat.backend.model.persistence;
+package dat.backend.model.persistence.Orders;
 
-import dat.backend.model.entities.Orders;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.Essentials.Orders;
+import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.User.UserMapper;
 
 import java.sql.*;
 import java.util.ArrayList;

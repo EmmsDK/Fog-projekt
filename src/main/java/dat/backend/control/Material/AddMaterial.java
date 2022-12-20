@@ -1,8 +1,8 @@
 package dat.backend.control.Material;
 
-import dat.backend.model.entities.Material;
+import dat.backend.model.entities.Materials.Material;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.BuildingMaterialFacade;
+import dat.backend.model.persistence.BuildingMaterial.BuildingMaterialFacade;
 import dat.backend.model.persistence.ConnectionPool;
 
 import javax.servlet.*;

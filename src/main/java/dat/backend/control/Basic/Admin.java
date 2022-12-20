@@ -1,9 +1,12 @@
 package dat.backend.control.Basic;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.entities.Orders;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.Essentials.Orders;
+import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.persistence.*;
+import dat.backend.model.persistence.BuildingMaterial.BuildingMaterialFacade;
+import dat.backend.model.persistence.Orders.OrdersFacade;
+import dat.backend.model.persistence.User.UserFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

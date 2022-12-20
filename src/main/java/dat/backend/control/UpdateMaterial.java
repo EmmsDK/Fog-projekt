@@ -1,7 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.persistence.BuildingMaterialFacade;
+import dat.backend.model.persistence.BuildingMaterial.BuildingMaterialFacade;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-import static dat.backend.model.persistence.OrdersMapper.connectionPool;
+import static dat.backend.model.persistence.Orders.OrdersMapper.connectionPool;
 
 @WebServlet(name = "UpdateMaterial", value = "/updatematerial")
 public class UpdateMaterial extends HttpServlet {

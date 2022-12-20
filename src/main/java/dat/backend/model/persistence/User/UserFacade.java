@@ -1,7 +1,8 @@
-package dat.backend.model.persistence;
+package dat.backend.model.persistence.User;
 
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.persistence.ConnectionPool;
 
 import java.util.List;
 

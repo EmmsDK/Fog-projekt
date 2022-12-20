@@ -1,4 +1,4 @@
-package dat.backend.model.entities;
+package dat.backend.model.entities.Materials;
 
 public class Material {
 

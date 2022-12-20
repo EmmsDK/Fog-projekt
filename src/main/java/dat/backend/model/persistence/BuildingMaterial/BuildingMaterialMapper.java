@@ -1,15 +1,16 @@
-package dat.backend.model.persistence;
+package dat.backend.model.persistence.BuildingMaterial;
 
 import dat.backend.model.entities.*;
+import dat.backend.model.entities.Materials.*;
 import dat.backend.model.exceptions.DatabaseException;
+import dat.backend.model.persistence.ConnectionPool;
+import dat.backend.model.persistence.User.UserMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static dat.backend.model.persistence.UserMapper.connectionPool;
 
 public class BuildingMaterialMapper {
     public static List<BuildingMaterial> getStaticMaterials(ConnectionPool connectionPool) {

@@ -1,6 +1,6 @@
 package dat.backend.control.Orders;
 
-import dat.backend.model.entities.Orderline;
+import dat.backend.model.entities.Essentials.Orderline;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

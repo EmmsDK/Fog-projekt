@@ -1,6 +1,6 @@
 package dat.backend.control.Orders;
 
-import dat.backend.model.entities.Orders;
+import dat.backend.model.entities.Essentials.Orders;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

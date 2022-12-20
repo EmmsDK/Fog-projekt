@@ -1,4 +1,6 @@
-package dat.backend.model.entities;
+package dat.backend.model.entities.Materials;
+
+import dat.backend.model.entities.BuildingMaterial;
 
 public class RoofTile extends BuildingMaterial {
 

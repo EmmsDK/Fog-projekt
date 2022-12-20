@@ -1,4 +1,4 @@
-package dat.backend.model.entities;
+package dat.backend.model.entities.Essentials;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
