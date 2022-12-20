@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.Basic;
 
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;

@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.Material;
 
 import dat.backend.model.entities.Orders;
 import dat.backend.model.persistence.ConnectionPool;

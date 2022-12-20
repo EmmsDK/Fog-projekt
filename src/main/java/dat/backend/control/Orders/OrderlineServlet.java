@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.Orders;
 
 import dat.backend.model.entities.Orderline;
 

@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.Material;
 
 import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.persistence.BuildingMaterialFacade;

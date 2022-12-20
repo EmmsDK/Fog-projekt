@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.SVG;
 
 import dat.backend.model.services.CarportSVG;
 import dat.backend.model.services.SVG;

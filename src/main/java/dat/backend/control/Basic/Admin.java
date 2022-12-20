@@ -1,4 +1,4 @@
-package dat.backend.control;
+package dat.backend.control.Basic;
 
 import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.entities.Orders;
