@@ -17,7 +17,8 @@
             <th>Dine Ordre:</th>
         </tr>
         </thead>
-        <c:forEach var="item" items="${sessionScope.list}">
+        <form action="ordersservlet" method="get">
+        <c:forEach var="item" items="${sessionScope.usersOrders}">
             <tr>
                 <td>
                     Bruger ID: ${item.user_id}<br>
@@ -28,7 +29,7 @@
                 </td>
             </tr>
         </c:forEach>
-
+        </form>
     </table>
 
     <c:forEach var="item" items="${sessionScope.list}">

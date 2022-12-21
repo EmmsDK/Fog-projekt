@@ -86,7 +86,7 @@ public class UserMapper {
         }
         return userList;
     }
-    public static int getUserIdbyUsername(String username){
+    public static int getUserIdbyUsername(String username, ConnectionPool connectionPool){
         String sql = "select * from user where username = ?";
         int user_id = 0;
         try (Connection connection = connectionPool.getConnection()) {
