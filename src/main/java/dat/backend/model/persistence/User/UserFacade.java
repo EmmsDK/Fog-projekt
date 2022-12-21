@@ -19,4 +19,9 @@ public class UserFacade
     public static List<User> getUsers(ConnectionPool connectionPool) {
         return UserMapper.getUsers(connectionPool);
     }
+
+
+    public static int getUserIdbyUsername(String username, ConnectionPool connectionPool){
+        return UserMapper.getUserIdbyUsername(username, connectionPool);
+    }
 }
