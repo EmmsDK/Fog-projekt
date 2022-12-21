@@ -25,7 +25,7 @@ public class SvgServlet extends HttpServlet {
         SVG svg = (SVG) session.getAttribute("svg");
         double svgWidth = svg.getWidth();
         double svgHeight = svg.getHeight();
-        double beamThiccness = 10;
+        double beamThiccness = 5;
         double shed = svg.getShed();
         double shedLength = svg.getShedLength();
         double shedWidth = svg.getShedWidth();
@@ -34,14 +34,17 @@ public class SvgServlet extends HttpServlet {
         double middleBeamX = ((onePercentWidth * 20 + (svgWidth - beamThiccness * 2 - 15)) / 2);
         boolean notOverlapping = (Math.abs(middleBeamX - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) && svgWidth >= 400;
 
-        SVG carport = CarportSVG.createNewSVG(0, 0, 35, 35, "0 0 " + svgWidth + " " + svgHeight);
+        SVG svgDrawing = CarportSVG.createNewSVG(0, 0, 50, 50, "0 0 " + svgWidth*1.5 + " " + svgHeight*1.5);
+        SVG carport = CarportSVG.createNewSVG(20, 20, 60, 60, "0 0 " + svgWidth + " " + svgHeight);
+        svgDrawing.addArrow(14, 20,14,80);
+        svgDrawing.addArrow(18, 20+(25/svgHeight*100),18,80-(25/svgHeight*100));
+        svgDrawing.addArrow(20, 83,80,83);
         int fixedOffSet = 30;
 
         //Updates dasharray lines positional x2 value, if shed is chosen
         if (shed == 1) {
             dashArrayX2 = svgWidth - beamThiccness / 2 - shedLength - 15;
         }
-
 
 
         //Vertical rects
@@ -100,8 +103,9 @@ public class SvgServlet extends HttpServlet {
         carport.addBeams(beamDistance, svgHeight, svgWidth);
         carport.addFrame();
 
+        svgDrawing.addInnerSvg(carport);
 
-        request.setAttribute("svg", carport.toString());
+        request.setAttribute("svg", svgDrawing.toString());
         request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
     }
 

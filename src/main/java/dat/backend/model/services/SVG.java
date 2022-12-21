@@ -17,18 +17,19 @@ public class SVG {
     private final static String HEADERTEMPLATE = "<svg x=\"%f%%\" y=\"%f%%\" height=\"%f%%\" width=\"%f%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
     private final static String RECTTEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
 
-    private final static String FRAMETEMPLATE = "<rect x=\"0%%\" y=\"0%%\" height=\"100%%\" width=\"100%%\" fill=\"none\" stroke-width=\"3\" stroke=\"#8b8878\"/>";
-
+    private final static String FRAMETEMPLATE = "<rect x=\"0%\" y=\"0%\" height=\"100%\" width=\"100%\" fill=\"none\" stroke-width=\"3\" stroke=\"#8b8878\"/>";
+    private final static String TEXTTEMPLATE = "text style=\" \"";
     private final static String BEAMTEMPLATE = "<rect x=\"%f\" y=\"0\" height=\"%f\" width=\"5\"fill=\"#ffffff\" stroke-width=\"2\" stroke=\"#8b8878\"/>";
     private final static String SQUARETEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
-            "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
+            "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"1\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
             "        </marker>\n" +
-            "        <marker id=\"endArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"12\" refY=\"6\" orient=\"auto\">\n" +
+            "        <marker id=\"endArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"11\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
             "        </marker>\n" +
             "    </defs>";
+    private final static String ARROWSTEMPLATE = "<line x1=\"%f%%\"  y1=\"%f%%\" x2=\"%f%%\"   y2=\"%f%%\" style=\"stroke: #006600; marker-start: url(#beginArrow); marker-end: url(#endArrow);\"/>";
     private final static String DASHARRAYTEMPLATE =
             "<line fill=\"none\" stroke=\"black\" stroke-dasharray=\"0.5%%,0.5%%\" x1=\"%f\" x2=\"%f\" y1=\"%f\" y2=\"%f\" />\n";
 
@@ -53,7 +54,7 @@ public class SVG {
         svgString.append(FRAMETEMPLATE);
     }
     public void addSquare(double x, double y){
-        svgString.append(String.format(SQUARETEMPLATE,x,y,12.0,12.0));
+        svgString.append(String.format(SQUARETEMPLATE,x,y,7.0,7.0));
     }
 
     public void addDashArrayLines(double x1, double x2, double y1, double y2)
@@ -64,9 +65,22 @@ public class SVG {
 
     public void addBeams(int beamDistance, double height, double width) {
         int remainderOffset = Calculator.calcRemainder(beamDistance, (int) width);
+        if(remainderOffset==beamDistance/2)
+        {
+            remainderOffset=5;
+        }
         for (int i = remainderOffset-4; i <= width; i += beamDistance) {
             svgString.append(String.format(BEAMTEMPLATE,(double)i+1,height));
         }
+        if (remainderOffset!=5){
+            svgString.append(String.format(BEAMTEMPLATE, (double) 1, height));
+        }
+        svgString.append(String.format(BEAMTEMPLATE, width-6, height));
+    }
+
+    public void addArrow(double x1, double y1, double x2, double y2)
+    {
+        svgString.append(String.format(ARROWSTEMPLATE, x1, y1, x2, y2));
     }
     public void addLine(int x1, int y1, int x2, int y2){
 
