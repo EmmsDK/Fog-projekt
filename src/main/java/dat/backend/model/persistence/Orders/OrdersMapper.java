@@ -23,7 +23,7 @@ public class OrdersMapper {
         String sql = "insert into orders (user_id, width, length, total_price) values (?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, user.getIduser());
+                ps.setInt(1, user.getUser_id());
                 ps.setInt(2, orders.getWidth());
                 ps.setInt(3, orders.getLength());
                 ps.setInt(4, orders.getTotal_price());
@@ -31,7 +31,7 @@ public class OrdersMapper {
                 ps.executeUpdate();
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    createOrders = new Orders(user.getIduser(), orders.getWidth(), orders.getLength(), orders.getTotal_price(), orders.getCreated());
+                    createOrders = new Orders(user.getUser_id(), orders.getWidth(), orders.getLength(), orders.getTotal_price(), orders.getCreated());
                 } else {
                     throw new DatabaseException("The order = " + orders + " could not be inserted into the database");
                 }

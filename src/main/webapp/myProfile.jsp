@@ -12,6 +12,7 @@
     <body>
 
     <p>Dit Brugernavn er: ${sessionScope.user.username} </p>
+    ${sessionScope.user.user_id}
 
     <a href="myOrders.jsp">Se dine order her</a>
 
