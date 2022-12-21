@@ -56,6 +56,9 @@
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:if>
+                    <c:if test="${sessionScope.user.username!=null}">
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/payment.jsp">TMP Betaling</a>
+                    </c:if>
                 </div>
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup2">
