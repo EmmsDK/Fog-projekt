@@ -36,6 +36,7 @@ public class Login extends HttpServlet
         session.setAttribute("user", null); // invalidating user object in session scope
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String user_id = request.getParameter("user_id");
 
         try
         {
