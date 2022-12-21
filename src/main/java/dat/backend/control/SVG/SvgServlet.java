@@ -23,22 +23,29 @@ public class SvgServlet extends HttpServlet {
         Locale.setDefault(new Locale("US"));
 
         SVG svg = (SVG) session.getAttribute("svg");
+        //carport SVG parameters - not svgDrawing parameters
         double svgWidth = svg.getWidth();
         double svgHeight = svg.getHeight();
+
         double beamThiccness = 5;
         double shed = svg.getShed();
         double shedLength = svg.getShedLength();
         double shedWidth = svg.getShedWidth();
         double onePercentWidth = (svgWidth / 100);
+        int beamDistance = Calculator.calcBeamDist((int) svgWidth);
         double dashArrayX2 = svgWidth;
         double middleBeamX = ((onePercentWidth * 20 + (svgWidth - beamThiccness * 2 - 15)) / 2);
         boolean notOverlapping = (Math.abs(middleBeamX - (svgWidth - beamThiccness - shedLength - 15)) >= 12 || shed == 0) && svgWidth >= 400;
 
-        SVG svgDrawing = CarportSVG.createNewSVG(0, 0, 50, 50, "0 0 " + svgWidth*1.5 + " " + svgHeight*1.5);
+        SVG svgDrawing = CarportSVG.createNewSVG(0, 0, 50, 50, "0 0 " + svgWidth*2  + " " + svgHeight*2);
         SVG carport = CarportSVG.createNewSVG(20, 20, 60, 60, "0 0 " + svgWidth + " " + svgHeight);
-        svgDrawing.addArrow(14, 20,14,80);
-        svgDrawing.addArrow(18, 20+(25/svgHeight*100),18,80-(25/svgHeight*100));
-        svgDrawing.addArrow(20, 83,80,83);
+
+        svgDrawing.addArrows(svgHeight);
+        svgDrawing.addLines(svgHeight);
+        svgDrawing.addMeasurementLines(svgWidth, beamDistance);
+        svgDrawing.addBeamMeasurements(svgWidth, svgHeight, beamDistance);
+        svgDrawing.addArrowText(svgWidth, svgHeight);
+
         int fixedOffSet = 30;
 
         //Updates dasharray lines positional x2 value, if shed is chosen
@@ -98,8 +105,6 @@ public class SvgServlet extends HttpServlet {
 
         carport.addDashArrayLines(onePercentWidth * 10 + beamThiccness / 2, dashArrayX2, fixedOffSet, svgHeight - fixedOffSet);
 
-
-        int beamDistance = Calculator.calcBeamDist((int) svgWidth);
         carport.addBeams(beamDistance, svgHeight, svgWidth);
         carport.addFrame();
 

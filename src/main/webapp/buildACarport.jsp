@@ -20,7 +20,6 @@
             <option value="300">300</option>
             <option value="330">330</option>
             <option value="360">360</option>
-            <option value="390">390</option>
             <option value="420">420</option>
             <option value="450">450</option>
             <option value="480">480</option>
@@ -28,9 +27,7 @@
             <option value="540">540</option>
             <option value="570">570</option>
             <option value="600">600</option>
-            <option value="630">630</option>
             <option value="660">660</option>
-            <option value="690">690</option>
             <option value="720">720</option>
         </select>
         <br>
