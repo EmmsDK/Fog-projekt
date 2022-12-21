@@ -1,5 +1,6 @@
 package dat.backend.model.persistence.User;
 
+import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
@@ -85,4 +86,23 @@ public class UserMapper {
         }
         return userList;
     }
+    public static int getUserIdbyUsername(String username){
+        String sql = "select * from user where username = ?";
+        int user_id = 0;
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, username);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    user_id=rs.getInt("user_id");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user_id;
+    }
+
 }
