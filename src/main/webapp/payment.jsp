@@ -6,21 +6,27 @@
 
 <html>
 <t:pagetemplate>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <head>
         <title>Betalings Side</title>
     </head>
     <body>
 
     <p>Denne side er hvor du betaler for din carport. </p>
+    <style>
+        img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
 
-    <button formaction="payment" name="total_price" value="${requestScope.totalprice}">
-        ${requestScope.totalprice}
-    </button>
+    <img src="${pageContext.request.contextPath}/images/newCardInfo.png" width="1180" style="width:50%" alt="CardInfo">
 
-    <a href="myOrders.jsp">Se dine order her</a>
-
-    <p>Byg din carport!</p>
-
+    <a href="dealInfo.jsp">
+        <img src="${pageContext.request.contextPath}/images/paynow.png" width="348" style="width: 50%" alt="payNow"/>
+    </a>
 
 
     </body>
