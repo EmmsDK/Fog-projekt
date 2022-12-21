@@ -23,8 +23,7 @@ public class EditMaterial extends HttpServlet {
         List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
-
-        session.setAttribute("materialList", materialList);
+        
         session.setAttribute("material", materialList.get(material_id-1));
 
         request.getRequestDispatcher("/WEB-INF/editMaterial.jsp").forward(request, response);
