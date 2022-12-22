@@ -22,8 +22,8 @@
             <tr>
                 <td>
                     Bruger ID: ${item.user_id}<br>
-                    Længde: ${item.width}
-                    Bredde: ${item.width}
+                    Bredde: ${item.width}<br>
+                    Længde: ${item.length}<br>
                     Total Pris: ${item.total_price}<br>
                     Oprettet: ${item.created}<br>
                 </td>

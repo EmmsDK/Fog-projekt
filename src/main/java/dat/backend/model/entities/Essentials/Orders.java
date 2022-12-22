@@ -22,6 +22,14 @@ public class Orders {
         this.total_price = total_price;
         this.created = created;
     }
+
+    public Orders(int user_id, int width, int length, int total_price) {
+        this.user_id = user_id;
+        this.width = width;
+        this.length = length;
+        this.total_price = total_price;
+    }
+
     public Orders(int user_id, int width, int length, int total_price, Timestamp created, int order_id) {
         this.user_id = user_id;
         this.width = width;

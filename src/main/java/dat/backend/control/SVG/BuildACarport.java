@@ -1,6 +1,7 @@
 package dat.backend.control.SVG;
 
 import dat.backend.model.services.SVG;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -28,7 +29,14 @@ public class BuildACarport extends HttpServlet {
         svg.setShed(shed);
         svg.setShedLength(shedLength);
         svg.setShedWidth(shedWidth);
+
         session.setAttribute("svg", svg);
+        session.setAttribute("length", length);
+        session.setAttribute("width", width);
+        session.setAttribute("shed", shed);
+        session.setAttribute("shedLength", shedLength);
+        session.setAttribute("shedWidth", shedWidth);
+
         request.getRequestDispatcher("buildACarport.jsp").forward(request, response);
     }
 }

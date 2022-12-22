@@ -27,8 +27,6 @@ public class OrdersMapper {
                 ps.setInt(2, orders.getWidth());
                 ps.setInt(3, orders.getLength());
                 ps.setInt(4, orders.getTotal_price());
-                ps.setTimestamp(5, orders.getCreated());
-                ps.executeUpdate();
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     createOrders = new Orders(user.getUser_id(), orders.getWidth(), orders.getLength(), orders.getTotal_price(), orders.getCreated());
@@ -127,7 +125,7 @@ public class OrdersMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, user_id);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while(rs.next()) {
                     int order_id = rs.getInt("order_id");
 
                     int width = rs.getInt("width");
@@ -139,7 +137,6 @@ public class OrdersMapper {
 
                     Orders order = new Orders(user_id,width,length,total_price,created,order_id);
                     myOrders.add(order);
-
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

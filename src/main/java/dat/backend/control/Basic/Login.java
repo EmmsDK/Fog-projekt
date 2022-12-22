@@ -38,11 +38,12 @@ public class Login extends HttpServlet
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         session.setAttribute("username" ,username);
-        String user_id = request.getParameter("user_id");
+
         try
         {
             User user = UserFacade.login(username, password, connectionPool);
             session = request.getSession();
+            user.setIduser(UserFacade.getUserIdbyUsername(username, connectionPool));
             session.setAttribute("user", user); // adding user object to session scope
             request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
         }
