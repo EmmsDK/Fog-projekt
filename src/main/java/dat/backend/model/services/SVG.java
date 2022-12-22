@@ -120,7 +120,7 @@ public class SVG {
         double outerSvgWidth = svgWidth * 2;
         double outerSvgHeight = svgHeight * 2;
         for (double i = 0; i < amountOfBeams; i++) {
-            addMeasurementText(0.23 * (outerSvgWidth) + (0.6 * ((outerSvgWidth / amountOfBeams)) * i), 0.1625 * outerSvgHeight, beamDistance);
+            addMeasurementText(0.20 * (outerSvgWidth) + (0.6 * ((outerSvgWidth / amountOfBeams)) / 2 + (0.6 * ((outerSvgWidth / amountOfBeams)) * i)), 0.1625 * outerSvgHeight, beamDistance);
         }
     }
 
