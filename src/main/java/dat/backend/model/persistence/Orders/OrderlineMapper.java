@@ -1,7 +1,6 @@
 package dat.backend.model.persistence.Orders;
 
 import dat.backend.model.entities.BuildingMaterial;
-import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 
@@ -19,7 +18,7 @@ public class OrderlineMapper {
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-                for(BuildingMaterial buildingMaterial:BoM) {
+                for (BuildingMaterial buildingMaterial : BoM) {
                     ps.setInt(1, buildingMaterial.getMaterial_id());
                     ps.setInt(2, order_id);
                     ps.setInt(3, buildingMaterial.getQuantity());
@@ -27,12 +26,11 @@ public class OrderlineMapper {
                     ps.executeUpdate();
                     int rowsAffected = ps.executeUpdate();
 
-                        throw new DatabaseException("The orderlines could not be inserted into the database");
-                    }
+                    throw new DatabaseException("The orderlines could not be inserted into the database");
                 }
-            } catch (SQLException e) {
-                throw new DatabaseException(e, "Something went wrong, abandon ship");
             }
-
+        } catch (SQLException e) {
+            throw new DatabaseException(e, "Something went wrong, abandon ship");
         }
+    }
 }
