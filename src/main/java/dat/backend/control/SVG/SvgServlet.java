@@ -110,8 +110,8 @@ public class SvgServlet extends HttpServlet {
 
         svgDrawing.addInnerSvg(carport);
 
-        request.setAttribute("svg", svgDrawing.toString());
-        request.getRequestDispatcher("WEB-INF/svgdrawing.jsp").forward(request, response);
+        session.setAttribute("svg", svgDrawing.toString());
+        request.getRequestDispatcher("dealInfo.jsp").forward(request, response);
     }
 
     @Override

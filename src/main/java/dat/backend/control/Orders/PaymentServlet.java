@@ -35,7 +35,6 @@ public class PaymentServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
-
         User user = (User) session.getAttribute("user");
         int length = (int) session.getAttribute("length");
         int width = (int) session.getAttribute("width");
