@@ -1,13 +1,13 @@
 package dat.backend.model.services;
 
 public class SVG {
-    private double x = 0;
-    private double y = 0;
-    private double height = 100;
-    private double width = 100;
-    private double shed = 1;
-    private double shedLength = 100;
-    private double shedWidth = 100;
+    private double x;
+    private double y;
+    private double height;
+    private double width;
+    private double shed;
+    private double shedLength;
+    private double shedWidth;
 
 
     private String viewbox = "0 0 " + width + " " + height;
@@ -40,7 +40,6 @@ public class SVG {
         this.y = y;
         this.height = height;
         this.width = width;
-        this.viewbox = viewbox;
     }
 
     public SVG() {

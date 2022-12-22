@@ -24,6 +24,7 @@ public class SvgServlet extends HttpServlet {
 
         SVG svg = (SVG) session.getAttribute("svg");
         //carport SVG parameters - not svgDrawing parameters
+
         double svgWidth = svg.getWidth();
         double svgHeight = svg.getHeight();
 
@@ -110,7 +111,7 @@ public class SvgServlet extends HttpServlet {
 
         svgDrawing.addInnerSvg(carport);
 
-        session.setAttribute("svg", svgDrawing.toString());
+        session.setAttribute("svg", svgDrawing);
         request.getRequestDispatcher("dealInfo.jsp").forward(request, response);
     }
 

@@ -108,8 +108,6 @@
             ${sessionScope.svg.setShedWidth(sessionScope.svg.getHeight())}
             </c:if>
                 <br><br>
-            <button name="SvgServlet" formaction="svg" formmethod="get">Se din nuværende carport</button>
-
             <button name="PaymentServlet" formaction="paymentservlet" formmethod="post">Bestil carport</button>
 
 
