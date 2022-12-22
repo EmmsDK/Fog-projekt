@@ -12,11 +12,11 @@
     <body>
 
     <h1>Tak for din bestilling!</h1>
-
+    ${sessionScope.svg}
     <br>
     <h2>Du kan se din ordre her:</h2>
     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordersservlet">Mine Ordre</a>
-    
+
     <h2>Stykliste: </h2>
 
 

@@ -17,17 +17,16 @@
     <h1>DU SKAL BETALE: <br> ${sessionScope.price} danska crowners</h1>
     <style>
         img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 
     <img src="${pageContext.request.contextPath}/images/newCardInfo.png" width="1180" style="width:50%" alt="CardInfo">
-
-    <a href="dealInfo.jsp">
-        <img src="${pageContext.request.contextPath}/images/paynow.png" width="348" style="width: 50%" alt="payNow"/>
-    </a>
+    <form action="svg" method="get">
+        <button name="svgServlet" formaction="svg" formmethod="get">Se bestilling</button>
+    </form>
 
 
     </body>
