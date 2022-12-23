@@ -1,8 +1,8 @@
 package dat.backend.model.persistence.Orders;
 
+import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.entities.Essentials.User;
-import dat.backend.model.entities.Materials.Material;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.User.UserMapper;
@@ -17,27 +17,43 @@ public class OrdersMapper {
 
     public static ConnectionPool connectionPool = new ConnectionPool();
 
-    public static Orders createOrders(User user, Orders orders, ConnectionPool connectionPool) throws DatabaseException {
+    public static void createOrders(User user, Orders orders, List<BuildingMaterial> buildingMaterialList, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        Orders createOrders;
+
         String sql = "insert into orders (user_id, width, length, total_price) values (?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, user.getUser_id());
                 ps.setInt(2, orders.getWidth());
                 ps.setInt(3, orders.getLength());
                 ps.setInt(4, orders.getTotal_price());
-                int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1) {
-                    createOrders = new Orders(user.getUser_id(), orders.getWidth(), orders.getLength(), orders.getTotal_price(), orders.getCreated());
-                } else {
-                    throw new DatabaseException("The order = " + orders + " could not be inserted into the database");
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                sql = "insert into orderline (order_id, material_id, quantity, description) values (?,?,?,?)";
+                try (PreparedStatement ps2 = connection.prepareStatement(sql))
+                {
+                    for (BuildingMaterial buildingMaterial:buildingMaterialList) {
+                        ps2.setInt(1, rs.getInt(1));
+                        ps2.setInt(2, buildingMaterial.getMaterial_id());
+                        ps2.setInt(3, buildingMaterial.getQuantity());
+                        ps2.setString(4, buildingMaterial.getDescription());
+                        ps2.executeUpdate();
+                    }
+
                 }
+                catch (SQLException e)
+                {
+                    throw new DatabaseException(e, "Something went wrong, abandon ship");
+                }
+                /*
+                ps.setInt(1);
+                (rs.getInt(1));
+*/
             }
         } catch (SQLException e) {
             throw new DatabaseException(e, "Something went wrong, abandon ship");
         }
-        return createOrders;
     }
 
     public static List<Orders> getOrders(ConnectionPool connectionPool) {
@@ -118,6 +134,7 @@ public class OrdersMapper {
         }
         return result;
     }
+
     public static List<Orders> getOrderByUserId(int user_id, ConnectionPool connectionPool) {
         String sql = "select * from orders where user_id = ?";
         List<Orders> myOrders = new ArrayList<>();
@@ -125,7 +142,7 @@ public class OrdersMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, user_id);
                 ResultSet rs = ps.executeQuery();
-                while(rs.next()) {
+                while (rs.next()) {
                     int order_id = rs.getInt("order_id");
 
                     int width = rs.getInt("width");
@@ -135,7 +152,7 @@ public class OrdersMapper {
                     Timestamp created = rs.getTimestamp("created");
 
 
-                    Orders order = new Orders(user_id,width,length,total_price,created,order_id);
+                    Orders order = new Orders(user_id, width, length, total_price, created, order_id);
                     myOrders.add(order);
                 }
             } catch (SQLException e) {

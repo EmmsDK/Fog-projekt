@@ -1,5 +1,6 @@
 package dat.backend.model.persistence.Orders;
 
+import dat.backend.model.entities.BuildingMaterial;
 import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
@@ -9,8 +10,8 @@ import java.util.List;
 
 public class OrdersFacade {
 
-    public static Orders createOrders(User user, Orders orders, ConnectionPool connectionPool) throws DatabaseException {
-        return OrdersMapper.createOrders(user,orders,connectionPool);
+    public static void createOrders(User user, Orders orders, List<BuildingMaterial> buildingMaterialList, ConnectionPool connectionPool) throws DatabaseException {
+        OrdersMapper.createOrders(user,orders, buildingMaterialList, connectionPool);
     }
 
     public static Object getOrders(ConnectionPool connectionPool) {

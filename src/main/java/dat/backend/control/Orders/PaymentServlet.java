@@ -42,23 +42,19 @@ public class PaymentServlet extends HttpServlet {
         int shedLength = (int) session.getAttribute("shedLength");
         int shedWidth = (int) session.getAttribute("shedWidth");
 
-        if(shed==0)
-        {
-            shedLength=0;
-            shedWidth=0;
+        if (shed == 0) {
+            shedLength = 0;
+            shedWidth = 0;
         }
 
         List<BuildingMaterial> buildingMaterialList = Calculator.billOfMaterialListCreater(length, width, shed, shedLength, shedWidth);
         int price = Calculator.priceCalc(buildingMaterialList);
-        Orders orders = new Orders(user.getUser_id(),width,length,price);
-        try
-        {
-            OrdersMapper.createOrders(user, orders, connectionPool);
+        Orders orders = new Orders(user.getUser_id(), width, length, price);
+        try {
+            OrdersFacade.createOrders(user, orders, buildingMaterialList, connectionPool);
             session.setAttribute("price", price);
             session.setAttribute("billOfMaterials", buildingMaterialList);
-        }
-        catch (DatabaseException e)
-        {
+        } catch (DatabaseException e) {
             e.printStackTrace();
         }
         request.getRequestDispatcher("payment.jsp").forward(request, response);
