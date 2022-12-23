@@ -55,6 +55,7 @@ public class PaymentServlet extends HttpServlet {
         {
             OrdersMapper.createOrders(user, orders, connectionPool);
             session.setAttribute("price", price);
+            session.setAttribute("billOfMaterials", buildingMaterialList);
         }
         catch (DatabaseException e)
         {
