@@ -174,11 +174,19 @@ public class Calculator {
         
         return frames;
     }
-    public static ArrayList<BuildingMaterial> billOfMaterialListCreater(int length, int width, int shed, int shedLength, int shedWidth){
+    public static ArrayList<BuildingMaterial> billOfMaterialListCreater(int length, int width, int shed, int shedLength, int shedWidth) {
         ArrayList<BuildingMaterial> billOfMaterials = new ArrayList<>();
         //all static materials.
-        billOfMaterials= (ArrayList<BuildingMaterial>) BuildingMaterialFacade.getStaticMaterials(connectionPool);
+        billOfMaterials = (ArrayList<BuildingMaterial>) BuildingMaterialFacade.getStaticMaterials(connectionPool);
+        if (shed == 0) {
+            for (int i=billOfMaterials.size()-1; i>=0;i--) {
+                if (billOfMaterials.get(i).getDescription().contains("skur") || billOfMaterials.get(i).getDescription().contains("beklædning")) {
+                    billOfMaterials.remove(i);
+                }
+            }
+        }
         for(BuildingMaterial material: BuildingMaterialFacade.getDynamicMaterials(connectionPool)){
+
             if(material.getMaterial_id()<3 ||material.getMaterial_id()==4|| material.getMaterial_id()==13){
                 material.setQuantity(4);
                 billOfMaterials.add(material);
@@ -222,6 +230,7 @@ public class Calculator {
                 }
             }
         }
+
 
         return billOfMaterials;
     }
