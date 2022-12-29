@@ -1,0 +1,23 @@
+@startuml
+|Customer|
+start
+:Creates order;
+|Website|
+:Redirects to paymentsite;
+:Generates price;
+:Displays price;
+|Customer|
+:customer pays;
+|Website|
+:Redirects to dealinfo;
+:Displays bill of materials and plans;
+|Fog employe|
+:recieves bill of materials;
+:sends materials;
+|Customer|
+:recieves materials;
+:recives buildingmanual;
+
+
+stop
+@enduml
