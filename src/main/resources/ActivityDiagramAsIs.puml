@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+|Customer|
+start
+:Places order on website;
+|Website|
+:Website generates mail with order information;
+:Website sends mail;
+|Fog employe|
+:recieves mail;
+:gives information to Fog Sales System;
+|Fog Sales System|
+:Generates plans;
+:Generates price;
+:Generates bill of materials;
+|Fog employe|
+:contacts customer regarding price and plans;
+|Customer|
+:pays;
+|Fog employe|
+:sends bill of materials to customer;
+:sends buildingmanual;
+|Customer|
+:recieves bill of materials;
+:recieves buildingmanual;
+
+@enduml
