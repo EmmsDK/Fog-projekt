@@ -17,26 +17,26 @@
             <th>Liste af Materiale:</th>
         </tr>
         </thead>
+        <form action="editmaterial" method="post">
         <c:forEach var="item" items="${sessionScope.materialList}">
             <tr>
                 <td>
                     Materiale ID: ${item.material_id}<br>
-                    Type: ${item.type}<br>
+                    Type: ${item.type} <br>
                     Pris: ${item.price}
+                <td align="right">
+                <br>
+                    <button name="material_id" id="material_id" value="${item.material_id}">
+                        Rediger
+                    </button>
+                </td>
+
                 </td>
             </tr>
         </c:forEach>
+        </form>
     </table>
     <br><br>
-
-    <form action="editmaterial" method="post">
-        <h3>Rediger Materiale</h3>
-
-        <label>
-            <input style="width:300px" type="number" name="material_id" id="material_id"/>
-        </label>
-        <button>Opdater materiale</button>
-    </form>
     <br>
     <form action="admin.jsp">
         <button name="tilbageTilAdmin">Tilbage til Admin Siden</button>
