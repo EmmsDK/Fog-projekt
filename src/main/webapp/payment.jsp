@@ -14,7 +14,7 @@
     <body>
 
     <p>Denne side er hvor du betaler for din carport. </p><br><br>
-    <h1>DU SKAL BETALE: <br> ${sessionScope.price} danska crowners</h1>
+    <h1>DU SKAL BETALE: <br> ${sessionScope.price} DKK</h1>
     <style>
         img {
             display: block;

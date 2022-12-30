@@ -15,7 +15,6 @@ public class SVG {
 
     private final static String HEADERTEMPLATE = "<svg x=\"%f%%\" y=\"%f%%\" height=\"%f%%\" width=\"%f%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin meet\">";
     private final static String RECTTEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
-
     private final static String FRAMETEMPLATE = "<rect x=\"0%\" y=\"0%\" height=\"100%\" width=\"100%\" fill=\"none\" stroke-width=\"3\" stroke=\"#8b8878\"/>";
     private final static String TEXTTEMPLATE = "<text style=\"text-anchor: middle \" transform=\"translate(%f, %f) rotate(%d)\">%s</text>";
     private final static String LINETEMPLATE = "<line x1=\"%f%%\"  y1=\"%f%%\" x2=\"%f%%\"   y2=\"%f%%\" stroke=\"#006600\"/>";

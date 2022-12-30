@@ -31,25 +31,17 @@ public class OrdersMapper {
                 ResultSet rs = ps.getGeneratedKeys();
                 rs.next();
                 sql = "insert into orderline (order_id, material_id, quantity, description) values (?,?,?,?)";
-                try (PreparedStatement ps2 = connection.prepareStatement(sql))
-                {
-                    for (BuildingMaterial buildingMaterial:buildingMaterialList) {
+                try (PreparedStatement ps2 = connection.prepareStatement(sql)) {
+                    for (BuildingMaterial buildingMaterial : buildingMaterialList) {
                         ps2.setInt(1, rs.getInt(1));
                         ps2.setInt(2, buildingMaterial.getMaterial_id());
                         ps2.setInt(3, buildingMaterial.getQuantity());
                         ps2.setString(4, buildingMaterial.getDescription());
                         ps2.executeUpdate();
                     }
-
-                }
-                catch (SQLException e)
-                {
+                } catch (SQLException e) {
                     throw new DatabaseException(e, "Something went wrong, abandon ship");
                 }
-                /*
-                ps.setInt(1);
-                (rs.getInt(1));
-*/
             }
         } catch (SQLException e) {
             throw new DatabaseException(e, "Something went wrong, abandon ship");
