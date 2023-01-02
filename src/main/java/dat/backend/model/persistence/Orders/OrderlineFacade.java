@@ -8,7 +8,7 @@ import dat.backend.model.persistence.ConnectionPool;
 import java.util.List;
 
 public class OrderlineFacade {
-    public static void createOrderlinesByOrderId(List<BuildingMaterial> BoM, ConnectionPool connectionPool) throws DatabaseException {
-        OrderlineMapper.createOrderlinesByOrderId(BoM,connectionPool);
+    public static void createOrderlinesByOrderId(List<BuildingMaterial> buildingMaterialList, int order_id, ConnectionPool connectionPool) throws DatabaseException {
+        OrderlineMapper.createOrderlinesByOrderId(buildingMaterialList, order_id, connectionPool);
     }
 }
