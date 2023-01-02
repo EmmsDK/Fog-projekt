@@ -48,7 +48,7 @@ public class OrdersMapper {
         }
     }
 
-    public static List<Orders> getOrders(ConnectionPool connectionPool) {
+    public static List<Orders> getOrders() {
 
         Logger.getLogger("web").log(Level.INFO, "");
         List<Orders> ordersList = new ArrayList<>();
@@ -80,7 +80,7 @@ public class OrdersMapper {
         return ordersList;
     }
 
-    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) {
+    public static void removeOrder(int order_id) {
         Logger.getLogger("web").log(Level.INFO, "");
         boolean result = false;
         String sql = "delete from orders where order_id = ?";
@@ -93,38 +93,12 @@ public class OrdersMapper {
                 } else {
                     throw new DatabaseException("Order med order ID = " + order_id + " kunne ikke fjernes");
                 }
-            } catch (SQLException throwables) {
+            } catch (SQLException | DatabaseException throwables) {
                 throwables.printStackTrace();
-            } catch (DatabaseException e) {
-                e.printStackTrace();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return result;
-    }
-
-    public boolean updateOrder(Orders order) throws DatabaseException {
-        Logger.getLogger("web").log(Level.INFO, "");
-        boolean result = false;
-        String sql = "UPDATE orders SET width = ?, length = ?, total_price = ? " +
-                "WHERE user_id = ?";
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, order.getWidth());
-                ps.setInt(2, order.getLength());
-                ps.setInt(3, order.getTotal_price());
-                int rowsAffected = ps.executeUpdate();
-                if (rowsAffected == 1) {
-                    result = true;
-                } else {
-                    throw new DatabaseException("Kunne ikke opdatere ordre med order_id = " + order.getOrder_id());
-                }
-            }
-        } catch (SQLException ex) {
-            throw new DatabaseException("Kunne ikke opdatere ordre med order_id = " + order.getOrder_id());
-        }
-        return result;
     }
 
     public static List<Orders> getOrderByUserId(int user_id, ConnectionPool connectionPool) {

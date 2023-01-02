@@ -8,14 +8,14 @@ import dat.backend.model.persistence.ConnectionPool;
 import java.util.List;
 
 public class BuildingMaterialFacade {
-    public static List<BuildingMaterial> getStaticMaterials(ConnectionPool connectionPool){
-        return BuildingMaterialMapper.getStaticMaterials(connectionPool);
+    public static List<BuildingMaterial> getStaticMaterials(){
+        return BuildingMaterialMapper.getStaticMaterials();
     }
-    public static List<BuildingMaterial> getDynamicMaterials(ConnectionPool connectionPool){
-        return BuildingMaterialMapper.getDynamicMaterials(connectionPool);
+    public static List<BuildingMaterial> getDynamicMaterials(){
+        return BuildingMaterialMapper.getDynamicMaterials();
     }
-    public static List<BuildingMaterial> getAllMaterials(ConnectionPool connectionPool) {
-        return BuildingMaterialMapper.getAllMaterials(connectionPool);
+    public static List<BuildingMaterial> getAllMaterials() {
+        return BuildingMaterialMapper.getAllMaterials();
     }
     public static Material createMaterial(String type, String description, int length, int type_id, int price, ConnectionPool connectionPool) throws DatabaseException {
         return BuildingMaterialMapper.createMaterial(type, description, length, type_id, price, connectionPool);
@@ -25,7 +25,4 @@ public class BuildingMaterialFacade {
         BuildingMaterialMapper.updateMaterial(material_id, type, description, length, price, connectionPool);
     }
 
-    public static Material getMaterialById(int material_id, ConnectionPool connectionPool){
-        return BuildingMaterialMapper.getMaterialById(material_id,connectionPool);
-    }
 }

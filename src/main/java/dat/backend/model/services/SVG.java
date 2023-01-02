@@ -1,8 +1,6 @@
 package dat.backend.model.services;
 
 public class SVG {
-    private double x;
-    private double y;
     private double height;
     private double width;
     private double shed;
@@ -10,8 +8,7 @@ public class SVG {
     private double shedWidth;
 
 
-    private String viewbox = "0 0 " + width + " " + height;
-    private StringBuilder svgString = new StringBuilder();
+    private final StringBuilder svgString = new StringBuilder();
 
     private final static String HEADERTEMPLATE = "<svg x=\"%f%%\" y=\"%f%%\" height=\"%f%%\" width=\"%f%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin meet\">";
     private final static String RECTTEMPLATE = "<rect x=\"%f\" y=\"%f\" height=\"%f\" width=\"%f\" fill=\"#ffffff\" stroke=\"#8b8878\"/>";
@@ -35,8 +32,6 @@ public class SVG {
     public SVG(double x, double y, double height, double width, String viewbox) {
         svgString.append(String.format(HEADERTEMPLATE, x, y, height, width, viewbox));
         svgString.append(ARROWHEADSTEMPLATE);
-        this.x = x;
-        this.y = y;
         this.height = height;
         this.width = width;
     }
@@ -142,14 +137,6 @@ public class SVG {
         return svgString + "</svg>";
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     public double getHeight() {
         return height;
     }
@@ -180,14 +167,6 @@ public class SVG {
 
     public void setShedWidth(int shedWidth) {
         this.shedWidth = shedWidth;
-    }
-
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
     }
 
     public void setHeight(int height) {

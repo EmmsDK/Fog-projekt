@@ -12,12 +12,12 @@ public class UserFacade
         return UserMapper.login(username, password, connectionPool);
     }
 
-    public static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException {
-        return UserMapper.createUser(username, password, role, connectionPool);
+    public static User createUser(String username, String password, ConnectionPool connectionPool) throws DatabaseException {
+        return UserMapper.createUser(username, password, connectionPool);
     }
 
-    public static List<User> getUsers(ConnectionPool connectionPool) {
-        return UserMapper.getUsers(connectionPool);
+    public static List<User> getUsers() {
+        return UserMapper.getUsers();
     }
 
 

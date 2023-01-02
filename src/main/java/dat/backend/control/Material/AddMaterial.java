@@ -10,8 +10,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-import static dat.backend.model.persistence.Orders.OrdersMapper.connectionPool;
-
 @WebServlet(name = "AddMaterial", value = "/addmaterial")
 public class AddMaterial extends HttpServlet {
 
@@ -38,7 +36,7 @@ public class AddMaterial extends HttpServlet {
 
             session = request.getSession();
             session.setAttribute("createMaterial", createMaterial);
-            session.setAttribute("materialList", BuildingMaterialFacade.getAllMaterials(connectionPool));
+            session.setAttribute("materialList", BuildingMaterialFacade.getAllMaterials());
 
             request.getRequestDispatcher("materialList.jsp").forward(request, response);
         } catch (DatabaseException e) {

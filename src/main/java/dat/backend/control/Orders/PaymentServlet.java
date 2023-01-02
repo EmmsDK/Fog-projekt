@@ -7,18 +7,12 @@ import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.Orders.OrdersFacade;
-import dat.backend.model.persistence.Orders.OrdersMapper;
-import dat.backend.model.persistence.User.UserFacade;
-import dat.backend.model.persistence.User.UserMapper;
 import dat.backend.model.services.Calculator;
-import dat.backend.model.services.SVG;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Timestamp;
 import java.util.List;
 
 @WebServlet(name = "PaymentServlet", value = "/paymentservlet")

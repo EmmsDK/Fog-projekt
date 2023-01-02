@@ -14,14 +14,14 @@
     <form action="updatematerial" method="post">
         <h3>Rediger materiale ${sessionScope.material.material_id}</h3>
         Type:
-        <input style="width:200px" type="text" name="type" id="updatedType"/> <br>
+        <label for="updatedType"></label><input style="width:200px" type="text" name="type" id="updatedType"/> <br>
         Længde:
-        <input style="width:200px" type="number" name="length" id="updatedLength"/><br>
+        <label for="updatedLength"></label><input style="width:200px" type="number" name="length" id="updatedLength"/><br>
         Beskrivelse:
-        <input style="width:200px" type="text" name="description" id="updatedDescription"/><br>
+        <label for="updatedDescription"></label><input style="width:200px" type="text" name="description" id="updatedDescription"/><br>
         <br>
         Pris:
-        <input style="width:200px" type="text" name="price" id="updatedPrice"/><br>
+        <label for="updatedPrice"></label><input style="width:200px" type="text" name="price" id="updatedPrice"/><br>
         <input type="hidden" name="material_id" value="${sessionScope.material.material_id}"/>
         <br>
         <button>

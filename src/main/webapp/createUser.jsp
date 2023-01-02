@@ -16,9 +16,9 @@
         <form action="createuser" method="post">
             <%--@declare id="password"--%><%--@declare id="username"--%>
             <label for="username">Brugernavn: </label>
-            <input type="text" id="newUsername" name="username"/>
+            <label for="newUsername"></label><input type="text" id="newUsername" name="username"/>
             <label for="password">Kodeord: </label>
-            <input type="password" id="newPassword" name="password"/>
+            <label for="newPassword"></label><input type="password" id="newPassword" name="password"/>
             <input type="submit" value="Create User"/>
 
         </form>

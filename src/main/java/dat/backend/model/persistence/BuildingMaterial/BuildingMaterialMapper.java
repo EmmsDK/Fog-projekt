@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BuildingMaterialMapper {
-    public static List<BuildingMaterial> getStaticMaterials(ConnectionPool connectionPool) {
+    public static List<BuildingMaterial> getStaticMaterials() {
 
         List<BuildingMaterial> staticMaterials = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class BuildingMaterialMapper {
         return staticMaterials;
     }
 
-    public static List<BuildingMaterial> getDynamicMaterials(ConnectionPool connectionPool) {
+    public static List<BuildingMaterial> getDynamicMaterials() {
 
         List<BuildingMaterial> dynamicMaterials = new ArrayList<>();
         String sql = "select * from material where type_id < 3";
@@ -117,7 +117,7 @@ public class BuildingMaterialMapper {
     }
 
     public static void updateMaterial(int material_id, String type, String description, int length, int price, ConnectionPool connectionPool) {
-        String sql = "UPDATE material SET type = ?, description = ?, length = ?, price = ? WHERE material_id = "+material_id+"";
+        String sql = "UPDATE material SET type = ?, description = ?, length = ?, price = ? WHERE material_id = " + material_id + "";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, type);
@@ -131,34 +131,7 @@ public class BuildingMaterialMapper {
         }
     }
 
-    public static Material getMaterialById(int material_id, ConnectionPool connectionPool) {
-        String sql = "select * from material where item_id = ?";
-
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, material_id);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    int id = rs.getInt("material_id");
-                    String type = rs.getString("type");
-                    String description = rs.getString("description");
-                    int length = rs.getInt("length");
-                    int type_id = rs.getInt("type_id");
-                    int price = rs.getInt("price");
-
-                    Material newMaterial = new Material(id, type, description, length, type_id, price);
-                    return newMaterial;
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static List<BuildingMaterial> getAllMaterials(ConnectionPool connectionPool) {
+    public static List<BuildingMaterial> getAllMaterials() {
 
         List<BuildingMaterial> allMaterials = new ArrayList<>();
 
@@ -196,18 +169,16 @@ public class BuildingMaterialMapper {
                             allMaterials.add(newWood);
                             break;
                     }
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
-        } catch (SQLException throwables) {
+        } catch (
+                SQLException throwables) {
             throwables.printStackTrace();
         }
-    } catch(
-    SQLException throwables)
-
-    {
-        throwables.printStackTrace();
-    }
 
         return allMaterials;
-}
+    }
 }
 

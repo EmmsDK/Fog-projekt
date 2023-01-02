@@ -7,18 +7,16 @@ public class User
     private int user_id;
     private String username;
     private String password;
-    private String role;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public User(int user_id, String username, String password, String role) {
+    public User(int user_id, String username, String password) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
     public int getUser_id() {
@@ -27,14 +25,6 @@ public class User
 
     public void setIduser(int iduser) {
         this.user_id = iduser;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getUsername()

@@ -14,11 +14,11 @@ public class OrdersFacade {
         OrdersMapper.createOrders(user,orders, buildingMaterialList, connectionPool);
     }
 
-    public static Object getOrders(ConnectionPool connectionPool) {
-        return OrdersMapper.getOrders(connectionPool);
+    public static Object getOrders() {
+        return OrdersMapper.getOrders();
     }
-    public static boolean removeOrder(int order_id, ConnectionPool connectionPool) {
-        return OrdersMapper.removeOrder(order_id, connectionPool);
+    public static void removeOrder(int order_id) {
+        OrdersMapper.removeOrder(order_id);
     }
     public static List<Orders> getOrderByUserId(int user_id, ConnectionPool connectionPool) {
         return OrdersMapper.getOrderByUserId(user_id, connectionPool);

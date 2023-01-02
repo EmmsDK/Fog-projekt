@@ -18,22 +18,19 @@
         </tr>
         </thead>
         <form action="editmaterial" method="post">
-        <c:forEach var="item" items="${sessionScope.materialList}">
+            <c:forEach var="item" items="${sessionScope.materialList}">
             <tr>
                 <td>
                     Materiale ID: ${item.material_id}<br>
                     Type: ${item.type} <br>
                     Pris: ${item.price}
                 <td align="right">
-                <br>
+                    <br>
                     <button name="material_id" id="material_id" value="${item.material_id}">
                         Rediger
                     </button>
                 </td>
-
-                </td>
-            </tr>
-        </c:forEach>
+                </c:forEach>
         </form>
     </table>
     <br><br>

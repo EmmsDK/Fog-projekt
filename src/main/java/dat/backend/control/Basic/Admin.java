@@ -24,14 +24,14 @@ public class Admin extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
-        List<User> userList = UserFacade.getUsers(connectionPool);
+        List<User> userList = UserFacade.getUsers();
         session.setAttribute("userList", userList);
 
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getAllMaterials(connectionPool);
+        List<BuildingMaterial> materialList = BuildingMaterialFacade.getAllMaterials();
         session.setAttribute("materialList", materialList);
 
 
-        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders(connectionPool);
+        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders();
 
         System.out.println(ordersList);
 

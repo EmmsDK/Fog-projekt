@@ -16,19 +16,19 @@
                 <%--@declare id="type_id"--%>
                 <%--@declare id="price"--%>
             <label for="type">Type: </label>
-            <input type="text" id="newType" name="type"/>
+                    <label for="newType"></label><input type="text" id="newType" name="type"/>
             <br>
             <label for="description">Beskrivelse: </label>
-            <input type="text" id="newDescription" name="description"/>
+                    <label for="newDescription"></label><input type="text" id="newDescription" name="description"/>
             <br>
             <label for="length">Længde: </label>
-            <input type="number" id="newLength" name="length"/>
+                    <label for="newLength"></label><input type="number" id="newLength" name="length"/>
             <br>
             <label for="type_id">Type ID: </label>
-            <input type="number" id="newTypeID" name="type_id"/>
+                    <label for="newTypeID"></label><input type="number" id="newTypeID" name="type_id"/>
             <br>
             <label for="price">Pris: </label>
-            <input type="number" id="newPrice" name="price"/>
+                    <label for="newPrice"></label><input type="number" id="newPrice" name="price"/>
             <br>
             <input type="submit" value="Add Material"/>
         </form>

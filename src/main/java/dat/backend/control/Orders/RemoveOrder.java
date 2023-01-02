@@ -22,7 +22,7 @@ public class RemoveOrder extends HttpServlet {
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
 
-        OrdersFacade.removeOrder(order_id,connectionPool);
+        OrdersFacade.removeOrder(order_id);
         List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
         ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
 

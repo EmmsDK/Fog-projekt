@@ -1,6 +1,5 @@
 package dat.backend.model.persistence.User;
 
-import dat.backend.model.entities.Essentials.Orders;
 import dat.backend.model.entities.Essentials.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
@@ -17,7 +16,7 @@ public class UserMapper {
 
     static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        User user = null;
+        User user;
 
         String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
         try (Connection connection = connectionPool.getConnection()) {
@@ -37,7 +36,7 @@ public class UserMapper {
         return user;
     }
 
-    static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException {
+    static User createUser(String username, String password, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         User createUser;
         String sql = "insert into user (username, password, role) values (?,?,?)";
@@ -54,12 +53,12 @@ public class UserMapper {
                 }
             }
         } catch (SQLException ex) {
-            throw new DatabaseException(ex, "Could not insert username into database");
+            throw new DatabaseException(ex, "Username already in use, please try again");
         }
         return createUser;
     }
 
-    public static List<User> getUsers(ConnectionPool connectionPool) {
+    public static List<User> getUsers() {
         Logger.getLogger("web").log(Level.INFO, "");
         List<User> userList = new ArrayList<>();
 
@@ -75,7 +74,7 @@ public class UserMapper {
                     String password = rs.getString("password");
                     String role = rs.getString("role");
 
-                    User newUser = new User(user_id, username, password, role);
+                    User newUser = new User(user_id, username, password);
                     userList.add(newUser);
                 }
             } catch (SQLException throwables) {

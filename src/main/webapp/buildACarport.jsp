@@ -14,7 +14,7 @@
     </h1>
     <form action="buildacarport" method="post">
         Længde<br>
-        <select name="length" id="length">
+        <label for="length"></label><select name="length" id="length">
             <option value="240">240</option>
             <option value="270">270</option>
             <option value="300">300</option>
@@ -33,7 +33,7 @@
         <br>
 
         Bredde<br>
-        <select name="width" id="width">
+        <label for="width"></label><select name="width" id="width">
             <option value="240">240</option>
             <option value="270">270</option>
             <option value="300">300</option>
@@ -50,13 +50,13 @@
         </select>
         <br>
         Redskabsrum<br>
-        <select name="shed" id="shed">
+        <label for="shed"></label><select name="shed" id="shed">
             <option value="1">Ja</option>
             <option value="0">Nej</option>
         </select>
             <br>
             Redskabsrum længde<br>
-            <select name="shedLength" id="shedLength">
+        <label for="shedLength"></label><select name="shedLength" id="shedLength">
                 <option value="105">105</option>
                 <option value="120">120</option>
                 <option value="135">135</option>
@@ -78,7 +78,7 @@
             </select>
             <br>
             Redskabsrum bredde<br>
-            <select name="shedWidth" id="shedWidth">
+        <label for="shedWidth"></label><select name="shedWidth" id="shedWidth">
                 <option value="210">210</option>
                 <option value="240">240</option>
                 <option value="270">270</option>
