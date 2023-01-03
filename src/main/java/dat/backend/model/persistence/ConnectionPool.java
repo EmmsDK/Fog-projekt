@@ -14,7 +14,7 @@ public class ConnectionPool
 
     private final HikariDataSource ds;
     private static final String USER = "dev";
-    private static final String PASSWORD = "3r!DE32*/fDe";
+    private static final String PASSWORD = "";
     private static final String URL = "jdbc:mysql://161.35.208.21:3306/fog";
 
     public ConnectionPool()
