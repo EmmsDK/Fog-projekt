@@ -10,7 +10,7 @@ start
 :customer pays;
 |Website|
 :Redirects to dealinfo;
-:Displays bill of materials and plans;
+:Displays bill of materials & plans;
 |Fog employe|
 :recieves bill of materials;
 :sends materials;

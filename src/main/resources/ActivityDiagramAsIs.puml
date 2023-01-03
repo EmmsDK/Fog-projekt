@@ -5,17 +5,17 @@
 start
 :Places order on website;
 |Website|
-:Website generates mail with order information;
+:Website generates order information;
 :Website sends mail;
 |Fog employe|
 :recieves mail;
-:gives information to Fog Sales System;
+:gives information to Fogs System;
 |Fog Sales System|
 :Generates plans;
 :Generates price;
 :Generates bill of materials;
 |Fog employe|
-:contacts customer regarding price and plans;
+:contacts customer with price & plans;
 |Customer|
 :pays;
 |Fog employe|
@@ -24,5 +24,6 @@ start
 |Customer|
 :recieves bill of materials;
 :recieves buildingmanual;
+stop
 
 @enduml
