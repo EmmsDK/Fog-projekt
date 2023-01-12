@@ -7,6 +7,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+import static dat.backend.control.Basic.Admin.materialList;
+
 @WebServlet(name = "EditMaterial", value = "/editmaterial")
 public class EditMaterial extends HttpServlet {
     @Override
@@ -20,7 +22,7 @@ public class EditMaterial extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
+        //List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
 

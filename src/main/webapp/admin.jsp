@@ -11,34 +11,12 @@ Admin Side
 
     <jsp:body>
 
-        <!--
-        <br>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Lise af ordre:</th>
-            </tr>
-            </thead>
-            <c:if test="${sessionScope.ordersList != null}">
-                <c:forEach var="item" items="${sessionScope.ordersList}">
-                    <tr>
-                        <td>
-                            User ID: ${item.user_id}<br>
-                            Længde: ${item.length}
-                            Bredde: ${item.width}
-                            Total Pris: ${item.total_price}<br>
-                            Oprettet: ${item.created}<br>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </c:if>
-        </table>
-        --!>
-        
         <p>
-            Fra denne side kan du blive omdirigeret til Rediger Materiale og Portfolio ved at trykke på nedstående knapper. <br>
-            På Rediger Materiale siden, kan du ændre navnet og prisen på materialerne fra databasen. På Portfolio siden, <br>
-            kan du se, redigere og slette kundeordrer der ligger inde på databasen.
+            Fra denne side kan du blive omdirigeret til Rediger Materiale og Ordrer ved at trykke på nedstående knapper. <br>
+            På Rediger Materiale siden, kan du ændre navnet og prisen på materialerne fra databasen. <br>
+            På Ordrer siden, kan du se, redigere og slette kundeordrer der ligger inde på databasen. <br>
+            Yderligere, kan du blive opdirigeret til Tilføj Materiale. På Tilføj Materiale siden, <br>
+            kan du tilføje nye materialer til databasen.
         </p>
 
         <br>

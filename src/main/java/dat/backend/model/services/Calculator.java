@@ -194,7 +194,6 @@ public class Calculator {
                 billOfMaterials.add(material);
             }
         }
-
         return billOfMaterials;
     }
 }

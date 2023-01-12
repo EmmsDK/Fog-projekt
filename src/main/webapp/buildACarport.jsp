@@ -5,9 +5,6 @@
 
 <html>
 <t:pagetemplate>
-    <head>
-        <title>Title</title>
-    </head>
     <body>
     <h1>
         Mål til carport i cm:
@@ -56,7 +53,7 @@
         </select>
             <br>
             Redskabsrum længde<br>
-        <label for="shedLength"></label><select name="shedLength" id="shedLength">
+            <label for="shedLength"></label><select name="shedLength" id="shedLength">
                 <option value="105">105</option>
                 <option value="120">120</option>
                 <option value="135">135</option>
@@ -74,11 +71,10 @@
                 <option value="315">315</option>
                 <option value="330">330</option>
                 <option value="345">345</option>
-
             </select>
             <br>
             Redskabsrum bredde<br>
-        <label for="shedWidth"></label><select name="shedWidth" id="shedWidth">
+            <label for="shedWidth"></label><select name="shedWidth" id="shedWidth">
                 <option value="210">210</option>
                 <option value="240">240</option>
                 <option value="270">270</option>
@@ -109,8 +105,6 @@
             </c:if>
                 <br><br>
             <button name="PaymentServlet" formaction="paymentservlet" formmethod="post">Bestil carport</button>
-
-
         </c:if>
 
 

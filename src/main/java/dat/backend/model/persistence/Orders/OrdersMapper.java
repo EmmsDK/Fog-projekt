@@ -67,7 +67,6 @@ public class OrdersMapper {
                     Timestamp created = rs.getTimestamp("created");
                     int order_id = rs.getInt("order_id");
 
-
                     Orders newOrders = new Orders(user_id, width, length, total_price, created, order_id);
                     ordersList.add(newOrders);
                 }
@@ -117,7 +116,6 @@ public class OrdersMapper {
                     int total_price = rs.getInt("total_price");
                     Timestamp created = rs.getTimestamp("created");
 
-
                     Orders order = new Orders(user_id, width, length, total_price, created, order_id);
                     myOrders.add(order);
                 }
@@ -129,5 +127,4 @@ public class OrdersMapper {
         }
         return myOrders;
     }
-
 }

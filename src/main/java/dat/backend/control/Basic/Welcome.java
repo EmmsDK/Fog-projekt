@@ -7,6 +7,7 @@ import java.io.IOException;
 
 @WebServlet(name = "Welcome", value = "/welcome")
 public class Welcome extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");

@@ -54,7 +54,6 @@ public class SvgServlet extends HttpServlet {
             dashArrayX2 = svgWidth - beamThickness / 2 - shedLength - 15;
         }
 
-
         //Vertical rects
         carport.addRect(0, 0, svgHeight, beamThickness);
         carport.addRect(svgWidth - beamThickness, 0, svgHeight, beamThickness);

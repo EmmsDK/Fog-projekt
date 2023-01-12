@@ -7,7 +7,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-
 @WebServlet(name = "buildACarport", value = "/buildacarport")
 public class BuildACarport extends HttpServlet {
 

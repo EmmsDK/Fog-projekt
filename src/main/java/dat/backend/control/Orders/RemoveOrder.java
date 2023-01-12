@@ -10,10 +10,13 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+import static dat.backend.control.Basic.Admin.ordersList;
+
 @WebServlet(name = "RemoveOrder", value = "/removeorder")
 public class RemoveOrder extends HttpServlet {
 
     private static final ConnectionPool connectionPool = new ConnectionPool();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +26,7 @@ public class RemoveOrder extends HttpServlet {
         int order_id = Integer.parseInt(request.getParameter("order_id"));
 
         OrdersFacade.removeOrder(order_id);
-        List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");
+
         ordersList.removeIf(orders -> orders.getOrder_id()==order_id);
 
         session.setAttribute("ordersList",ordersList);

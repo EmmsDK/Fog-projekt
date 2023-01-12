@@ -16,7 +16,6 @@ public class BuildingMaterialMapper {
     public static List<BuildingMaterial> getStaticMaterials() {
 
         List<BuildingMaterial> staticMaterials = new ArrayList<>();
-
         String sql = "select * from material where type_id > 2";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
@@ -32,17 +31,13 @@ public class BuildingMaterialMapper {
                     int material_id = rs.getInt("material_id");
                     int price = rs.getInt("price");
 
-
                     if (type_id == 4) {
                         BuildingMaterial newScrew = new Screw(type, description, length, material_id, quantity, type_id, price);
                         staticMaterials.add(newScrew);
                     } else {
-
                         BuildingMaterial newFitting = new Fitting(type, description, length, material_id, quantity, type_id, price);
                         staticMaterials.add(newFitting);
-
                     }
-
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -50,7 +45,6 @@ public class BuildingMaterialMapper {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return staticMaterials;
     }
 
@@ -72,12 +66,10 @@ public class BuildingMaterialMapper {
                     int material_id = rs.getInt("material_id");
                     int price = rs.getInt("price");
 
-
                     if (type_id == 1) {
                         BuildingMaterial newWood = new Wood(type, description, length, material_id, quantity, type_id, price);
                         dynamicMaterials.add(newWood);
                     } else {
-
                         BuildingMaterial newRoofTile = new RoofTile(type, description, length, material_id, quantity, type_id, price);
                         dynamicMaterials.add(newRoofTile);
                     }
@@ -134,7 +126,6 @@ public class BuildingMaterialMapper {
     public static List<BuildingMaterial> getAllMaterials() {
 
         List<BuildingMaterial> allMaterials = new ArrayList<>();
-
         String sql = "select * from material";
 
         try (Connection connection = UserMapper.connectionPool.getConnection()) {
@@ -150,8 +141,8 @@ public class BuildingMaterialMapper {
                     int material_id = rs.getInt("material_id");
                     int price = rs.getInt("price");
 
-
                     switch (type_id) {
+                        //Dynamic
                         case 4:
                             BuildingMaterial newScrew = new Screw(type, description, length, material_id, quantity, type_id, price);
                             allMaterials.add(newScrew);
@@ -160,6 +151,7 @@ public class BuildingMaterialMapper {
                             BuildingMaterial newFitting = new Fitting(type, description, length, material_id, quantity, type_id, price);
                             allMaterials.add(newFitting);
                             break;
+                        //Static
                         case 2:
                             BuildingMaterial newRoofTile = new RoofTile(type, description, length, material_id, quantity, type_id, price);
                             allMaterials.add(newRoofTile);
@@ -173,11 +165,9 @@ public class BuildingMaterialMapper {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-        } catch (
-                SQLException throwables) {
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return allMaterials;
     }
 }

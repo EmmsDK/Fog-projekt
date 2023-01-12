@@ -17,7 +17,8 @@ import java.util.List;
 @WebServlet(name = "Admin", value = "/admin")
 public class Admin extends HttpServlet {
 
-    private static final ConnectionPool connectionPool = new ConnectionPool();
+    public static List<BuildingMaterial> materialList = BuildingMaterialFacade.getAllMaterials();
+    public static List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,18 +28,12 @@ public class Admin extends HttpServlet {
         List<User> userList = UserFacade.getUsers();
         session.setAttribute("userList", userList);
 
-        List<BuildingMaterial> materialList = BuildingMaterialFacade.getAllMaterials();
+        //List<BuildingMaterial> materialList = BuildingMaterialFacade.getAllMaterials();
         session.setAttribute("materialList", materialList);
-
-
-        List<Orders> ordersList = (List<Orders>) OrdersFacade.getOrders();
-
-        System.out.println(ordersList);
 
         session.setAttribute("ordersList", ordersList);
 
         request.getRequestDispatcher("/admin.jsp").forward(request, response);
-
     }
 
     @Override

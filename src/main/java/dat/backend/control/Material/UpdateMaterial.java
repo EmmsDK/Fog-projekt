@@ -9,6 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+import static dat.backend.control.Basic.Admin.materialList;
 import static dat.backend.model.persistence.Orders.OrdersMapper.connectionPool;
 
 @WebServlet(name = "UpdateMaterial", value = "/updatematerial")
@@ -22,7 +23,7 @@ public class UpdateMaterial extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
+        //List<BuildingMaterial> materialList = (List<BuildingMaterial>) session.getAttribute("materialList");
 
         int material_id = Integer.parseInt(request.getParameter("material_id"));
         int length;

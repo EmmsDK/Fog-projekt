@@ -19,7 +19,6 @@
         <label for="updatedLength"></label><input style="width:200px" type="number" name="length" id="updatedLength"/><br>
         Beskrivelse:
         <label for="updatedDescription"></label><input style="width:200px" type="text" name="description" id="updatedDescription"/><br>
-        <br>
         Pris:
         <label for="updatedPrice"></label><input style="width:200px" type="text" name="price" id="updatedPrice"/><br>
         <input type="hidden" name="material_id" value="${sessionScope.material.material_id}"/>
